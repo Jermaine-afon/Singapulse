@@ -4,7 +4,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Landmark } from '../types';
 import { POPULAR_START_POINTS } from '../data/landmarks';
-import { Navigation, CloudRain, Sun, Info, Umbrella } from 'lucide-react';
+import { Navigation, CloudRain, Sun, Umbrella } from 'lucide-react';
 
 interface InteractiveMapProps {
   landmarks: Landmark[];
@@ -17,7 +17,7 @@ interface InteractiveMapProps {
 
 // OneMap (Singapore Land Authority) basemap — public tiles, no token required.
 // https://www.onemap.gov.sg/docs/maps/
-const ONEMAP_TILE_URL = 'https://www.onemap.gov.sg/maps/tiles/Default/{z}/{x}/{y}.png';
+const ONEMAP_TILE_URL = 'https://www.onemap.gov.sg/maps/tiles/Grey/{z}/{x}/{y}.png';
 const ONEMAP_ATTRIBUTION =
   '<img src="https://www.onemap.gov.sg/web-assets/images/logo/om_logo.png" style="height:20px;width:20px;display:inline;vertical-align:middle"/>&nbsp;' +
   '<a href="https://www.onemap.gov.sg/" target="_blank" rel="noopener noreferrer">OneMap</a>&nbsp;&copy;&nbsp;contributors&nbsp;&#124;&nbsp;' +
@@ -32,19 +32,29 @@ const DEFAULT_START: [number, number] = [1.2834, 103.8598];
 const getPinColor = (category: Landmark['category']) => {
   switch (category) {
     case 'architecture':
-      return '#6366f1'; // Indigo
+      return '#0e0f0c'; // ink
     case 'heritage':
-      return '#d97706'; // Amber
+      return '#b86700'; // warning-deep
     case 'greenery':
-      return '#059669'; // Emerald
+      return '#2ead4b'; // positive
     case 'eats_culture':
-      return '#e11d48'; // Rose
+      return '#d03238'; // negative
     case 'coastal':
-      return '#0284c7'; // Sky
+      return '#0b7fae'; // deep cyan
     default:
-      return '#475569';
+      return '#454745'; // body
   }
 };
+
+const LEGEND: { category: Landmark['category']; label: string }[] = [
+  { category: 'architecture', label: 'Architecture' },
+  { category: 'heritage', label: 'Heritage' },
+  { category: 'greenery', label: 'Greenery & trails' },
+  { category: 'eats_culture', label: 'Eats & culture' },
+  { category: 'coastal', label: 'Coast & islands' },
+];
+
+const REGIONS = ['All', 'Central', 'East', 'West', 'North', 'South'];
 
 // Cache pin icons so markers don't rebuild their DOM on every render
 const pinIconCache = new Map<string, L.DivIcon>();
@@ -82,7 +92,8 @@ const MapFocus: React.FC<{
   region: string;
   regionLandmarks: Landmark[];
 }> = ({ selected, region, regionLandmarks }) => {
-  const map = useMap();  const prevSelectedId = useRef(selected?.id);
+  const map = useMap();
+  const prevSelectedId = useRef(selected?.id);
 
   useEffect(() => {
     if (regionLandmarks.length === 0) return;
@@ -122,54 +133,45 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
   const startCoords: [number, number] = startPoint ? [startPoint.lat, startPoint.lng] : DEFAULT_START;
 
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-
-      {/* Top Controls Bar */}
-      <div className="p-4 sm:p-5 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-50/50">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-800">
-            <span>Singapore Island Geospatial Map</span>
-            <span aria-hidden="true">·</span>
-            <span className="text-slate-500 font-normal">OneMap Geocodes & Weather Grid</span>
-          </div>
-          <h2 className="text-xl font-bold font-display text-slate-900 mt-0.5">
-            Interactive Landmark & Microclimate Explorer
+    <section aria-labelledby="map-heading" className="space-y-6">
+      {/* Header */}
+      <div className="space-y-5">
+        <div className="max-w-xl">
+          <h2 id="map-heading" className="display text-ink text-3xl sm:text-4xl">
+            Map
           </h2>
+          <p className="text-body text-base mt-3">
+            Find every place on one map, see where it sits in the city and get there from your start point.
+          </p>
         </div>
 
-        {/* Region filter buttons */}
-        <div className="flex items-center gap-1.5 flex-wrap">
-          {['All', 'Central', 'East', 'West', 'North', 'South'].map((region) => (
+        <div className="flex items-center gap-2 flex-wrap">
+          {REGIONS.map((region) => (
             <button
               key={region}
+              type="button"
               onClick={() => setSelectedRegion(region)}
-              className={`cursor-pointer px-3 py-1 text-xs font-medium rounded-lg transition-colors whitespace-nowrap ${
-                selectedRegion === region
-                  ? 'bg-slate-900 text-white shadow-sm'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
-              }`}
+              aria-pressed={selectedRegion === region}
+              className="chip"
             >
               {region}
             </button>
           ))}
 
-          {/* Radar Overlay Toggle */}
           <button
+            type="button"
             onClick={() => setShowRadar(!showRadar)}
-            className={`cursor-pointer ml-1 px-3 py-1 text-xs font-medium rounded-lg border transition-colors flex items-center gap-1.5 ${
-              showRadar
-                ? 'bg-blue-50 text-blue-800 border-blue-200'
-                : 'bg-white text-slate-600 border-slate-200'
-            }`}
+            aria-pressed={showRadar}
+            className="chip sm:ml-auto"
           >
-            <CloudRain className="w-3.5 h-3.5 text-blue-600" />
-            <span>{showRadar ? 'Radar Layer: Active' : 'Show Rain Radar'}</span>
+            <CloudRain className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
+            <span>Rain radar (simulated)</span>
           </button>
         </div>
       </div>
 
       {/* Map Canvas */}
-      <div className="relative isolate">
+      <div className="relative isolate rounded-3xl overflow-hidden bg-canvas">
         <MapContainer
           center={SG_CENTER}
           zoom={12}
@@ -179,7 +181,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
           maxBoundsViscosity={1}
           scrollWheelZoom
           // Background matches OneMap's sea colour so areas outside tile coverage blend in
-          className="h-[440px] sm:h-[560px] w-full !bg-[#6da8e4]"
+          className="h-[440px] sm:h-[560px] w-full !bg-[#d1d1d1]"
         >
           <TileLayer url={ONEMAP_TILE_URL} attribution={ONEMAP_ATTRIBUTION} detectRetina />
 
@@ -192,17 +194,17 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
               <Circle
                 center={[1.3404, 103.7200]}
                 radius={7000}
-                pathOptions={{ color: '#3b82f6', weight: 0, fillColor: '#3b82f6', fillOpacity: 0.22 }}
+                pathOptions={{ color: '#0b7fae', weight: 0, fillColor: '#0b7fae', fillOpacity: 0.22 }}
               >
                 <Tooltip permanent direction="center" className="sg-radar-label sg-radar-label--rain">
-                  🌧️ Shower Cell (12-18mm/h)
+                  Simulated shower (12–18 mm/h)
                 </Tooltip>
               </Circle>
               {/* Central Convection Cell */}
               <Circle
                 center={[1.3150, 103.8400]}
                 radius={4500}
-                pathOptions={{ color: '#9333ea', weight: 0, fillColor: '#9333ea', fillOpacity: 0.16 }}
+                pathOptions={{ color: '#0b4f6c', weight: 0, fillColor: '#0b4f6c', fillOpacity: 0.14 }}
               />
               {/* Fair coastal zone (East) */}
               <Circle
@@ -211,7 +213,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
                 pathOptions={{ opacity: 0, fillOpacity: 0 }}
               >
                 <Tooltip permanent direction="center" className="sg-radar-label sg-radar-label--fair">
-                  ☀️ Fair Coastal Zone (29°C)
+                  Simulated fair zone (29°C)
                 </Tooltip>
               </Circle>
             </>
@@ -222,10 +224,10 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
             <>
               <Polyline
                 positions={[startCoords, [selectedLandmark.latitude, selectedLandmark.longitude]]}
-                pathOptions={{ color: '#059669', weight: 3.5, dashArray: '6 4' }}
+                pathOptions={{ color: '#0e0f0c', weight: 3, dashArray: '6 6' }}
               />
               <Marker position={startCoords} icon={startIcon} interactive={false}>
-                <Tooltip permanent direction="right" className="sg-start-label">
+                <Tooltip permanent direction="top" offset={[0, -6]} className="sg-start-label">
                   Start: {userStartPointName}
                 </Tooltip>
               </Marker>
@@ -258,92 +260,76 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
           })}
         </MapContainer>
 
-        {/* Floating Map Legend */}
-        <div className="absolute top-4 right-4 z-[1000] bg-white/90 backdrop-blur-md border border-slate-200/90 rounded-xl p-3 shadow-md text-xs space-y-1.5 max-w-[210px] hidden sm:block">
-          <div className="font-bold text-slate-800 text-[11px] uppercase tracking-wider mb-1">
-            Category Legend
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block" />
-            <span className="text-slate-600">Architectural Wonders</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" />
-            <span className="text-slate-600">Heritage & Straits History</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block" />
-            <span className="text-slate-600">Secret Greenery & Trails</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" />
-            <span className="text-slate-600">Alley Cafes & Eats</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block" />
-            <span className="text-slate-600">Coastal Islands</span>
-          </div>
+        {/* Legend */}
+        <div className="absolute top-4 right-4 z-[1000] bg-canvas rounded-2xl p-4 max-w-[220px] hidden sm:block">
+          <p className="text-sm font-semibold text-ink mb-2">Categories</p>
+          <ul className="space-y-1.5 text-sm text-body">
+            {LEGEND.map((item) => (
+              <li key={item.category} className="flex items-center gap-2">
+                <span
+                  className="w-2.5 h-2.5 rounded-full shrink-0"
+                  style={{ background: getPinColor(item.category) }}
+                  aria-hidden="true"
+                />
+                <span>{item.label}</span>
+              </li>
+            ))}
+            <li className="flex items-center gap-2 pt-1">
+              <span className="w-2.5 h-2.5 rounded-full shrink-0 bg-primary ring-[1.5px] ring-ink-deep" aria-hidden="true" />
+              <span>Fully sheltered</span>
+            </li>
+          </ul>
         </div>
 
-        {/* Selected Landmark Quick Action Card on the Map */}
+        {/* Selected landmark quick card */}
         {selectedLandmark && (
-          <div className="absolute bottom-8 inset-x-4 sm:inset-x-auto sm:right-4 sm:max-w-md z-[1000] bg-white border border-slate-200 rounded-xl p-4 shadow-xl text-slate-800">
+          <div className="relative sm:absolute sm:bottom-8 sm:right-4 sm:max-w-sm z-[1000] bg-canvas sm:rounded-2xl p-5 text-ink animate-rise">
             <div className="flex items-start justify-between gap-3">
-              <div>
-                <div className="text-[11px] font-semibold uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
-                  <span>{selectedLandmark.region} Singapore</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{selectedLandmark.nearestMrt}</span>
-                </div>
-                <h4 className="text-base font-bold font-display text-slate-900 mt-0.5">
-                  {selectedLandmark.name}
-                </h4>
-                <p className="text-xs text-slate-600 line-clamp-1 mt-1">
-                  {selectedLandmark.subtitle}
+              <div className="min-w-0">
+                <h3 className="text-xl font-semibold text-ink leading-tight">{selectedLandmark.name}</h3>
+                <p className="text-sm text-mute mt-1">
+                  {selectedLandmark.region} · {selectedLandmark.nearestMrt}
                 </p>
+                <p className="text-sm text-body line-clamp-2 mt-2">{selectedLandmark.subtitle}</p>
               </div>
 
               {selectedLandmark.shelterLevel === 'full_shelter' && (
-                <div className="flex items-center gap-1 text-[11px] font-medium text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shrink-0">
-                  <Umbrella className="w-3 h-3 text-emerald-600" />
-                  <span>Rain-Safe</span>
-                </div>
+                <span className="badge badge-sm badge-positive shrink-0">
+                  <Umbrella className="w-3.5 h-3.5" aria-hidden="true" />
+                  Rain-safe
+                </span>
               )}
             </div>
 
-            <div className="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
+            <div className="flex items-center gap-2 mt-4">
               <button
-                onClick={() => onCheckWeather(selectedLandmark)}
-                className="cursor-pointer flex-1 py-1.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition"
-              >
-                <Sun className="w-3.5 h-3.5" />
-                <span>Forecast Weather</span>
-              </button>
-
-              <button
+                type="button"
                 onClick={() => onGetDirections(selectedLandmark)}
-                className="cursor-pointer py-1.5 px-3 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition"
+                className="btn btn-sm btn-primary flex-1"
               >
-                <Navigation className="w-3.5 h-3.5" />
-                <span>Route</span>
+                <Navigation className="w-4 h-4" aria-hidden="true" />
+                <span>Get there</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => onCheckWeather(selectedLandmark)}
+                className="btn btn-sm btn-secondary flex-1"
+              >
+                <Sun className="w-4 h-4" aria-hidden="true" />
+                <span>Weather</span>
               </button>
             </div>
           </div>
         )}
-
       </div>
 
-      {/* Footer Info */}
-      <div className="p-3 bg-white border-t border-slate-100 text-xs text-slate-500 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <span className="flex items-center gap-1">
-          <Info className="w-3.5 h-3.5 text-slate-400" />
-          <span>Basemap and coordinates from OneMap Singapore (Singapore Land Authority).</span>
-        </span>
-        <span className="font-mono text-slate-600">
-          Showing {filteredLandmarks.length} off-the-beaten-path locations
+      {/* Footer row */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sm text-mute">
+        <span>Basemap © OneMap / Singapore Land Authority</span>
+        <span className="nums">
+          Showing {filteredLandmarks.length} {filteredLandmarks.length === 1 ? 'place' : 'places'}
         </span>
       </div>
-
-    </div>
+    </section>
   );
 };

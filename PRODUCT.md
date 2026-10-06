@@ -1,0 +1,50 @@
+# Product
+
+<!-- impeccable:product-schema 1 -->
+
+## Platform
+
+web
+
+## Users
+
+Visitors planning days in Singapore, often first-timers. They plan on a laptop before the trip and check plans on a phone during it, outdoors, in tropical heat and sudden afternoon showers.
+
+## Product Purpose
+
+Singapulse helps a visitor plan a good day in Singapore. The centrepiece is the AI day planner: the visitor states date, time window, start point, interests and pace, and gets a timed itinerary they can refine in chat. Discovery (a catalogue of landmarks and hidden gems), weather-aware timing, and the map support that planning job. Success: a visitor leaves with a realistic, weather-aware plan for their day and the places saved to their trail.
+
+## Positioning
+
+Plans are built only from a vetted catalogue of Singapore places (curated hidden gems plus Singapore Tourism Board attractions) and timed against Singapore's real weather (NEA data via Data.gov.sg), with sheltered stops placed in rainy or hot hours. A generic AI chat cannot guarantee its stops exist or account for the island's microclimate.
+
+## Operating Context
+
+- Tabs today: Discover (catalogue), Weather Predictor, Interactive Map (OneMap basemap via Leaflet), AI Planner, plus a My Trail drawer of saved places.
+- Data: NEA real-time weather from Data.gov.sg (no key), OneMap geocoding/search and basemap tiles, DeepSeek for the AI planner (server-side key).
+- Deployed on Vercel; React 19 + Vite + Tailwind v4.
+
+## Capabilities and Constraints
+
+- AI planner: generate a day plan from preferences, refine via chat, warnings when the server corrects the plan, save stops to My Trail, open details or show on map.
+- Catalogue: 27 curated hidden gems plus ~107 STB attractions; STB entries have placeholder fields (admission, MRT, crowd level) that are not yet trustworthy.
+- Weather: live readings for the current time; forecast-range estimates for later hours and dates; four-day NEA outlook.
+- Routes: currently estimated, not real OneMap routing; must not be presented as exact.
+- Landmark photos: only six generic images exist, reused across many places.
+
+## Brand Commitments
+
+- Name: Singapulse.
+
+## Evidence on Hand
+
+- Six landmark photos in `public/images/` (generic, reused across entries).
+- No testimonials, user counts, press, or partnerships exist; none may be invented.
+- Footer notes it is an academic course project prototype.
+
+## Product Principles
+
+1. Planning first: every surface should move the visitor toward a confident day plan.
+2. Honest data: label live readings, estimates and AI suggestions for what they are.
+3. Weather is a planning input, not a dashboard: translate readings into what to do and when.
+4. Works in the visitor's hand: readable and usable on a phone outdoors.

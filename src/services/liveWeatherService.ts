@@ -753,12 +753,8 @@ export async function fetchLiveSingaporeWeather(
         rainRiskScore,
         isLiveObservation: isLive
       },
-      fourDayOutlook: fourDayOutlook.length > 0 ? fourDayOutlook : [
-        { dayName: 'Tomorrow', dateStr: 'Oct 6', tempMin: 25, tempMax: 32, condition: 'Passing Showers', rainChance: 60, icon: 'cloud-rain' },
-        { dayName: 'Wednesday', dateStr: 'Oct 7', tempMin: 26, tempMax: 33, condition: 'Fair & Warm', rainChance: 25, icon: 'sun' },
-        { dayName: 'Thursday', dateStr: 'Oct 8', tempMin: 25, tempMax: 31, condition: 'Thundery Showers', rainChance: 75, icon: 'cloud-lightning' },
-        { dayName: 'Friday', dateStr: 'Oct 9', tempMin: 25, tempMax: 32, condition: 'Partly Cloudy', rainChance: 30, icon: 'cloud-sun' }
-      ],
+      // Empty when NEA's outlook is unavailable; the app then shows a clearly labelled estimate
+      fourDayOutlook,
       isLive: dataMode === 'live',
       dataMode,
       lastUpdated: new Date().toLocaleTimeString('en-SG', {

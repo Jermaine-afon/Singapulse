@@ -1,17 +1,6 @@
 import React, { useState } from 'react';
 import { Landmark } from '../types';
-import {
-  MapPin,
-  Clock,
-  Compass,
-  Bookmark,
-  BookmarkCheck,
-  Umbrella,
-  Eye,
-  Sun,
-  Navigation,
-  Sparkles
-} from 'lucide-react';
+import { Clock, Bookmark, BookmarkCheck, Umbrella, ImageOff, Sun, Navigation, ArrowRight } from 'lucide-react';
 
 interface LandmarkCardProps {
   landmark: Landmark;
@@ -21,6 +10,17 @@ interface LandmarkCardProps {
   onCheckWeather: (landmark: Landmark) => void;
   onGetDirections: (landmark: Landmark) => void;
 }
+
+// Some STB text fields carry raw <sup> tags; show plain text only.
+const stripSup = (text: string) => text.replace(/<\/?sup>/gi, '');
+
+const CATEGORY_COLOURS: Record<Landmark['category'], string> = {
+  architecture: '#0e0f0c',
+  heritage: '#b86700',
+  greenery: '#2ead4b',
+  eats_culture: '#d03238',
+  coastal: '#0b7fae',
+};
 
 export const LandmarkCard: React.FC<LandmarkCardProps> = ({
   landmark,
@@ -38,153 +38,128 @@ export const LandmarkCard: React.FC<LandmarkCardProps> = ({
       case 'architecture':
         return 'Architecture';
       case 'heritage':
-        return 'Cultural Heritage';
+        return 'Heritage';
       case 'greenery':
-        return 'Secret Trail';
+        return 'Greenery';
       case 'eats_culture':
-        return 'Alley & Cafe';
+        return 'Alleys & food';
       case 'coastal':
-        return 'Coastal Island';
+        return 'Coastal';
       default:
         return 'Landmark';
     }
   };
 
+  const shelter =
+    landmark.shelterLevel === 'full_shelter'
+      ? { label: 'Rain-safe', className: 'badge-positive' }
+      : landmark.shelterLevel === 'partial_shelter'
+        ? { label: 'Partly covered', className: 'badge-neutral' }
+        : { label: 'Open air', className: 'badge-neutral' };
+
   return (
-    <div className="bg-white border border-slate-200/90 rounded-2xl overflow-hidden hover:border-slate-300 hover:shadow-md transition-all duration-300 flex flex-col group">
-      
-      {/* Visual Asset Container (4:3 aspect ratio) */}
-      <div className="relative aspect-4/3 overflow-hidden bg-slate-900">
+    <article className="bg-canvas rounded-3xl overflow-hidden p-2 flex flex-col group">
+      {/* Photo (mouse shortcut to details; the title button is the accessible control) */}
+      <div
+        className="relative aspect-4/3 overflow-hidden rounded-2xl bg-canvas-soft cursor-pointer"
+        onClick={() => onSelectForDetails(landmark)}
+      >
         {!imageError ? (
           <img
             src={landmark.imageUrl}
-            alt={landmark.name}
+            alt=""
             referrerPolicy="no-referrer"
+            loading="lazy"
             onError={() => setImageError(true)}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
         ) : (
-          <div className="w-full h-full bg-linear-to-br from-slate-800 to-emerald-950 flex flex-col items-center justify-center p-6 text-white text-center">
-            <Sparkles className="w-8 h-8 text-emerald-400 mb-2" />
-            <span className="font-display font-bold text-base">{landmark.name}</span>
-            <span className="text-xs text-slate-300 mt-1">{landmark.neighborhood}</span>
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-mute">
+            <ImageOff className="w-7 h-7" strokeWidth={1.75} aria-hidden="true" />
+            <span className="text-sm">Photo unavailable</span>
           </div>
         )}
 
-        {/* Scrim Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-
-        {/* Quick Bookmark Button Top Right */}
         <button
+          type="button"
           onClick={(e) => {
             e.stopPropagation();
             onToggleSave(landmark.id);
           }}
-          aria-label={isSaved ? 'Remove from saved' : 'Save landmark to trail'}
-          className={`cursor-pointer absolute top-3 right-3 p-2 rounded-lg backdrop-blur-md transition-colors ${
-            isSaved
-              ? 'bg-emerald-600 text-white shadow'
-              : 'bg-slate-900/60 text-white hover:bg-slate-900/90'
-          }`}
+          aria-label={isSaved ? `Remove ${landmark.name} from My Trail` : `Save ${landmark.name} to My Trail`}
+          aria-pressed={isSaved}
+          className={`btn btn-icon absolute top-3 right-3 ${isSaved ? 'btn-primary' : 'bg-canvas text-ink hover:bg-canvas-soft'}`}
         >
           {isSaved ? (
-            <BookmarkCheck className="w-4 h-4 text-white" />
+            <BookmarkCheck className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
           ) : (
-            <Bookmark className="w-4 h-4 text-white" />
+            <Bookmark className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
           )}
         </button>
-
-        {/* Bottom image overlay metadata: unboxed quiet text */}
-        <div className="absolute bottom-3 left-3 right-3 text-white text-xs flex items-center justify-between pointer-events-none">
-          <span className="font-semibold text-emerald-300 drop-shadow-sm">
-            {landmark.neighborhood} · {landmark.region}
-          </span>
-          {landmark.shelterLevel === 'full_shelter' && (
-            <span className="inline-flex items-center gap-1 text-[11px] text-emerald-200 drop-shadow-sm">
-              <Umbrella className="w-3 h-3 text-emerald-400" />
-              <span>Covered Walk</span>
-            </span>
-          )}
-        </div>
       </div>
 
-      {/* Card Content Area */}
-      <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-        
-        <div className="space-y-2">
-          {/* Unboxed 1-line text kicker */}
-          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 font-medium">
-            {landmark.isStbAttraction ? (
-              <span className="text-[10px] font-semibold text-rose-700 bg-rose-50 border border-rose-200 px-1.5 py-0.5 rounded">
-                STB Attraction
-              </span>
-            ) : (
-              <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
-                Curated Gem
-              </span>
-            )}
-            <span aria-hidden="true">·</span>
-            <span>{getCategoryLabel(landmark.category)}</span>
-            <span aria-hidden="true">·</span>
-            <span>{landmark.recommendedDuration}</span>
-          </div>
-
-          {/* Primary Title */}
-          <h3 className="text-lg font-bold text-slate-900 font-display leading-snug group-hover:text-emerald-700 transition-colors">
-            {landmark.name}
-          </h3>
-
-          <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
-            {landmark.description}
-          </p>
-
-          {/* Secret Lore Quote Box */}
-          <div className="p-2.5 rounded-lg bg-amber-50/60 border-l-2 border-amber-500 text-xs text-amber-950 font-normal">
-            <span className="font-semibold text-amber-900">Secret Tip: </span>
-            <span className="line-clamp-2">{landmark.secretLore}</span>
-          </div>
-        </div>
-
-        {/* Card Footer: Metadata and Actions */}
-        <div className="space-y-3 pt-2 border-t border-slate-100">
-          
-          {/* MRT location */}
-          <div className="flex items-center gap-1.5 text-xs text-slate-500 truncate">
-            <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-            <span className="truncate">{landmark.nearestMrt}</span>
-          </div>
-
-          {/* Action Row */}
-          <div className="grid grid-cols-3 gap-2">
+      {/* Content */}
+      <div className="px-4 pt-4 pb-3 flex-1 flex flex-col gap-3">
+        <div>
+          <h3 className="text-lg font-semibold text-ink leading-snug">
             <button
+              type="button"
               onClick={() => onSelectForDetails(landmark)}
-              className="cursor-pointer py-2 px-2 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-medium flex items-center justify-center gap-1 transition"
+              className="text-left cursor-pointer hover:underline decoration-2 underline-offset-4"
             >
-              <Eye className="w-3.5 h-3.5 text-slate-500" />
-              <span className="truncate">Story</span>
+              {stripSup(landmark.name)}
             </button>
-
-            <button
-              onClick={() => onCheckWeather(landmark)}
-              className="cursor-pointer py-2 px-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-medium flex items-center justify-center gap-1 transition border border-emerald-100"
-            >
-              <Sun className="w-3.5 h-3.5 text-emerald-600" />
-              <span className="truncate">Forecast</span>
-            </button>
-
-            <button
-              onClick={() => onGetDirections(landmark)}
-              className="cursor-pointer py-2 px-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium flex items-center justify-center gap-1 transition"
-            >
-              <Navigation className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="truncate">Route</span>
-            </button>
-          </div>
-
+          </h3>
+          <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-sm text-body">
+            <span
+              className="w-2 h-2 rounded-full shrink-0"
+              style={{ backgroundColor: CATEGORY_COLOURS[landmark.category] ?? '#0e0f0c' }}
+              aria-hidden="true"
+            />
+            <span>{getCategoryLabel(landmark.category)}</span>
+            <span aria-hidden="true" className="text-mute">·</span>
+            <span>{landmark.neighborhood}</span>
+          </p>
         </div>
 
-      </div>
+        <p className="text-sm text-body leading-relaxed line-clamp-2">{stripSup(landmark.description)}</p>
 
-    </div>
+        {/* Facts */}
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-body">
+          <span className="inline-flex items-center gap-1.5 nums">
+            <Clock className="w-4 h-4 text-mute" strokeWidth={1.75} aria-hidden="true" />
+            {landmark.recommendedDuration}
+          </span>
+          <span>{landmark.admission === 'Free' ? 'Free entry' : 'Paid entry'}</span>
+          {landmark.isStbAttraction && <span className="badge badge-sm badge-neutral">Official attraction</span>}
+          <span className={`badge badge-sm ${shelter.className}`}>
+            {landmark.shelterLevel === 'full_shelter' && (
+              <Umbrella className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden="true" />
+            )}
+            {shelter.label}
+          </span>
+        </div>
+
+        {/* Actions */}
+        <div className="mt-auto pt-2 grid grid-cols-3 gap-1.5">
+          <button
+            type="button"
+            onClick={() => onSelectForDetails(landmark)}
+            className="btn btn-sm btn-tertiary px-2"
+          >
+            <span>Details</span>
+            <ArrowRight className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
+          </button>
+          <button type="button" onClick={() => onCheckWeather(landmark)} className="btn btn-sm btn-ghost px-2">
+            <Sun className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
+            <span>Forecast</span>
+          </button>
+          <button type="button" onClick={() => onGetDirections(landmark)} className="btn btn-sm btn-ghost px-2">
+            <Navigation className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
+            <span>Route</span>
+          </button>
+        </div>
+      </div>
+    </article>
   );
 };

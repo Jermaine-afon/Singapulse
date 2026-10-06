@@ -1,18 +1,6 @@
 import React from 'react';
 import { Landmark } from '../types';
-import {
-  X,
-  Trash2,
-  Calendar,
-  Clock,
-  Navigation,
-  Sun,
-  Umbrella,
-  Share2,
-  Check,
-  Compass,
-  ArrowRight
-} from 'lucide-react';
+import { X, Trash2, Calendar, Clock, Navigation, Sun, Umbrella, Share2, Check, AlertCircle } from 'lucide-react';
 
 interface ItineraryDrawerProps {
   isOpen: boolean;
@@ -27,6 +15,8 @@ interface ItineraryDrawerProps {
   selectedTime: string;
 }
 
+type CopyState = 'idle' | 'copied' | 'failed';
+
 export const ItineraryDrawer: React.FC<ItineraryDrawerProps> = ({
   isOpen,
   onClose,
@@ -39,163 +29,196 @@ export const ItineraryDrawer: React.FC<ItineraryDrawerProps> = ({
   selectedDate,
   selectedTime,
 }) => {
-  const [copied, setCopied] = React.useState(false);
+  const [copyState, setCopyState] = React.useState<CopyState>('idle');
+  const resetTimer = React.useRef<number | undefined>(undefined);
+
+  // Escape to close + body scroll lock while open
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [isOpen, onClose]);
+
+  React.useEffect(() => () => window.clearTimeout(resetTimer.current), []);
 
   if (!isOpen) return null;
 
-  const handleShare = () => {
+  const handleShare = async () => {
     const text = savedLandmarks
       .map((lm, i) => `${i + 1}. ${lm.name} (${lm.neighborhood}) - Best time: ${lm.bestTimeOfDay.split('(')[0]}`)
       .join('\n');
-    navigator.clipboard?.writeText?.(`My Singapore Hidden Gems Trail:\n${text}`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(`My Singapore Hidden Gems Trail:\n${text}`);
+      setCopyState('copied');
+    } catch {
+      setCopyState('failed');
+    }
+    window.clearTimeout(resetTimer.current);
+    resetTimer.current = window.setTimeout(() => setCopyState('idle'), 2000);
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-slate-900/60 backdrop-blur-xs flex justify-end animate-fadeIn">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-ink/60 flex justify-end animate-fade" onClick={onClose}>
       <div
-        className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col justify-between"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="trail-drawer-title"
+        className="w-full max-w-md bg-canvas h-full flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Drawer Top Header */}
-        <div className="p-5 border-b border-slate-200 bg-slate-900 text-white flex items-center justify-between">
+        {/* Header */}
+        <div className="px-6 pt-6 pb-4 flex items-start justify-between gap-4">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-              <Compass className="w-3.5 h-3.5" />
-              <span>Singapore Tourist Itinerary</span>
-            </div>
-            <h3 className="text-lg font-bold font-display text-white mt-0.5">
-              My Expedition Trail ({savedLandmarks.length})
-            </h3>
+            <h2 id="trail-drawer-title" className="display text-ink text-3xl flex items-baseline gap-3">
+              <span>My Trail</span>
+              <span className="text-mute text-2xl nums">{savedLandmarks.length}</span>
+            </h2>
+            <p className="text-sm text-body mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+              <span className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4 text-mute" aria-hidden="true" />
+                <span className="nums">{selectedDate}</span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-4 h-4 text-mute" aria-hidden="true" />
+                <span>
+                  Start <span className="nums">{selectedTime}</span>
+                </span>
+              </span>
+            </p>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="cursor-pointer p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition"
+            aria-label="Close My Trail"
+            className="btn btn-icon btn-ghost shrink-0 -mr-2 -mt-1"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
 
-        {/* Trail Items List */}
-        <div className="p-5 overflow-y-auto flex-1 space-y-4">
-          
-          {/* Quick Schedule Context Banner */}
-          <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 flex items-center justify-between">
-            <span className="flex items-center gap-1.5 font-medium">
-              <Calendar className="w-3.5 h-3.5 text-slate-500" />
-              <span>Visit Date: {selectedDate}</span>
-            </span>
-            <span className="font-mono text-emerald-700 font-semibold">
-              Planned Start: {selectedTime}
-            </span>
-          </div>
-
+        {/* List */}
+        <div className="px-6 pb-6 overflow-y-auto flex-1">
           {savedLandmarks.length === 0 ? (
-            <div className="py-16 text-center space-y-3">
-              <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
-                <Compass className="w-6 h-6" />
-              </div>
-              <h4 className="text-base font-semibold text-slate-800">Your Trail is Empty</h4>
-              <p className="text-xs text-slate-500 max-w-xs mx-auto">
-                Explore off-the-beaten-path landmarks and bookmark them with the ribbon icon to build your custom itinerary.
+            <div className="card-soft text-center mt-4 space-y-4">
+              <p className="text-base text-body">
+                Nothing saved yet. Save places while you browse and they'll line up here as your day out.
               </p>
+              <button type="button" onClick={onClose} className="btn btn-sm btn-dark">
+                Find places
+              </button>
             </div>
           ) : (
-            <div className="space-y-3">
-              {savedLandmarks.map((lm, index) => (
-                <div
-                  key={lm.id}
-                  className="p-3.5 rounded-xl border border-slate-200 hover:border-slate-300 transition bg-white space-y-3"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-start gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-emerald-700 text-white text-[11px] font-mono flex items-center justify-center font-bold shrink-0 mt-0.5">
+            <>
+              <ol className="divide-y divide-canvas-line border-y border-canvas-line">
+                {savedLandmarks.map((lm, index) => (
+                  <li key={lm.id} className="py-4">
+                    <div className="flex items-start gap-3">
+                      <span className="w-7 h-7 rounded-full bg-canvas-soft text-ink text-sm font-semibold nums flex items-center justify-center shrink-0">
                         {index + 1}
-                      </div>
-                      <div>
-                        <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
-                          {lm.neighborhood}
-                        </div>
-                        <h4 className="text-sm font-bold font-display text-slate-900 leading-snug">
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            onClose();
+                            onSelectForDetails(lm);
+                          }}
+                          className="text-left text-base font-semibold text-ink leading-snug hover:underline cursor-pointer"
+                        >
                           {lm.name}
-                        </h4>
-                        <div className="text-xs text-slate-500 mt-1 flex items-center gap-2">
+                        </button>
+                        <p className="text-sm text-mute mt-0.5">{lm.neighborhood}</p>
+                        <p className="text-sm text-body mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
+                          <span>Best: {lm.bestTimeOfDay.split('(')[0].trim()}</span>
+                          <span aria-hidden="true">·</span>
                           <span>{lm.recommendedDuration}</span>
-                          <span>·</span>
-                          <span>{lm.shelterLevel === 'full_shelter' ? 'Fully Sheltered' : 'Outdoor'}</span>
+                          {lm.shelterLevel === 'full_shelter' && (
+                            <span className="badge badge-sm badge-positive">
+                              <Umbrella className="w-3 h-3" aria-hidden="true" />
+                              Rain-safe
+                            </span>
+                          )}
+                        </p>
+
+                        <div className="flex flex-wrap items-center gap-1 mt-2 -ml-3">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              onClose();
+                              onCheckWeather(lm);
+                            }}
+                            className="btn btn-sm btn-ghost"
+                          >
+                            <Sun className="w-4 h-4" aria-hidden="true" />
+                            Weather
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              onClose();
+                              onGetDirections(lm);
+                            }}
+                            className="btn btn-sm btn-ghost"
+                          >
+                            <Navigation className="w-4 h-4" aria-hidden="true" />
+                            Get there
+                          </button>
                         </div>
                       </div>
+                      <button
+                        type="button"
+                        onClick={() => onRemoveFromTrail(lm.id)}
+                        aria-label={`Remove ${lm.name} from trail`}
+                        title="Remove from trail"
+                        className="btn btn-icon btn-ghost shrink-0 text-mute hover:text-negative-deep"
+                      >
+                        <Trash2 className="w-4 h-4" aria-hidden="true" />
+                      </button>
                     </div>
+                  </li>
+                ))}
+              </ol>
 
-                    <button
-                      onClick={() => onRemoveFromTrail(lm.id)}
-                      className="cursor-pointer text-slate-400 hover:text-rose-600 transition p-1"
-                      title="Remove from itinerary"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  {/* Quick Card Action Buttons */}
-                  <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 text-xs">
-                    <button
-                      onClick={() => {
-                        onClose();
-                        onSelectForDetails(lm);
-                      }}
-                      className="cursor-pointer py-1.5 px-2 bg-slate-50 hover:bg-slate-100 rounded-lg text-slate-700 font-medium transition text-center truncate"
-                    >
-                      Story
-                    </button>
-                    <button
-                      onClick={() => {
-                        onClose();
-                        onCheckWeather(lm);
-                      }}
-                      className="cursor-pointer py-1.5 px-2 bg-emerald-50 hover:bg-emerald-100 rounded-lg text-emerald-800 font-medium transition text-center truncate flex items-center justify-center gap-1"
-                    >
-                      <Sun className="w-3 h-3 text-emerald-600" />
-                      <span>Forecast</span>
-                    </button>
-                    <button
-                      onClick={() => {
-                        onClose();
-                        onGetDirections(lm);
-                      }}
-                      className="cursor-pointer py-1.5 px-2 bg-slate-900 hover:bg-slate-800 rounded-lg text-white font-medium transition text-center truncate flex items-center justify-center gap-1"
-                    >
-                      <Navigation className="w-3 h-3 text-emerald-400" />
-                      <span>Route</span>
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+              {/* Destructive action, kept apart from the share action */}
+              <div className="mt-6 flex justify-end">
+                <button
+                  type="button"
+                  onClick={onClearTrail}
+                  className="btn btn-sm btn-ghost !text-negative-deep"
+                >
+                  Clear all
+                </button>
+              </div>
+            </>
           )}
-
         </div>
 
-        {/* Drawer Bottom Action Strip */}
+        {/* Bottom action */}
         {savedLandmarks.length > 0 && (
-          <div className="p-4 border-t border-slate-200 bg-slate-50 space-y-2">
-            <button
-              onClick={handleShare}
-              className="cursor-pointer w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition shadow-xs"
-            >
-              {copied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
-              <span>{copied ? 'Copied Trail to Clipboard!' : 'Copy / Share Expedition Trail'}</span>
-            </button>
-
-            <button
-              onClick={onClearTrail}
-              className="cursor-pointer w-full py-2 text-slate-500 hover:text-rose-600 text-xs font-medium transition"
-            >
-              Clear all landmarks
+          <div className="px-6 py-4 border-t border-canvas-line">
+            <button type="button" onClick={handleShare} className="btn btn-secondary w-full">
+              {copyState === 'copied' ? (
+                <Check className="w-4 h-4" aria-hidden="true" />
+              ) : copyState === 'failed' ? (
+                <AlertCircle className="w-4 h-4" aria-hidden="true" />
+              ) : (
+                <Share2 className="w-4 h-4" aria-hidden="true" />
+              )}
+              <span aria-live="polite">
+                {copyState === 'copied' ? 'Copied' : copyState === 'failed' ? "Couldn't copy" : 'Copy trail'}
+              </span>
             </button>
           </div>
         )}
-
       </div>
     </div>
   );

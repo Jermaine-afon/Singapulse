@@ -6,3 +6,7 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Impeccable design-tool scratch (decision page state, review screenshots)
+.impeccable/questions/
+.impeccable/review/*.jpg

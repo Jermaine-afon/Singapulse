@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T03:25:24.212Z",
+  "title": "Design System: Singapulse",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Signal Lime",
+        "canonical": "oklch(85.7% 0.170 134.6)",
+        "tonalRamp": [
+          "#001200",
+          "#003100",
+          "#1b5400",
+          "#377900",
+          "#599e1e",
+          "#82c357",
+          "#aae586",
+          "#cbffac"
+        ]
+      },
+      "primary-active": {
+        "role": "primary",
+        "displayName": "Lime Glow",
+        "canonical": "oklch(94.6% 0.118 133.7)",
+        "tonalRamp": [
+          "#001200",
+          "#073100",
+          "#285100",
+          "#497426",
+          "#6b984b",
+          "#8fbe6f",
+          "#b1e292",
+          "#ceffae"
+        ]
+      },
+      "primary-pale": {
+        "role": "primary",
+        "displayName": "Pale Lime",
+        "canonical": "oklch(95.0% 0.048 133.0)",
+        "tonalRamp": [
+          "#040f00",
+          "#1d2b12",
+          "#3b4b30",
+          "#5b6c50",
+          "#7e9072",
+          "#a2b596",
+          "#c5d8b8",
+          "#e2f6d5"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#aeaeae",
+          "#d1d1d1",
+          "#eeeeee"
+        ]
+      },
+      "canvas-soft": {
+        "role": "neutral",
+        "displayName": "Sage Mist",
+        "canonical": "oklch(93.6% 0.007 132.4)",
+        "tonalRamp": [
+          "#0a0c09",
+          "#252724",
+          "#434642",
+          "#646763",
+          "#878a86",
+          "#acafaa",
+          "#cfd2cd",
+          "#edf0eb"
+        ]
+      },
+      "canvas-line": {
+        "role": "neutral",
+        "displayName": "Sage Rule",
+        "canonical": "oklch(87.6% 0.012 133.4)",
+        "tonalRamp": [
+          "#090c07",
+          "#242822",
+          "#424640",
+          "#636861",
+          "#868b83",
+          "#abb0a8",
+          "#ced3cb",
+          "#ebf0e8"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Olive Ink",
+        "canonical": "oklch(16.6% 0.006 122.1)",
+        "tonalRamp": [
+          "#0b0c09",
+          "#262724",
+          "#444642",
+          "#656763",
+          "#888a86",
+          "#adafaa",
+          "#d0d2cd",
+          "#eeefeb"
+        ]
+      },
+      "ink-deep": {
+        "role": "neutral",
+        "displayName": "Deep Forest Ink",
+        "canonical": "oklch(28.7% 0.084 135.1)",
+        "tonalRamp": [
+          "#001100",
+          "#122f00",
+          "#304f1d",
+          "#51713f",
+          "#739561",
+          "#97ba85",
+          "#badea7",
+          "#d7fcc3"
+        ]
+      },
+      "body": {
+        "role": "neutral",
+        "displayName": "Graphite Body",
+        "canonical": "oklch(39.5% 0.004 145.5)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#aeaeae",
+          "#d1d1d1",
+          "#eeeeee"
+        ]
+      },
+      "mute": {
+        "role": "neutral",
+        "displayName": "Stone Mute",
+        "canonical": "oklch(53.2% 0.005 134.9)",
+        "tonalRamp": [
+          "#0a0c09",
+          "#252724",
+          "#444643",
+          "#656764",
+          "#888a87",
+          "#acafab",
+          "#cfd2ce",
+          "#edefec"
+        ]
+      },
+      "positive": {
+        "role": "semantic",
+        "displayName": "Positive",
+        "canonical": "oklch(65.8% 0.176 147.0)",
+        "tonalRamp": [
+          "#001400",
+          "#003400",
+          "#005802",
+          "#007d21",
+          "#21a442",
+          "#61c871",
+          "#91ea9b",
+          "#b6ffbe"
+        ]
+      },
+      "positive-deep": {
+        "role": "semantic",
+        "displayName": "Positive Deep",
+        "canonical": "oklch(37.0% 0.091 153.7)",
+        "tonalRamp": [
+          "#001400",
+          "#00320f",
+          "#0f532d",
+          "#37754d",
+          "#5b9970",
+          "#80bf93",
+          "#a2e3b6",
+          "#bfffd3"
+        ]
+      },
+      "warning": {
+        "role": "semantic",
+        "displayName": "Warning",
+        "canonical": "oklch(87.5% 0.175 92.2)",
+        "tonalRamp": [
+          "#1b0400",
+          "#3c1f00",
+          "#613e00",
+          "#885f00",
+          "#af8200",
+          "#d1a900",
+          "#f1ce5b",
+          "#ffec89"
+        ]
+      },
+      "warning-pale": {
+        "role": "semantic",
+        "displayName": "Warning Pale",
+        "canonical": "oklch(96.2% 0.062 95.4)",
+        "tonalRamp": [
+          "#130900",
+          "#302600",
+          "#4f451a",
+          "#71663c",
+          "#94895e",
+          "#baae81",
+          "#ddd1a3",
+          "#fbefc0"
+        ]
+      },
+      "warning-deep": {
+        "role": "semantic",
+        "displayName": "Warning Deep",
+        "canonical": "oklch(59.4% 0.138 60.6)",
+        "tonalRamp": [
+          "#260000",
+          "#4e0800",
+          "#762a00",
+          "#9d4e00",
+          "#c4721a",
+          "#ed9749",
+          "#ffbb6d",
+          "#ffdb97"
+        ]
+      },
+      "warning-content": {
+        "role": "semantic",
+        "displayName": "Warning Content",
+        "canonical": "oklch(36.1% 0.051 83.9)",
+        "tonalRamp": [
+          "#150800",
+          "#322404",
+          "#524324",
+          "#746444",
+          "#988766",
+          "#bdac8a",
+          "#e1cfac",
+          "#ffecc8"
+        ]
+      },
+      "negative": {
+        "role": "semantic",
+        "displayName": "Negative",
+        "canonical": "oklch(56.6% 0.194 24.2)",
+        "tonalRamp": [
+          "#2a0000",
+          "#550001",
+          "#821019",
+          "#b13033",
+          "#df5452",
+          "#ff827c",
+          "#ffaba4",
+          "#ffcdc6"
+        ]
+      },
+      "negative-pale": {
+        "role": "semantic",
+        "displayName": "Negative Pale",
+        "canonical": "oklch(93.5% 0.026 17.6)",
+        "tonalRamp": [
+          "#150707",
+          "#322122",
+          "#524040",
+          "#756060",
+          "#998383",
+          "#bea8a8",
+          "#e2caca",
+          "#ffe8e8"
+        ]
+      },
+      "negative-deep": {
+        "role": "semantic",
+        "displayName": "Negative Deep",
+        "canonical": "oklch(47.5% 0.170 24.4)",
+        "tonalRamp": [
+          "#2a0000",
+          "#550001",
+          "#821019",
+          "#b13033",
+          "#dd5653",
+          "#ff827c",
+          "#ffaba4",
+          "#ffcdc5"
+        ]
+      },
+      "negative-darkest": {
+        "role": "semantic",
+        "displayName": "Negative Darkest",
+        "canonical": "oklch(45.8% 0.187 27.4)",
+        "tonalRamp": [
+          "#2a0000",
+          "#550000",
+          "#821111",
+          "#b1312b",
+          "#df554a",
+          "#ff8376",
+          "#ffac9f",
+          "#ffcec1"
+        ]
+      },
+      "category-coastal": {
+        "role": "data",
+        "displayName": "Coastal Blue",
+        "canonical": "oklch(56.2% 0.115 234.0)",
+        "tonalRamp": [
+          "#000a30",
+          "#002b55",
+          "#004c78",
+          "#006f9d",
+          "#2f94c4",
+          "#5abaec",
+          "#7fdeff",
+          "#9dfcff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single hero headline per page; also the wordmark and the weather temperature reading."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Generated plan titles (2.25rem mobile, 3rem desktop)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card headings; a 1.25rem step for secondary cards and asides."
+      },
+      "title-sm": {
+        "displayName": "Small Title",
+        "purpose": "Landmark and timeline stop names."
+      },
+      "body-lead": {
+        "displayName": "Lead",
+        "purpose": "The one sentence under a headline."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; 15px for chat bubbles, stop notes and nav tabs."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, chips, badges, small buttons; sentence case."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Timeline start times in tabular 900."
+      }
+    },
+    "shadows": [
+      {
+        "name": "segment-lift",
+        "value": "0 1px 2px rgb(14 15 12 / 0.12)",
+        "purpose": "Selected option in a segmented control."
+      },
+      {
+        "name": "floating-panel",
+        "value": "0 8px 24px rgb(14 15 12 / 0.12)",
+        "purpose": "Autocomplete dropdowns."
+      },
+      {
+        "name": "map-float",
+        "value": "0 2px 8px rgb(14 15 12 / 0.14)",
+        "purpose": "Map zoom control, map labels and radar captions."
+      },
+      {
+        "name": "pin",
+        "value": "0 1px 3px rgb(14 15 12 / 0.35)",
+        "purpose": "Map pin dots."
+      },
+      {
+        "name": "start-halo",
+        "value": "0 0 0 4px rgb(14 15 12 / 0.18)",
+        "purpose": "Start-point marker halo on the map."
+      },
+      {
+        "name": "focus-glow",
+        "value": "0 0 0 3px #9fe870",
+        "purpose": "Input focus ring."
+      },
+      {
+        "name": "stroke-ink",
+        "value": "inset 0 0 0 1px #0e0f0c",
+        "purpose": "Tertiary button stroke; chip hover."
+      }
+    ],
+    "motion": [
+      {
+        "name": "rise",
+        "value": "rise 420ms cubic-bezier(0.16, 1, 0.3, 1) both",
+        "purpose": "Entering content: modals, timeline stops (60ms stagger), map detail panel. Translates 10px up while fading in."
+      },
+      {
+        "name": "fade",
+        "value": "fade 260ms cubic-bezier(0.16, 1, 0.3, 1) both",
+        "purpose": "Tab bands, scrims, dropdowns."
+      },
+      {
+        "name": "state",
+        "value": "160ms ease",
+        "purpose": "Button, chip, tab and input colour and ring transitions."
+      },
+      {
+        "name": "press",
+        "value": "scale(0.98)",
+        "purpose": "Button active state."
+      },
+      {
+        "name": "pin-ping",
+        "value": "1.4s cubic-bezier(0, 0, 0.2, 1) infinite",
+        "purpose": "Ring around the selected or hovered map pin; disabled under reduced motion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "1ms",
+        "purpose": "All animation and transition durations collapse under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "container",
+        "value": "1280px"
+      }
+    ],
+    "map": {
+      "basemap": "OneMap Grey tiles",
+      "containerFill": "#d1d1d1",
+      "pinColours": {
+        "architecture": "#0e0f0c",
+        "heritage": "#b86700",
+        "greenery": "#2ead4b",
+        "eats_culture": "#d03238",
+        "coastal": "#0b7fae",
+        "default": "#454745"
+      },
+      "pin": "Category-colour dot with a 2px white ring and the pin shadow; a 30% ping ring when selected or hovered.",
+      "shelterMarker": "8px lime dot with a 1.5px ink-deep ring at the pin's top-right.",
+      "startMarker": "Ink dot, 2px white ring, start-halo.",
+      "route": "3px dashed ink (6 6).",
+      "radar": "Coastal Blue fill at 22% and #0b4f6c at 14%, no stroke, always labelled simulated; captions hidden below 640px.",
+      "controls": "White pill stack, 40px cells, map-float shadow.",
+      "labels": "12px / 600 ink on white, 8px radius; radar captions as white pills."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Lime pill-rectangle for the one primary action per view.",
+      "html": "<button class=\"ds-btn-primary\">Plan my day <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:24px;border:none;font:600 16px/24px Inter,ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:background-color 160ms ease,color 160ms ease,transform 160ms ease;background:var(--color-primary,#9fe870);color:var(--color-ink-deep,#163300);} .ds-btn-primary:hover{background:var(--color-primary-active,#cdffad);} .ds-btn-primary:active{transform:scale(0.98);} .ds-btn-primary:focus-visible{outline:2px solid var(--color-ink,#0e0f0c);outline-offset:2px;}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Sage fill for supporting actions such as My Trail and refresh.",
+      "html": "<button class=\"ds-btn-secondary\">My Trail <span class=\"ds-count\">2</span></button>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:24px;border:none;font:600 16px/24px Inter,ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:background-color 160ms ease,color 160ms ease,transform 160ms ease;background:var(--color-canvas-soft,#e8ebe6);color:var(--color-ink,#0e0f0c);} .ds-btn-secondary:hover{background:var(--color-canvas-line,#d3d8d0);} .ds-btn-secondary:active{transform:scale(0.98);} .ds-btn-secondary:focus-visible{outline:2px solid var(--color-ink,#0e0f0c);outline-offset:2px;} .ds-count{min-width:24px;border-radius:9999px;background:#fff;padding:0 6px;font-size:12px;line-height:20px;font-variant-numeric:tabular-nums;}"
+    },
+    {
+      "name": "Tertiary Button",
+      "kind": "button",
+      "refersTo": "button-tertiary",
+      "description": "White with a 1px ink stroke; Details-style actions.",
+      "html": "<button class=\"ds-btn-tertiary\">Place details</button>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-btn-tertiary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:24px;border:none;font:600 16px/24px Inter,ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:background-color 160ms ease,color 160ms ease,transform 160ms ease;background:var(--color-canvas,#fff);color:var(--color-ink,#0e0f0c);box-shadow:inset 0 0 0 1px var(--color-ink,#0e0f0c);} .ds-btn-tertiary:hover{background:var(--color-canvas-soft,#e8ebe6);} .ds-btn-tertiary:active{transform:scale(0.98);} .ds-btn-tertiary:focus-visible{outline:2px solid var(--color-ink,#0e0f0c);outline-offset:2px;}"
+    },
+    {
+      "name": "Dark Button",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "Ink fill for strong non-primary actions such as Getting there.",
+      "html": "<button class=\"ds-btn-dark\">Getting there</button>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-btn-dark{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:24px;border:none;font:600 16px/24px Inter,ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:background-color 160ms ease,color 160ms ease,transform 160ms ease;background:var(--color-ink,#0e0f0c);color:#fff;} .ds-btn-dark:hover{background:#2a2c27;} .ds-btn-dark:active{transform:scale(0.98);} .ds-btn-dark:focus-visible{outline:2px solid var(--color-ink,#0e0f0c);outline-offset:2px;}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "48px field, 12px radius, 1px ink border, lime focus ring, label above.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Starting from</span><input class=\"ds-input\" placeholder=\"e.g. Marina Bay Sands\"></label>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-field{display:block;max-width:360px;} .ds-field-label{display:block;font-size:14px;line-height:20px;font-weight:600;color:var(--color-ink,#0e0f0c);margin-bottom:6px;} .ds-input{width:100%;min-height:48px;padding:12px 16px;border-radius:12px;border:1px solid var(--color-ink,#0e0f0c);background:#fff;color:var(--color-ink,#0e0f0c);font:400 16px/24px Inter,ui-sans-serif,system-ui,sans-serif;transition:box-shadow 160ms ease;} .ds-input::placeholder{color:var(--color-mute,#6b6d6a);} .ds-input:focus{outline:none;box-shadow:0 0 0 3px var(--color-primary,#9fe870);}"
+    },
+    {
+      "name": "Navigation Tabs",
+      "kind": "nav",
+      "refersTo": "nav-tab",
+      "description": "Pill tabs in the sticky white header; lime marks the current tab.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-wordmark\">Singapulse<i></i></span><a class=\"ds-tab\" aria-current=\"page\" href=\"#\">Plan my day</a><a class=\"ds-tab\" href=\"#\">Discover</a><a class=\"ds-tab\" href=\"#\">Weather</a><a class=\"ds-tab\" href=\"#\">Map</a></nav>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-nav{display:flex;align-items:center;gap:4px;height:64px;padding:0 16px;background:#fff;border-bottom:1px solid var(--color-canvas-line,#d3d8d0);} .ds-wordmark{font-weight:900;font-size:24px;letter-spacing:-0.03em;color:var(--color-ink,#0e0f0c);margin-right:24px;display:flex;align-items:center;gap:6px;} .ds-wordmark i{width:8px;height:8px;border-radius:9999px;background:var(--color-primary,#9fe870);} .ds-tab{padding:8px 16px;border-radius:9999px;font-size:15px;font-weight:600;color:var(--color-body,#454745);text-decoration:none;transition:background-color 160ms ease,color 160ms ease;} .ds-tab:hover{color:var(--color-ink,#0e0f0c);background:var(--color-canvas-soft,#e8ebe6);} .ds-tab[aria-current=page]{background:var(--color-primary,#9fe870);color:var(--color-ink-deep,#163300);} .ds-tab:focus-visible{outline:2px solid var(--color-ink,#0e0f0c);outline-offset:2px;}"
+    },
+    {
+      "name": "Choice Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pill toggle for interests and chat quick-replies; pressed fills ink.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">Heritage &amp; history</button><button class=\"ds-chip\" aria-pressed=\"false\">Local food</button></div>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-chips{display:flex;gap:8px;flex-wrap:wrap;} .ds-chip{display:inline-flex;align-items:center;min-height:36px;padding:6px 14px;border-radius:9999px;border:none;font:600 14px/20px Inter,ui-sans-serif,system-ui,sans-serif;color:var(--color-ink,#0e0f0c);background:#fff;box-shadow:inset 0 0 0 1px var(--color-canvas-line,#d3d8d0);cursor:pointer;transition:background-color 160ms ease,box-shadow 160ms ease;} .ds-chip:hover{box-shadow:inset 0 0 0 1px var(--color-ink,#0e0f0c);} .ds-chip[aria-pressed=true]{background:var(--color-ink,#0e0f0c);color:#fff;box-shadow:none;} .ds-chip:focus-visible{outline:2px solid var(--color-ink,#0e0f0c);outline-offset:2px;}"
+    },
+    {
+      "name": "Status Badges",
+      "kind": "chip",
+      "refersTo": "badge-positive",
+      "description": "Semantic status pills for data mode and weather risk.",
+      "html": "<div class=\"ds-badges\"><span class=\"ds-badge ds-pos\">Live</span><span class=\"ds-badge ds-warn\">Model estimate</span><span class=\"ds-badge ds-neu\">Partly covered</span></div>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-badges{display:flex;gap:8px;} .ds-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;font:600 14px/20px Inter,ui-sans-serif,system-ui,sans-serif;white-space:nowrap;} .ds-pos{background:var(--color-primary-pale,#e2f6d5);color:var(--color-positive-deep,#054d28);} .ds-warn{background:var(--color-warning-pale,#fff3c4);color:var(--color-warning-content,#4a3b1c);} .ds-neu{background:var(--color-canvas-soft,#e8ebe6);color:var(--color-ink,#0e0f0c);}"
+    },
+    {
+      "name": "Card on Sage",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Borderless white 24px card that separates from the sage band by colour alone.",
+      "html": "<div class=\"ds-band\"><div class=\"ds-card\"><h3>Fort Canning Tree Tunnel</h3><p>Soft morning light and no queue before the heat builds.</p></div></div>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-band{background:var(--color-canvas-soft,#e8ebe6);padding:32px;} .ds-card{background:#fff;border-radius:24px;padding:24px;max-width:360px;} .ds-card h3{margin:0;font-size:18px;font-weight:600;color:var(--color-ink,#0e0f0c);} .ds-card p{margin:6px 0 0;font-size:15px;line-height:1.6;color:var(--color-body,#454745);}"
+    },
+    {
+      "name": "Timeline Stop",
+      "kind": "custom",
+      "refersTo": "card-soft",
+      "description": "Signature plan row: tabular 900 time, ink node with lime icon on a sage spine, sage panel content; rises in with a 60ms stagger.",
+      "html": "<div class=\"ds-stop\"><div class=\"ds-time\"><b>09:00</b><small>09:45</small></div><div class=\"ds-node\"><span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg></span><i></i></div><div class=\"ds-panel\"><h4>Fort Canning Tree Tunnel</h4><p>Museum &amp; Bras Basah</p></div></div>",
+      "css": ":host{--color-primary:#9fe870;--color-primary-active:#cdffad;--color-primary-pale:#e2f6d5;--color-canvas:#fff;--color-canvas-soft:#e8ebe6;--color-canvas-line:#d3d8d0;--color-ink:#0e0f0c;--color-ink-deep:#163300;--color-body:#454745;--color-mute:#6b6d6a;--color-positive-deep:#054d28;--color-warning-pale:#fff3c4;--color-warning-content:#4a3b1c;font-family:Inter,ui-sans-serif,system-ui,sans-serif;} .ds-stop{display:grid;grid-template-columns:80px 52px minmax(0,1fr);max-width:560px;animation:ds-rise 420ms cubic-bezier(0.16,1,0.3,1) both;} .ds-time{padding:16px 12px 0 0;text-align:right;font-variant-numeric:tabular-nums;} .ds-time b{display:block;font-size:20px;font-weight:900;letter-spacing:-0.025em;color:var(--color-ink,#0e0f0c);} .ds-time small{display:block;font-size:12px;color:var(--color-mute,#6b6d6a);} .ds-node{display:flex;flex-direction:column;align-items:center;} .ds-node span{margin-top:12px;width:36px;height:36px;border-radius:9999px;background:var(--color-ink,#0e0f0c);color:var(--color-primary,#9fe870);display:flex;align-items:center;justify-content:center;} .ds-node i{width:1px;flex:1;min-height:24px;background:var(--color-canvas-line,#d3d8d0);margin:4px 0;} .ds-panel{background:var(--color-canvas-soft,#e8ebe6);border-radius:24px;padding:20px;margin-bottom:24px;} .ds-panel h4{margin:0;font-size:18px;font-weight:600;color:var(--color-ink,#0e0f0c);} .ds-panel p{margin:6px 0 0;font-size:14px;color:var(--color-body,#454745);} @keyframes ds-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}} @media (prefers-reduced-motion:reduce){.ds-stop{animation:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Calm Ledger",
+    "overview": "Singapulse is a planning tool before it is a travel brochure. The world is a sage-and-white ledger: soft sage bands carry the page, white cards sit inside them without borders, and near-black olive ink does all the talking. One lime accent marks the thing to do next, and nothing else. The day-planner card is the hero object, the way a calculator widget is the hero of a finance product; the headline beside it is set in very heavy Inter so the page has a voice without needing photography.\n\nDensity is moderate and deliberate. Forms are generous (48px controls), times and readings are tabular, and depth comes from surface contrast (white on sage, sage on white) rather than shadow. Motion is short and exponential: content rises into place, overlays fade, and reduced-motion users see everything at once.\n\nThe system explicitly refuses the travel-template arrangement: no full-bleed photo hero, no eyebrow labels over every block, no cards strewn with chips. Photography appears only inside landmark cards and modals, inset in a rounded frame.",
+    "keyCharacteristics": [
+      "Sage (#e8ebe6) bands alternate with white sections; white cards on sage, sage panels on white.",
+      "One lime accent for primary actions, the active nav tab, selection and the wordmark dot.",
+      "Inter only: 900 for display voice, 600 for titles and labels, 400 for body.",
+      "Pill buttons and chips, 24px cards, 12px inputs with a 1px ink border.",
+      "Flat by default; shadows only for floating things (dropdowns, map controls, map labels).",
+      "Tabular numerals for every time, duration and reading."
+    ],
+    "rules": [
+      {
+        "name": "The One Lime Rule",
+        "body": "Lime marks the next action or the current selection, and appears on at most one or two elements per viewport. There is no second brand accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink On Lime Rule",
+        "body": "Anything on lime is set in Deep Forest Ink. Never white text on lime, never lime on green.",
+        "section": "colors"
+      },
+      {
+        "name": "The Semantic-Only Colour Rule",
+        "body": "Yellow, red and green appear only to report weather risk, data status, errors or map categories, never as decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Nine Hundred Rule",
+        "body": "Hero and plan headlines are Inter 900. Never lighten the display weight; hierarchy below it comes from size, then 600.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Times Rule",
+        "body": "Every time, date, duration, temperature and count uses tabular numerals so columns of times align.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "Labels and buttons are sentence case at normal tracking. No uppercase micro-labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Surface Contrast Rule",
+        "body": "Cards never get a border or shadow to separate them from the page; they separate by colour. A card on sage is white; a card on white is sage.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put white cards on sage bands and sage panels on white sections; separate by surface, not stroke.",
+      "**Do** keep Signal Lime to the primary action, the active tab, selection and the wordmark dot, with Deep Forest Ink text on it.",
+      "**Do** set hero and plan headlines in Inter 900 at -0.03em and 0.92 line-height.",
+      "**Do** use 48px pill-rectangle buttons (24px radius) and 12px-radius inputs with a 1px ink border and a 3px lime focus ring.",
+      "**Do** set every time, duration and reading in tabular numerals.",
+      "**Do** label estimates and simulations honestly with badges (warning for model estimate, neutral for forecast estimate, positive for live).",
+      "**Do** keep shadows soft olive-ink ambients, used only for floating elements over content or the map."
+    ],
+    "donts": [
+      "**Don't** add a second brand accent, or use semantic yellow, red or green decoratively.",
+      "**Don't** put lime on lime or green backgrounds, or white text on lime.",
+      "**Don't** set the hero display lighter than 900 or swap in a second display face.",
+      "**Don't** use sharp-cornered buttons or square chips.",
+      "**Don't** add borders or drop shadows to resting cards.",
+      "**Don't** add uppercase eyebrow labels above headings, or a full-bleed photo hero.",
+      "**Don't** use Stone Mute for anything but secondary information; body copy is Graphite Body or Olive Ink."
+    ]
+  }
+}

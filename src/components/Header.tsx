@@ -1,127 +1,78 @@
 import React from 'react';
-import { Bookmark, Compass, CloudSun, MapPin, Sparkles } from 'lucide-react';
+import { Bookmark } from 'lucide-react';
 
 export type AppTab = 'explore' | 'weather' | 'map' | 'planner';
+
+const TABS: { id: AppTab; label: string; shortLabel?: string }[] = [
+  { id: 'planner', label: 'Plan my day', shortLabel: 'Plan' },
+  { id: 'explore', label: 'Discover' },
+  { id: 'weather', label: 'Weather' },
+  { id: 'map', label: 'Map' },
+];
 
 interface HeaderProps {
   activeTab: AppTab;
   setActiveTab: (tab: AppTab) => void;
   savedCount: number;
   onOpenItinerary: () => void;
-  onOpenQuickPlanner: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  activeTab,
-  setActiveTab,
-  savedCount,
-  onOpenItinerary,
-  onOpenQuickPlanner,
-}) => {
+export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, savedCount, onOpenItinerary }) => {
+  const tabButton = (tab: (typeof TABS)[number], compact = false) => {
+    const active = activeTab === tab.id;
+    return (
+      <button
+        key={tab.id}
+        type="button"
+        onClick={() => {
+          setActiveTab(tab.id);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        aria-current={active ? 'page' : undefined}
+        className={`cursor-pointer rounded-full font-semibold transition-colors ${
+          compact ? 'px-1 py-2 text-sm text-center' : 'shrink-0 px-4 py-2 text-[15px]'
+        } ${
+          active ? 'bg-primary text-ink-deep' : 'text-body hover:text-ink hover:bg-canvas-soft'
+        }`}
+      >
+        {compact ? tab.shortLabel ?? tab.label : tab.label}
+      </button>
+    );
+  };
+
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        
-        {/* Zone 1: Single text element wordmark */}
+    <header className="sticky top-0 z-40 bg-canvas border-b border-canvas-line">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
         <a
           href="/"
           onClick={(e) => {
             e.preventDefault();
-            setActiveTab('explore');
+            setActiveTab('planner');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="text-xl font-bold tracking-tight text-slate-900 font-display flex items-center gap-1.5"
+          className="display text-2xl text-ink flex items-center gap-1.5 shrink-0"
         >
-          <span>Singapulse</span>
-          <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block mb-1" />
+          Singapulse
+          <span className="w-2 h-2 rounded-full bg-primary ring-2 ring-ink-deep/10" aria-hidden="true" />
         </a>
 
-        {/* Zone 2: 4 clean text navigation links */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
-          <button
-            onClick={() => setActiveTab('explore')}
-            className={`cursor-pointer transition-colors py-1 ${
-              activeTab === 'explore'
-                ? 'text-emerald-700 font-semibold border-b-2 border-emerald-600'
-                : 'hover:text-slate-900'
-            }`}
-          >
-            Discover Gems
-          </button>
-          
-          <button
-            onClick={() => setActiveTab('weather')}
-            className={`cursor-pointer transition-colors py-1 flex items-center gap-1.5 ${
-              activeTab === 'weather'
-                ? 'text-emerald-700 font-semibold border-b-2 border-emerald-600'
-                : 'hover:text-slate-900'
-            }`}
-          >
-            <CloudSun className="w-4 h-4 text-amber-500" />
-            <span>Weather Predictor</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('map')}
-            className={`cursor-pointer transition-colors py-1 flex items-center gap-1.5 ${
-              activeTab === 'map'
-                ? 'text-emerald-700 font-semibold border-b-2 border-emerald-600'
-                : 'hover:text-slate-900'
-            }`}
-          >
-            <MapPin className="w-4 h-4 text-emerald-600" />
-            <span>Interactive Map</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('planner')}
-            className={`cursor-pointer transition-colors py-1 flex items-center gap-1.5 ${
-              activeTab === 'planner'
-                ? 'text-emerald-700 font-semibold border-b-2 border-emerald-600'
-                : 'hover:text-slate-900'
-            }`}
-          >
-            <Sparkles className="w-4 h-4 text-emerald-600" />
-            <span>AI Planner</span>
-          </button>
-
-          <button
-            onClick={onOpenItinerary}
-            className="cursor-pointer text-slate-600 hover:text-slate-900 transition-colors py-1 flex items-center gap-1.5"
-          >
-            <Bookmark className="w-4 h-4 text-slate-500" />
-            <span>My Trail</span>
-            {savedCount > 0 && (
-              <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded">
-                {savedCount}
-              </span>
-            )}
-          </button>
+        <nav className="hidden md:flex items-center gap-1" aria-label="Main">
+          {TABS.map((tab) => tabButton(tab))}
         </nav>
 
-        {/* Zone 3: 1-2 primary actions */}
-        <div className="flex items-center gap-2.5">
-          <button
-            onClick={onOpenItinerary}
-            className="md:hidden p-2 text-slate-600 hover:text-slate-900 relative"
-            aria-label="View saved itinerary"
-          >
-            <Bookmark className="w-5 h-5" />
-            {savedCount > 0 && (
-              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-emerald-500" />
-            )}
-          </button>
-
-          <button
-            onClick={onOpenQuickPlanner}
-            className="px-4 py-2 text-xs font-medium text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors whitespace-nowrap flex items-center gap-1.5 shadow-sm"
-          >
-            <Compass className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Plan Visit</span>
-          </button>
-        </div>
-
+        <button type="button" onClick={onOpenItinerary} className="btn btn-sm btn-secondary shrink-0">
+          <Bookmark className="w-4 h-4" aria-hidden="true" />
+          My Trail
+          <span className="nums min-w-6 rounded-full bg-canvas px-1.5 text-center text-xs font-semibold leading-5">
+            {savedCount}
+          </span>
+        </button>
       </div>
+
+      {/* Mobile: tabs as a scrollable row under the bar */}
+      <nav className="md:hidden grid grid-cols-4 gap-1 px-3 pb-2 -mt-1" aria-label="Main">
+        {TABS.map((tab) => tabButton(tab, true))}
+      </nav>
     </header>
   );
 };

@@ -1,38 +1,328 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-  }
+/* ------------------------------------------------------------------
+   Singapulse design tokens
+   Sage canvas, white cards, olive-black ink, one lime accent for
+   primary actions. Elevation comes from surface contrast, not shadow.
+   ------------------------------------------------------------------ */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  body {
-    font-family: var(--font-sans);
-  }
+  --color-primary: #9fe870;
+  --color-primary-active: #cdffad;
+  --color-primary-neutral: #c5edab;
+  --color-primary-pale: #e2f6d5;
 
-  h1, h2, h3, .font-display {
-    font-family: var(--font-display);
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #e8ebe6;
+  --color-canvas-line: #d3d8d0;
+
+  --color-ink: #0e0f0c;
+  --color-ink-deep: #163300;
+  --color-body: #454745;
+  --color-mute: #6b6d6a; /* darkened from #868685 to keep 4.5:1 on sage */
+
+  --color-positive: #2ead4b;
+  --color-positive-deep: #054d28;
+  --color-warning: #ffd11a;
+  --color-warning-pale: #fff3c4;
+  --color-warning-deep: #b86700;
+  --color-warning-content: #4a3b1c;
+  --color-negative: #d03238;
+  --color-negative-pale: #fbe3e3;
+  --color-negative-deep: #a72027;
+  --color-negative-darkest: #a7000d;
+
+  --color-accent-orange: #ffc091;
+  --color-accent-cyan: #38c8ff;
+
+  --animate-rise: rise 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade: fade 260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-/* Custom subtle scrollbar */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: 'calt', 'cv11';
+    color: var(--color-ink);
+    background: var(--color-canvas);
+    caret-color: var(--color-ink);
+    accent-color: var(--color-ink-deep);
+  }
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+  a {
+    text-underline-offset: 3px;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+  }
+}
+
+@layer components {
+  /* Display type: Inter at 900, the system's brand voice */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 0.92;
+  }
+
+  /* Buttons: 24px pill-rectangles */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+  .btn:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .btn-sm {
+    min-height: 40px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-radius: 20px;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-ink-deep);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-primary-active);
+  }
+  .btn-secondary {
+    background: var(--color-canvas-soft);
+    color: var(--color-ink);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--color-canvas-line);
+  }
+  .btn-tertiary {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    box-shadow: inset 0 0 0 1px var(--color-ink);
+  }
+  .btn-tertiary:hover:not(:disabled) {
+    background: var(--color-canvas-soft);
+  }
+  .btn-dark {
+    background: var(--color-ink);
+    color: var(--color-canvas);
+  }
+  .btn-dark:hover:not(:disabled) {
+    background: #2a2c27;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-ink);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background: var(--color-canvas-soft);
+  }
+  .btn-icon {
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 9999px;
+  }
+
+  /* Form fields: 12px radius, 1px ink border */
+  .field-label {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 6px;
+  }
+  .input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--color-ink);
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    transition: box-shadow 160ms ease;
+  }
+  .input::placeholder {
+    color: var(--color-mute);
+  }
+  .input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--color-primary);
+  }
+  select.input {
+    appearance: none;
+    padding-right: 44px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%230e0f0c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+  }
+
+  /* Cards: white on sage, no border, 24px radius */
+  .card {
+    background: var(--color-canvas);
+    border-radius: 24px;
+    padding: 24px;
+  }
+  .card-soft {
+    background: var(--color-canvas-soft);
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  /* Status pills */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge-sm {
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  .badge-positive {
+    background: var(--color-primary-pale);
+    color: var(--color-positive-deep);
+  }
+  .badge-warning {
+    background: var(--color-warning-pale);
+    color: var(--color-warning-content);
+  }
+  .badge-negative {
+    background: var(--color-negative-pale);
+    color: var(--color-negative-darkest);
+  }
+  .badge-neutral {
+    background: var(--color-canvas-soft);
+    color: var(--color-ink);
+  }
+
+  /* Choice chips (interests, filters): pill toggles */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 36px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    background: var(--color-canvas);
+    box-shadow: inset 0 0 0 1px var(--color-canvas-line);
+    cursor: pointer;
+    transition:
+      background-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+  .chip:hover {
+    box-shadow: inset 0 0 0 1px var(--color-ink);
+  }
+  .chip[aria-pressed='true'] {
+    background: var(--color-ink);
+    color: var(--color-canvas);
+    box-shadow: none;
+  }
+
+  /* Numerals in times, durations, readings */
+  .nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+}
+
+/* Thin sage scrollbars */
+* {
+  scrollbar-color: #b9c0b5 transparent;
+  scrollbar-width: thin;
+}
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #b9c0b5;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #8f978b;
 }
 
-/* Interactive map (Leaflet + OneMap) pins & labels */
+/* ------------------------------------------------------------------
+   Interactive map (Leaflet + OneMap) pins & labels
+   ------------------------------------------------------------------ */
 .sg-pin {
   background: none;
   border: none;
@@ -46,30 +336,31 @@
 }
 .sg-pin-dot {
   border: 2px solid #ffffff;
-  box-shadow: 0 1px 3px rgb(15 23 42 / 0.35);
+  box-shadow: 0 1px 3px rgb(14 15 12 / 0.35);
 }
 .sg-pin-ring {
   inset: -6px;
-  opacity: 0.25;
+  opacity: 0.3;
   animation: sg-pin-ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 .sg-pin-shelter {
   position: absolute;
   top: -3px;
   right: -3px;
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 9999px;
-  background: #10b981;
-  border: 1px solid #ffffff;
+  background: var(--color-primary);
+  border: 1.5px solid var(--color-ink-deep);
 }
 .sg-start-dot {
-  background: #0f172a;
+  background: var(--color-ink);
   border: 2px solid #ffffff;
-  box-shadow: 0 0 0 4px rgb(15 23 42 / 0.2);
+  box-shadow: 0 0 0 4px rgb(14 15 12 / 0.18);
 }
 @keyframes sg-pin-ping {
-  75%, 100% {
+  75%,
+  100% {
     transform: scale(1.8);
     opacity: 0;
   }
@@ -78,34 +369,78 @@
 .leaflet-container {
   font-family: var(--font-sans);
 }
+.leaflet-bar {
+  border: none !important;
+  border-radius: 9999px !important;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgb(14 15 12 / 0.14) !important;
+}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  color: var(--color-ink);
+  background: var(--color-canvas);
+  border-bottom-color: var(--color-canvas-line) !important;
+  font-weight: 600;
+}
+.leaflet-bar a:hover {
+  background: var(--color-canvas-soft);
+}
+.leaflet-container .leaflet-control-attribution {
+  background: rgb(255 255 255 / 0.85);
+  color: var(--color-body);
+  border-top-left-radius: 8px;
+  padding: 2px 8px;
+}
+.leaflet-container .leaflet-control-attribution a {
+  color: var(--color-ink);
+}
 .leaflet-tooltip.sg-pin-label,
 .leaflet-tooltip.sg-start-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  color: #0f172a;
-  padding: 2px 6px;
-  border-radius: 6px;
-  border-color: #e2e8f0;
+  color: var(--color-ink);
+  padding: 3px 8px;
+  border-radius: 8px;
+  border-color: var(--color-canvas-line);
+  box-shadow: 0 2px 8px rgb(14 15 12 / 0.12);
 }
 .leaflet-tooltip.sg-radar-label {
-  background: transparent;
+  background: var(--color-canvas);
   border: none;
-  box-shadow: none;
-  font-size: 11px;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  box-shadow: 0 2px 8px rgb(14 15 12 / 0.14);
+  font-size: 12px;
   font-weight: 600;
 }
 .leaflet-tooltip.sg-radar-label::before {
   display: none;
 }
+/* Narrow maps can't fit the radar captions; the "Rain radar (simulated)" toggle still labels the layer */
+@media (max-width: 639px) {
+  .leaflet-tooltip.sg-radar-label {
+    display: none;
+  }
+}
 .sg-radar-label--rain {
-  color: #1e40af;
+  color: #0b4f6c;
 }
 .sg-radar-label--fair {
-  color: #047857;
+  color: var(--color-positive-deep);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .sg-pin-ring {
     animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
   }
 }

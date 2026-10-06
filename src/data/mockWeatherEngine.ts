@@ -160,15 +160,15 @@ export function predictSingaporeWeather(
 }
 
 export function getFourDayForecast(startDateStr: string): DayForecast[] {
-  const baseDate = new Date(startDateStr || '2026-10-06');
+  // Parse as Singapore noon so the date never shifts in other time zones
+  const baseDate = new Date(`${startDateStr || '2026-10-06'}T12:00:00+08:00`);
   const days: DayForecast[] = [];
-  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-  for (let i = 0; i < 4; i++) {
-    const d = new Date(baseDate);
-    d.setDate(baseDate.getDate() + i);
-    const dayName = i === 0 ? 'Today' : i === 1 ? 'Tomorrow' : dayNames[d.getDay()];
-    const dateFormatted = d.toLocaleDateString('en-SG', { month: 'short', day: 'numeric' });
+  // The four days after the selected date, labelled by weekday (like NEA's outlook)
+  for (let i = 1; i <= 4; i++) {
+    const d = new Date(baseDate.getTime() + i * 24 * 60 * 60 * 1000);
+    const dayName = d.toLocaleDateString('en-SG', { weekday: 'long', timeZone: 'Asia/Singapore' });
+    const dateFormatted = d.toLocaleDateString('en-SG', { month: 'short', day: 'numeric', timeZone: 'Asia/Singapore' });
 
     // Alternating Singapore conditions
     const scenarios = [
@@ -177,7 +177,7 @@ export function getFourDayForecast(startDateStr: string): DayForecast[] {
       { cond: 'Thundery Showers', rain: 75, min: 24, max: 30, icon: 'cloud-lightning' },
       { cond: 'Partly Cloudy', rain: 30, min: 25, max: 32, icon: 'cloud-sun' }
     ];
-    const s = scenarios[i % scenarios.length];
+    const s = scenarios[(i - 1) % scenarios.length];
 
     days.push({
       dayName,

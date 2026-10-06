@@ -13,7 +13,6 @@ import { LandmarkDetailModal } from './components/LandmarkDetailModal';
 import { RouteModal } from './components/RouteModal';
 import { ItineraryDrawer } from './components/ItineraryDrawer';
 import { Footer } from './components/Footer';
-import { Compass, Sparkles, CloudSun, MapPin, Search } from 'lucide-react';
 
 const SAVED_TRAIL_KEY = 'singapulse_saved_trail_v1';
 // First-time visitors start with two sample gems; after that the stored list wins (even if empty)
@@ -36,7 +35,7 @@ function loadSavedTrail(): string[] {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<AppTab>('explore');
+  const [activeTab, setActiveTab] = useState<AppTab>('planner');
   
   // Tourist visit parameters
   const [selectedLocation, setSelectedLocation] = useState<string>(
@@ -81,7 +80,6 @@ export default function App() {
   const weatherSectionRef = useRef<HTMLDivElement>(null);
   const exploreSectionRef = useRef<HTMLDivElement>(null);
   const mapSectionRef = useRef<HTMLDivElement>(null);
-  const plannerSectionRef = useRef<HTMLDivElement>(null);
 
   // Fallback deterministic weather condition
   const fallbackWeather = useMemo(() => {
@@ -103,8 +101,17 @@ export default function App() {
   // One-line weather context for the AI planner
   const plannerWeatherSummary = useMemo(() => {
     const w = activeWeather;
-    return `${selectedDate}: ${w.label}, ${w.temperatureC}°C, ${w.rainProbability}% rain chance. Outlook: ${w.twentyFourHourOutlook}`;
-  }, [activeWeather, selectedDate]);
+    const dayLabel =
+      selectedDate === sgTimeInfo.sgDate
+        ? 'Today'
+        : new Date(`${selectedDate}T12:00:00+08:00`).toLocaleDateString('en-SG', {
+            weekday: 'short',
+            day: 'numeric',
+            month: 'short',
+            timeZone: 'Asia/Singapore',
+          });
+    return `${dayLabel}: ${w.label.toLowerCase()}, ${Math.round(w.temperatureC)}°C, ${w.rainProbability}% chance of rain. ${w.twentyFourHourOutlook}`;
+  }, [activeWeather, selectedDate, sgTimeInfo.sgDate]);
 
   const activeFourDay: DayForecast[] = useMemo(() => {
     if (liveWeatherData?.fourDayOutlook && liveWeatherData.fourDayOutlook.length > 0) {
@@ -233,13 +240,6 @@ export default function App() {
     }
   };
 
-  const handleOpenQuickPlanner = () => {
-    setActiveTab('planner');
-    setTimeout(() => {
-      plannerSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  };
-
   const handleSaveManyToTrail = (ids: string[]) => {
     setSavedIds((prev) => [...prev, ...ids.filter((id) => !prev.includes(id))]);
   };
@@ -253,176 +253,17 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBFBFA] text-slate-800 flex flex-col font-sans">
-      
-      {/* 1. Header (Strict Top Bar Contract) */}
+    <div className="min-h-screen bg-canvas text-ink flex flex-col">
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         savedCount={savedIds.length}
         onOpenItinerary={() => setIsItineraryOpen(true)}
-        onOpenQuickPlanner={handleOpenQuickPlanner}
       />
 
-      {/* 2. Hero Banner (Always visible at top with Destination / Time input & Live OneMap Search) */}
-      <HeroBanner
-        landmarks={SINGAPORE_LANDMARKS}
-        selectedLocation={selectedLocation}
-        onLocationChange={handleLocationChange}
-        selectedDate={selectedDate}
-        onDateChange={setSelectedDate}
-        selectedTime={selectedTime}
-        onTimeChange={setSelectedTime}
-        onSearchSubmit={handleSearchSubmit}
-        onQuickSelectLandmark={handleQuickSelectLandmark}
-        isLiveWeatherActive={isLiveActive}
-      />
-
-      {/* Main Content Area */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full flex-1 space-y-12">
-        
-        {/* Navigation Switcher Pills (Secondary Section Switcher) */}
-        <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-          <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-xl">
-            <button
-              onClick={() => setActiveTab('explore')}
-              className={`cursor-pointer px-4 py-2 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap flex items-center gap-1.5 ${
-                activeTab === 'explore'
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <Compass className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Explore Hidden Gems</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('weather')}
-              className={`cursor-pointer px-4 py-2 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap flex items-center gap-1.5 ${
-                activeTab === 'weather'
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <CloudSun className="w-3.5 h-3.5 text-amber-500" />
-              <span>Weather Predictor</span>
-              {isLiveActive && (
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
-              )}
-            </button>
-
-            <button
-              onClick={() => setActiveTab('map')}
-              className={`cursor-pointer px-4 py-2 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap flex items-center gap-1.5 ${
-                activeTab === 'map'
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <MapPin className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Map & Radar</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('planner')}
-              className={`cursor-pointer px-4 py-2 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap flex items-center gap-1.5 ${
-                activeTab === 'planner'
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>AI Planner</span>
-            </button>
-          </div>
-
-          {/* Quick status text */}
-          <div className="hidden sm:flex items-center gap-2 text-xs text-slate-500">
-            <span>Destination: <strong className="text-slate-800">{selectedLocation}</strong></span>
-            <span>·</span>
-            <span className="font-mono text-emerald-700">{selectedTime} hrs</span>
-          </div>
-        </div>
-
-        {/* View 1: Weather Predictor Tab */}
-        {activeTab === 'weather' && (
-          <div ref={weatherSectionRef} className="space-y-8 animate-fadeIn">
-            <WeatherPredictorCard
-              locationName={selectedLocation}
-              selectedDate={selectedDate}
-              selectedTime={selectedTime}
-              weather={activeWeather}
-              fourDayOutlook={activeFourDay}
-              onTimeChange={setSelectedTime}
-              onSelectShelteredGem={handleSelectShelteredGem}
-              shelteredLandmark={shelteredAlternative}
-              isLive={activeWeather.dataMode === 'live'}
-              lastUpdated={liveWeatherData?.lastUpdated}
-              sourceStation={liveWeatherData?.sourceStation}
-              onRefreshLive={() => {
-                const coords = mapSelectedLandmark
-                  ? { lat: mapSelectedLandmark.latitude, lng: mapSelectedLandmark.longitude }
-                  : undefined;
-                loadLiveWeather(selectedLocation, selectedDate, selectedTime, coords);
-              }}
-              isLoadingLive={isLoadingLive}
-            />
-
-            {/* Quick Context Landmark Preview */}
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                    Active Destination Match
-                  </div>
-                  <h3 className="text-lg font-bold font-display text-slate-900 mt-0.5">
-                    {selectedLocation}
-                  </h3>
-                  <p className="text-xs text-slate-600 mt-1 max-w-xl">
-                    Ready to visit this spot? Check step-by-step sheltered routes, MRT transit connections, or add it to your travel trail.
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-2 shrink-0">
-                  <button
-                    onClick={() => mapSelectedLandmark && setDetailModalLandmark(mapSelectedLandmark)}
-                    disabled={!mapSelectedLandmark}
-                    className="cursor-pointer px-4 py-2 bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg transition"
-                  >
-                    View History & Lore
-                  </button>
-                  <button
-                    onClick={() => mapSelectedLandmark && handleGetDirections(mapSelectedLandmark)}
-                    disabled={!mapSelectedLandmark}
-                    className="cursor-pointer px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg transition"
-                  >
-                    Get Route Directions
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* View 2: Interactive Map & Radar Tab */}
-        {activeTab === 'map' && (
-          <div ref={mapSectionRef} className="space-y-8 animate-fadeIn">
-            <InteractiveMap
-              landmarks={SINGAPORE_LANDMARKS}
-              selectedLandmark={mapSelectedLandmark}
-              onSelectLandmark={(lm) => {
-                setMapSelectedLandmark(lm);
-                setSelectedLocation(lm.name);
-              }}
-              onGetDirections={handleGetDirections}
-              onCheckWeather={handleCheckWeatherForLandmark}
-              userStartPointName={userStartPoint}
-            />
-          </div>
-        )}
-
-        {/* View 4: AI Planner (kept mounted so the plan & chat survive tab switches) */}
-        <div ref={plannerSectionRef} className={activeTab === 'planner' ? 'block animate-fadeIn' : 'hidden'}>
+      <main className="flex-1">
+        {/* Plan (default). Kept mounted so the plan & chat survive tab switches */}
+        <div className={activeTab === 'planner' ? 'block' : 'hidden'}>
           <AiPlanner
             landmarks={SINGAPORE_LANDMARKS}
             savedLandmarks={savedLandmarks}
@@ -438,19 +279,99 @@ export default function App() {
           />
         </div>
 
-        {/* View 3: Landmark Explorer Grid (Default) */}
-        <div ref={exploreSectionRef} className={activeTab === 'explore' ? 'block' : 'hidden'}>
-          <LandmarkExplorer
-            landmarks={SINGAPORE_LANDMARKS}
-            savedIds={savedIds}
-            onToggleSave={handleToggleSave}
-            onSelectForDetails={(lm) => setDetailModalLandmark(lm)}
-            onCheckWeather={handleCheckWeatherForLandmark}
-            onGetDirections={handleGetDirections}
-            rainForecastActive={activeWeather.rainProbability >= 45}
-          />
-        </div>
+        {/* Discover. Kept mounted so filters survive tab switches */}
+        <section
+          ref={exploreSectionRef}
+          className={activeTab === 'explore' ? 'block bg-canvas-soft scroll-mt-20' : 'hidden'}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+            <LandmarkExplorer
+              landmarks={SINGAPORE_LANDMARKS}
+              savedIds={savedIds}
+              onToggleSave={handleToggleSave}
+              onSelectForDetails={(lm) => setDetailModalLandmark(lm)}
+              onCheckWeather={handleCheckWeatherForLandmark}
+              onGetDirections={handleGetDirections}
+              rainForecastActive={activeWeather.rainProbability >= 45}
+            />
+          </div>
+        </section>
 
+        {activeTab === 'weather' && (
+          <section ref={weatherSectionRef} className="bg-canvas-soft scroll-mt-20 animate-fade">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-8">
+              <HeroBanner
+                landmarks={SINGAPORE_LANDMARKS}
+                selectedLocation={selectedLocation}
+                onLocationChange={handleLocationChange}
+                selectedDate={selectedDate}
+                onDateChange={setSelectedDate}
+                selectedTime={selectedTime}
+                onTimeChange={setSelectedTime}
+                onSearchSubmit={handleSearchSubmit}
+                onQuickSelectLandmark={handleQuickSelectLandmark}
+                isLiveWeatherActive={isLiveActive}
+              />
+
+              <WeatherPredictorCard
+                locationName={mapSelectedLandmark?.name ?? selectedLocation}
+                selectedDate={selectedDate}
+                selectedTime={selectedTime}
+                weather={activeWeather}
+                fourDayOutlook={activeFourDay}
+                outlookIsEstimate={!liveWeatherData?.fourDayOutlook?.length}
+                onTimeChange={setSelectedTime}
+                onSelectShelteredGem={handleSelectShelteredGem}
+                shelteredLandmark={shelteredAlternative}
+                isLive={activeWeather.dataMode === 'live'}
+                lastUpdated={liveWeatherData?.lastUpdated}
+                sourceStation={liveWeatherData?.sourceStation}
+                onRefreshLive={() => {
+                  const coords = mapSelectedLandmark
+                    ? { lat: mapSelectedLandmark.latitude, lng: mapSelectedLandmark.longitude }
+                    : undefined;
+                  loadLiveWeather(selectedLocation, selectedDate, selectedTime, coords);
+                }}
+                isLoadingLive={isLoadingLive}
+              />
+
+              {mapSelectedLandmark && (
+                <div className="card flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+                  <div className="min-w-0">
+                    <h2 className="text-xl font-semibold text-ink">{mapSelectedLandmark.name}</h2>
+                    <p className="mt-1 text-body">Read about this place, or see how to get there from your start point.</p>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2 shrink-0">
+                    <button type="button" onClick={() => setDetailModalLandmark(mapSelectedLandmark)} className="btn btn-tertiary">
+                      Place details
+                    </button>
+                    <button type="button" onClick={() => handleGetDirections(mapSelectedLandmark)} className="btn btn-dark">
+                      Getting there
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {activeTab === 'map' && (
+          <section ref={mapSectionRef} className="bg-canvas-soft scroll-mt-20 animate-fade">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+              <InteractiveMap
+                landmarks={SINGAPORE_LANDMARKS}
+                selectedLandmark={mapSelectedLandmark}
+                onSelectLandmark={(lm) => {
+                  setMapSelectedLandmark(lm);
+                  setSelectedLocation(lm.name);
+                }}
+                onGetDirections={handleGetDirections}
+                onCheckWeather={handleCheckWeatherForLandmark}
+                userStartPointName={userStartPoint}
+              />
+            </div>
+          </section>
+        )}
       </main>
 
       {/* 3. Landmark Detail Modal */}

@@ -4,19 +4,18 @@ import { ItineraryPlan, PlannerChatMessage, PlannerPace, PlanStop } from '../typ
 import { POPULAR_START_POINTS } from '../data/landmarks';
 import { requestPlan } from '../services/plannerService';
 import {
-  Sparkles,
+  ArrowRight,
   Loader2,
-  Send,
+  ArrowUp,
   Utensils,
   Coffee,
   MapPin,
-  Info,
   Umbrella,
-  Clock,
   BookmarkPlus,
   Check,
   AlertTriangle,
   CloudSun,
+  Info,
 } from 'lucide-react';
 
 interface AiPlannerProps {
@@ -44,19 +43,25 @@ const INTEREST_OPTIONS = [
   'Family-friendly',
 ];
 
-const PACE_OPTIONS: { value: PlannerPace; label: string }[] = [
-  { value: 'relaxed', label: 'Relaxed' },
-  { value: 'balanced', label: 'Balanced' },
-  { value: 'packed', label: 'Packed' },
+const PACE_OPTIONS: { value: PlannerPace; label: string; hint: string }[] = [
+  { value: 'relaxed', label: 'Relaxed', hint: '3–4 places' },
+  { value: 'balanced', label: 'Balanced', hint: '4–6 places' },
+  { value: 'packed', label: 'Packed', hint: '6–8 places' },
 ];
 
-const CHAT_SUGGESTIONS = ['Make it more relaxed', 'Swap in more indoor spots', 'Add a hawker lunch nearby'];
+const CHAT_SUGGESTIONS = ['Make it more relaxed', 'More indoor spots', 'Add a hawker lunch'];
 
 const formatDuration = (minutes: number) => {
   if (minutes < 60) return `${minutes} min`;
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;
-  return m ? `${h}h ${m}m` : `${h}h`;
+  return m ? `${h} h ${m} min` : `${h} h`;
+};
+
+const addMinutes = (time: string, minutes: number) => {
+  const [h, m] = time.split(':').map(Number);
+  const total = h * 60 + m + minutes;
+  return `${String(Math.floor(total / 60) % 24).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`;
 };
 
 export const AiPlanner: React.FC<AiPlannerProps> = ({
@@ -84,12 +89,17 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
   const [chatInput, setChatInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Bumped on every new plan so the timeline replays its entrance
+  const [planVersion, setPlanVersion] = useState(0);
 
-  const chatEndRef = useRef<HTMLDivElement>(null);
+  const chatLogRef = useRef<HTMLDivElement>(null);
+  const resultsRef = useRef<HTMLElement>(null);
   const landmarkById = useMemo(() => new Map(landmarks.map((lm) => [lm.id, lm])), [landmarks]);
 
+  // Keep the newest chat message in view without scrolling the whole page
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const log = chatLogRef.current;
+    if (log) log.scrollTop = log.scrollHeight;
   }, [messages, isLoading]);
 
   const timeWindowInvalid = startTime >= endTime;
@@ -111,6 +121,7 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
     try {
       const res = await requestPlan({ preferences, messages: nextMessages, currentPlan });
       setPlan(res.plan);
+      setPlanVersion((v) => v + 1);
       setWarnings(res.warnings ?? []);
       setMessages([...nextMessages, { role: 'assistant', content: res.reply }]);
       return true;
@@ -122,11 +133,12 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
     }
   };
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
     if (isLoading || timeWindowInvalid) return;
     // A fresh plan starts a fresh conversation; runPlanner replaces `messages` only on success,
     // so a failed attempt keeps the existing plan and chat intact
-    runPlanner([{ role: 'user', content: 'Plan my day based on my trip preferences.' }], null);
+    const ok = await runPlanner([{ role: 'user', content: 'Plan my day based on my trip preferences.' }], null);
+    if (ok) requestAnimationFrame(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
   };
 
   const handleSendChat = async (text: string) => {
@@ -152,374 +164,373 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
 
   // The first user message is the automatic "plan my day" trigger, so it isn't shown
   const visibleMessages = messages.slice(1);
+  const generating = isLoading && !plan;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-6 items-start">
-
-      {/* Trip preferences form */}
-      <div className="bg-white border border-slate-200 rounded-2xl shadow-sm p-5 space-y-5 lg:sticky lg:top-24">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-800">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>AI Itinerary Planner</span>
-          </div>
-          <h2 className="text-xl font-bold font-display text-slate-900 mt-0.5">Plan your day</h2>
-          <p className="text-xs text-slate-500 mt-1">
-            Tell the AI how you like to travel. It plans around Singapulse's landmarks and the weather.
-          </p>
-        </div>
-
-        {/* Date & time window */}
-        <div className="space-y-2">
-          <label className="block text-xs font-medium text-slate-700 space-y-1">
-            <span>Date</span>
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={(e) => e.target.value && onDateChange(e.target.value)}
-              className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
-            />
-          </label>
-          <div className="grid grid-cols-2 gap-2">
-            <label className="block text-xs font-medium text-slate-700 space-y-1">
-              <span>From</span>
-              <input
-                type="time"
-                value={startTime}
-                onChange={(e) => setStartTime(e.target.value)}
-                className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
-              />
-            </label>
-            <label className="block text-xs font-medium text-slate-700 space-y-1">
-              <span>To</span>
-              <input
-                type="time"
-                value={endTime}
-                onChange={(e) => setEndTime(e.target.value)}
-                className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
-              />
-            </label>
-          </div>
-        </div>
-        {timeWindowInvalid && <p className="text-xs text-rose-600 -mt-3">End time must be after start time.</p>}
-
-        {/* Start point */}
-        <label className="block text-xs font-medium text-slate-700 space-y-1">
-          <span>Starting from</span>
-          <select
-            value={startPoint}
-            onChange={(e) => onStartPointChange(e.target.value)}
-            className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
-          >
-            {POPULAR_START_POINTS.map((sp) => (
-              <option key={sp.name} value={sp.name}>
-                {sp.name}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        {/* Interests */}
-        <fieldset className="space-y-2">
-          <legend className="text-xs font-medium text-slate-700">Interests</legend>
-          <div className="flex flex-wrap gap-1.5">
-            {INTEREST_OPTIONS.map((interest) => {
-              const active = interests.includes(interest);
-              return (
-                <button
-                  key={interest}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => toggleInterest(interest)}
-                  className={`cursor-pointer px-2.5 py-1 text-xs font-medium rounded-lg border transition-colors ${
-                    active
-                      ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                      : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
-                  }`}
-                >
-                  {interest}
-                </button>
-              );
-            })}
-          </div>
-        </fieldset>
-
-        {/* Pace */}
-        <fieldset className="space-y-2">
-          <legend className="text-xs font-medium text-slate-700">Pace</legend>
-          <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
-            {PACE_OPTIONS.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                aria-pressed={pace === option.value}
-                onClick={() => setPace(option.value)}
-                className={`cursor-pointer py-1.5 text-xs font-semibold rounded-lg transition-colors ${
-                  pace === option.value ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-        </fieldset>
-
-        {/* Include My Trail */}
-        {savedLandmarks.length > 0 && (
-          <label className="flex items-start gap-2.5 text-xs text-slate-700 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={includeTrail}
-              onChange={(e) => setIncludeTrail(e.target.checked)}
-              className="mt-0.5 accent-emerald-600"
-            />
-            <span>
-              <span className="font-medium">Include my saved places ({savedLandmarks.length})</span>
-              <span className="block text-slate-500 mt-0.5 line-clamp-2">
-                {savedLandmarks.map((lm) => lm.name).join(', ')}
-              </span>
-            </span>
-          </label>
-        )}
-
-        {/* Weather context */}
-        {weatherSummary && (
-          <div className="flex items-start gap-2 text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg p-2.5">
-            <CloudSun className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>{weatherSummary}</span>
-          </div>
-        )}
-
-        <button
-          type="button"
-          onClick={handleGenerate}
-          disabled={isLoading || timeWindowInvalid}
-          className="cursor-pointer w-full py-2.5 px-4 bg-slate-900 hover:bg-slate-800 disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition"
-        >
-          {isLoading && !plan ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4 text-emerald-400" />}
-          <span>{plan ? 'Start a new plan' : 'Generate my plan'}</span>
-        </button>
-      </div>
-
-      {/* Plan + chat */}
-      <div className="space-y-4 min-w-0">
-        {error && (
-          <div role="alert" className="flex items-start gap-2 text-sm text-rose-800 bg-rose-50 border border-rose-200 rounded-xl p-3">
-            <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
-            <span>{error}</span>
-          </div>
-        )}
-
-        {!plan && !isLoading && (
-          <div className="bg-white border border-dashed border-slate-300 rounded-2xl p-10 text-center">
-            <Sparkles className="w-8 h-8 text-emerald-500 mx-auto" />
-            <h3 className="text-lg font-bold font-display text-slate-900 mt-3">Your AI-planned day appears here</h3>
-            <p className="text-sm text-slate-500 mt-1 max-w-md mx-auto">
-              Set your preferences and generate a plan. Then chat with the AI to tweak it, for example
-              "swap the museum for something outdoors".
+    <>
+      {/* Hero band: the planner card is the hero */}
+      <section className="bg-canvas-soft">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-20 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,500px)] gap-10 lg:gap-16 items-start">
+          <div className="lg:pt-10">
+            <h1 className="display text-[clamp(3rem,7.5vw,5.75rem)] text-ink">Plan a good day in Singapore.</h1>
+            <p className="mt-6 text-lg sm:text-xl text-body max-w-md leading-relaxed">
+              Tell Singapulse your time, pace and interests. It builds a timed day from real places, with sheltered stops
+              when rain or heat is likely.
             </p>
+            {weatherSummary && (
+              <p className="mt-8 flex items-start gap-3 text-base text-body max-w-md">
+                <CloudSun className="w-5 h-5 mt-0.5 shrink-0 text-ink" aria-hidden="true" />
+                <span>{weatherSummary}</span>
+              </p>
+            )}
           </div>
-        )}
 
-        {!plan && isLoading && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4" aria-busy="true">
-            <div className="flex items-center gap-2 text-sm text-slate-600">
-              <Loader2 className="w-4 h-4 animate-spin text-emerald-600" />
-              <span>Planning your day…</span>
-            </div>
-            {[0, 1, 2, 3].map((i) => (
-              <div key={i} className="flex gap-4 animate-pulse">
-                <div className="w-12 h-4 bg-slate-100 rounded" />
-                <div className="flex-1 h-16 bg-slate-100 rounded-xl" />
+          <form
+            className="bg-canvas rounded-3xl p-6 sm:p-8 ring-1 ring-ink"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleGenerate();
+            }}
+            aria-labelledby="planner-form-title"
+          >
+            <h2 id="planner-form-title" className="text-2xl font-semibold text-ink">
+              Your day
+            </h2>
+
+            <div className="mt-6 space-y-5">
+              <label className="block">
+                <span className="field-label">Date</span>
+                <input
+                  type="date"
+                  value={selectedDate}
+                  onChange={(e) => e.target.value && onDateChange(e.target.value)}
+                  className="input nums"
+                />
+              </label>
+
+              <div className="grid grid-cols-2 gap-3">
+                <label className="block">
+                  <span className="field-label">From</span>
+                  <input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} className="input nums" />
+                </label>
+                <label className="block">
+                  <span className="field-label">To</span>
+                  <input
+                    type="time"
+                    value={endTime}
+                    onChange={(e) => setEndTime(e.target.value)}
+                    className="input nums"
+                    aria-invalid={timeWindowInvalid}
+                  />
+                </label>
               </div>
-            ))}
-          </div>
-        )}
+              {timeWindowInvalid && (
+                <p className="-mt-2 text-sm font-semibold text-negative-darkest">End time must be after start time.</p>
+              )}
 
-        {plan && (
-          <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-            {/* Plan header */}
-            <div className="p-5 border-b border-slate-200 bg-slate-50/50 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-              <div className="min-w-0">
-                <h3 className="text-lg font-bold font-display text-slate-900">{plan.title}</h3>
-                {plan.summary && <p className="text-sm text-slate-600 mt-0.5">{plan.summary}</p>}
-              </div>
-              <button
-                type="button"
-                onClick={() => onSaveToTrail(unsavedPlanIds)}
-                disabled={unsavedPlanIds.length === 0}
-                className="cursor-pointer shrink-0 py-1.5 px-3 bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-50 disabled:text-emerald-800 disabled:border disabled:border-emerald-200 disabled:cursor-default text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition"
-              >
-                {unsavedPlanIds.length === 0 ? <Check className="w-3.5 h-3.5" /> : <BookmarkPlus className="w-3.5 h-3.5" />}
-                <span>
-                  {unsavedPlanIds.length === 0
-                    ? 'All stops in My Trail'
-                    : `Save ${unsavedPlanIds.length} stop${unsavedPlanIds.length > 1 ? 's' : ''} to My Trail`}
-                </span>
-              </button>
-            </div>
-
-            {warnings.length > 0 && (
-              <div className="mx-5 mt-4 flex items-start gap-2 text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-2.5">
-                <Info className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-                <ul className="space-y-0.5">
-                  {warnings.map((warning) => (
-                    <li key={warning}>{warning}</li>
+              <label className="block">
+                <span className="field-label">Starting from</span>
+                <select value={startPoint} onChange={(e) => onStartPointChange(e.target.value)} className="input">
+                  {POPULAR_START_POINTS.map((sp) => (
+                    <option key={sp.name} value={sp.name}>
+                      {sp.name}
+                    </option>
                   ))}
-                </ul>
+                </select>
+              </label>
+
+              <fieldset>
+                <legend className="field-label">Interests</legend>
+                <div className="flex flex-wrap gap-2">
+                  {INTEREST_OPTIONS.map((interest) => (
+                    <button
+                      key={interest}
+                      type="button"
+                      aria-pressed={interests.includes(interest)}
+                      onClick={() => toggleInterest(interest)}
+                      className="chip"
+                    >
+                      {interest}
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend className="field-label">Pace</legend>
+                <div className="grid grid-cols-3 gap-1 p-1 bg-canvas-soft rounded-2xl">
+                  {PACE_OPTIONS.map((option) => {
+                    const active = pace === option.value;
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        aria-pressed={active}
+                        onClick={() => setPace(option.value)}
+                        className={`cursor-pointer rounded-xl px-2 py-2 text-center transition-colors ${
+                          active ? 'bg-canvas text-ink shadow-[0_1px_2px_rgb(14_15_12/0.12)]' : 'text-body hover:text-ink'
+                        }`}
+                      >
+                        <span className="block text-sm font-semibold">{option.label}</span>
+                        <span className="block text-xs text-mute">{option.hint}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </fieldset>
+
+              {savedLandmarks.length > 0 && (
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={includeTrail}
+                    onChange={(e) => setIncludeTrail(e.target.checked)}
+                    className="mt-1 w-4 h-4 shrink-0"
+                  />
+                  <span className="text-sm text-body">
+                    <span className="font-semibold text-ink">Include my saved places ({savedLandmarks.length})</span>
+                    <span className="block mt-0.5 line-clamp-2">{savedLandmarks.map((lm) => lm.name).join(', ')}</span>
+                  </span>
+                </label>
+              )}
+            </div>
+
+            {error && !plan && (
+              <p role="alert" className="mt-5 flex items-start gap-2 rounded-2xl bg-negative-pale px-4 py-3 text-sm text-negative-darkest">
+                <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
+                <span>{error}</span>
+              </p>
+            )}
+
+            <button type="submit" disabled={isLoading || timeWindowInvalid} className="btn btn-primary w-full mt-6">
+              {generating ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
+                  Planning your day…
+                </>
+              ) : (
+                <>
+                  {plan ? 'Plan a new day' : 'Plan my day'}
+                  <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                </>
+              )}
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Results band: the timeline, with chat beside it */}
+      {(plan || generating) && (
+        <section ref={resultsRef} className="bg-canvas scroll-mt-20" aria-busy={isLoading}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid lg:grid-cols-[minmax(0,1fr)_380px] gap-10 lg:gap-14 items-start">
+            {!plan ? (
+              <div className="space-y-4" aria-live="polite">
+                <p className="flex items-center gap-2 text-lg font-semibold text-ink">
+                  <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
+                  Planning your day…
+                </p>
+                {[0, 1, 2, 3].map((i) => (
+                  <div key={i} className="flex gap-5 animate-pulse">
+                    <div className="w-14 h-5 rounded bg-canvas-soft" />
+                    <div className="flex-1 h-24 rounded-3xl bg-canvas-soft" />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5">
+                  <div className="min-w-0">
+                    <h2 className="display text-4xl sm:text-5xl text-ink">{plan.title}</h2>
+                    {plan.summary && <p className="mt-3 text-lg text-body max-w-xl">{plan.summary}</p>}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => onSaveToTrail(unsavedPlanIds)}
+                    disabled={unsavedPlanIds.length === 0}
+                    className={`btn shrink-0 ${unsavedPlanIds.length === 0 ? 'btn-secondary disabled:opacity-100' : 'btn-primary'}`}
+                  >
+                    {unsavedPlanIds.length === 0 ? (
+                      <>
+                        <Check className="w-5 h-5" aria-hidden="true" />
+                        All stops saved
+                      </>
+                    ) : (
+                      <>
+                        <BookmarkPlus className="w-5 h-5" aria-hidden="true" />
+                        Save {unsavedPlanIds.length} stop{unsavedPlanIds.length > 1 ? 's' : ''} to My Trail
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {warnings.length > 0 && (
+                  <div className="mt-6 flex items-start gap-3 rounded-2xl bg-warning-pale px-5 py-4 text-sm text-warning-content">
+                    <Info className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
+                    <ul className="space-y-1">
+                      {warnings.map((warning) => (
+                        <li key={warning}>{warning}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <ol key={planVersion} className={`mt-10 transition-opacity ${isLoading ? 'opacity-40' : ''}`}>
+                  {plan.stops.map((stop, index) => (
+                    <TimelineStop
+                      key={`${stop.time}-${stop.title}`}
+                      index={index}
+                      stop={stop}
+                      landmark={stop.landmarkId ? landmarkById.get(stop.landmarkId) : undefined}
+                      isLast={index === plan.stops.length - 1}
+                      onSelectForDetails={onSelectForDetails}
+                      onShowOnMap={onShowOnMap}
+                    />
+                  ))}
+                </ol>
               </div>
             )}
 
-            {/* Timeline */}
-            <ol className={`p-5 space-y-0 transition-opacity ${isLoading ? 'opacity-50' : ''}`}>
-              {plan.stops.map((stop, index) => (
-                <TimelineStop
-                  key={`${stop.time}-${stop.title}`}
-                  stop={stop}
-                  landmark={stop.landmarkId ? landmarkById.get(stop.landmarkId) : undefined}
-                  isLast={index === plan.stops.length - 1}
-                  onSelectForDetails={onSelectForDetails}
-                  onShowOnMap={onShowOnMap}
-                />
-              ))}
-            </ol>
-          </div>
-        )}
+            {/* Refine chat */}
+            {plan && (
+              <aside className="card-soft lg:sticky lg:top-24" aria-labelledby="refine-title">
+                <h2 id="refine-title" className="text-xl font-semibold text-ink">
+                  Change your plan
+                </h2>
+                <p className="mt-1 text-sm text-body">Ask for anything, like a later start or fewer museums.</p>
 
-        {/* Refine chat */}
-        {plan && (
-          <div className="bg-white border border-slate-200 rounded-2xl shadow-sm p-4 space-y-3">
-            <div className="text-xs font-semibold uppercase tracking-wider text-emerald-800">Refine with AI</div>
-
-            <div className="space-y-2 max-h-72 overflow-y-auto" aria-live="polite">
-              {visibleMessages.map((msg, i) => (
-                <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div
-                    className={`max-w-[85%] px-3 py-2 rounded-xl text-sm ${
-                      msg.role === 'user' ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-800'
-                    }`}
-                  >
-                    {msg.content}
-                  </div>
+                <div ref={chatLogRef} className="mt-5 space-y-3 max-h-80 overflow-y-auto pr-1" aria-live="polite">
+                  {visibleMessages.map((msg, i) => (
+                    <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                      <p
+                        className={`max-w-[88%] px-4 py-2.5 text-[15px] leading-snug ${
+                          msg.role === 'user'
+                            ? 'bg-ink text-canvas rounded-3xl rounded-br-lg'
+                            : 'bg-canvas text-ink rounded-3xl rounded-bl-lg'
+                        }`}
+                      >
+                        {msg.content}
+                      </p>
+                    </div>
+                  ))}
+                  {isLoading && (
+                    <p className="flex items-center gap-2 text-sm text-body">
+                      <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+                      Updating your plan…
+                    </p>
+                  )}
                 </div>
-              ))}
-              {isLoading && (
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  <span>Updating your plan…</span>
-                </div>
-              )}
-              <div ref={chatEndRef} />
-            </div>
 
-            <div className="flex flex-wrap gap-1.5">
-              {CHAT_SUGGESTIONS.map((suggestion) => (
-                <button
-                  key={suggestion}
-                  type="button"
-                  disabled={isLoading}
-                  onClick={() => handleSendChat(suggestion)}
-                  className="cursor-pointer px-2.5 py-1 text-xs text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 disabled:opacity-50"
+                {error && plan && (
+                  <p role="alert" className="mt-4 flex items-start gap-2 rounded-2xl bg-negative-pale px-4 py-3 text-sm text-negative-darkest">
+                    <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>{error}</span>
+                  </p>
+                )}
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {CHAT_SUGGESTIONS.map((suggestion) => (
+                    <button
+                      key={suggestion}
+                      type="button"
+                      disabled={isLoading}
+                      onClick={() => handleSendChat(suggestion)}
+                      className="chip disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSendChat(chatInput);
+                  }}
+                  className="mt-4 flex items-center gap-2"
                 >
-                  {suggestion}
-                </button>
-              ))}
-            </div>
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSendChat(chatInput);
-              }}
-              className="flex items-center gap-2"
-            >
-              <input
-                type="text"
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
-                maxLength={1000}
-                placeholder="e.g. Swap the museum for something outdoors"
-                aria-label="Ask the AI to change your plan"
-                className="flex-1 min-w-0 px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
-              />
-              <button
-                type="submit"
-                disabled={isLoading || !chatInput.trim()}
-                aria-label="Send"
-                className="cursor-pointer p-2.5 bg-slate-900 hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg transition"
-              >
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
+                  <input
+                    type="text"
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    maxLength={1000}
+                    placeholder="e.g. Swap the museum for a park"
+                    aria-label="Ask to change your plan"
+                    className="input flex-1 min-w-0 border-transparent"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isLoading || !chatInput.trim()}
+                    aria-label="Send"
+                    className="btn btn-icon btn-dark shrink-0"
+                  >
+                    <ArrowUp className="w-5 h-5" aria-hidden="true" />
+                  </button>
+                </form>
+              </aside>
+            )}
           </div>
-        )}
-      </div>
-    </div>
+        </section>
+      )}
+    </>
   );
 };
 
 const TimelineStop: React.FC<{
+  index: number;
   stop: PlanStop;
   landmark?: Landmark;
   isLast: boolean;
   onSelectForDetails: (landmark: Landmark) => void;
   onShowOnMap: (landmark: Landmark) => void;
-}> = ({ stop, landmark, isLast, onSelectForDetails, onShowOnMap }) => {
+}> = ({ index, stop, landmark, isLast, onSelectForDetails, onShowOnMap }) => {
   const Icon = stop.type === 'meal' ? Utensils : stop.type === 'break' ? Coffee : MapPin;
 
   return (
-    <li className="flex gap-3 sm:gap-4">
-      <div className="w-12 shrink-0 pt-2.5 text-right font-mono text-xs font-semibold text-slate-700">{stop.time}</div>
+    <li className="grid grid-cols-[4rem_2.75rem_minmax(0,1fr)] sm:grid-cols-[5rem_3.25rem_minmax(0,1fr)] animate-rise" style={{ animationDelay: `${index * 60}ms` }}>
+      <div className="pt-4 pr-2 sm:pr-3 text-right nums">
+        <span className="block text-lg sm:text-xl font-black tracking-tight text-ink">{stop.time}</span>
+        <span className="block text-xs text-mute">{addMinutes(stop.time, stop.durationMinutes)}</span>
+      </div>
 
       <div className="flex flex-col items-center">
         <span
-          className={`mt-2 w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
-            landmark ? 'bg-emerald-600 text-white' : 'bg-amber-100 text-amber-700'
+          className={`mt-3 w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${
+            landmark ? 'bg-ink text-primary' : 'bg-canvas-soft text-ink'
           }`}
         >
-          <Icon className="w-3.5 h-3.5" />
+          <Icon className="w-4 h-4" aria-hidden="true" />
         </span>
-        {!isLast && <span className="w-px flex-1 bg-slate-200 my-1" />}
+        {!isLast && <span className="w-px flex-1 bg-canvas-line my-1" aria-hidden="true" />}
       </div>
 
-      <div className={`flex-1 min-w-0 ${isLast ? '' : 'pb-5'}`}>
-        <div className={`rounded-xl p-3 ${landmark ? 'border border-slate-200' : 'bg-slate-50'}`}>
-          <div className="flex items-start justify-between gap-2">
-            <h4 className="text-sm font-semibold text-slate-900">{stop.title}</h4>
-            <span className="shrink-0 flex items-center gap-1 text-[11px] text-slate-500">
-              <Clock className="w-3 h-3" />
-              {formatDuration(stop.durationMinutes)}
-            </span>
+      <div className={isLast ? '' : 'pb-6'}>
+        <div className={landmark ? 'rounded-3xl bg-canvas-soft p-5' : 'px-1 py-3'}>
+          <div className="flex items-start justify-between gap-3">
+            <h3 className={landmark ? 'text-lg font-semibold text-ink' : 'text-base font-semibold text-ink'}>{stop.title}</h3>
+            <span className="shrink-0 text-sm text-body nums">{formatDuration(stop.durationMinutes)}</span>
           </div>
 
           {landmark && (
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1 text-[11px] text-slate-500">
+            <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm text-body">
               <span>{landmark.neighborhood}</span>
               {landmark.shelterLevel === 'full_shelter' && (
-                <span className="flex items-center gap-1 font-medium text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
-                  <Umbrella className="w-3 h-3 text-emerald-600" />
-                  Rain-Safe
+                <span className="badge badge-sm badge-positive">
+                  <Umbrella className="w-3.5 h-3.5" aria-hidden="true" />
+                  Rain-safe
                 </span>
               )}
             </div>
           )}
 
-          {stop.note && <p className="text-xs text-slate-600 mt-1.5">{stop.note}</p>}
+          {stop.note && <p className="mt-2 text-[15px] text-body leading-relaxed">{stop.note}</p>}
 
           {landmark && (
-            <div className="flex items-center gap-3 mt-2 text-xs font-semibold">
-              <button
-                type="button"
-                onClick={() => onSelectForDetails(landmark)}
-                className="cursor-pointer text-emerald-700 hover:text-emerald-900"
-              >
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <button type="button" onClick={() => onSelectForDetails(landmark)} className="btn btn-sm btn-tertiary">
                 Details
               </button>
-              <button
-                type="button"
-                onClick={() => onShowOnMap(landmark)}
-                className="cursor-pointer text-slate-600 hover:text-slate-900"
-              >
+              <button type="button" onClick={() => onShowOnMap(landmark)} className="btn btn-sm btn-ghost">
+                <MapPin className="w-4 h-4" aria-hidden="true" />
                 Show on map
               </button>
             </div>
