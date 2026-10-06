@@ -2,6 +2,9 @@
   "functions": {
     "api/plan.ts": {
       "maxDuration": 60
+    },
+    "api/route.ts": {
+      "maxDuration": 30
     }
   },
   "rewrites": [

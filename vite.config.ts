@@ -12,6 +12,38 @@ export default defineConfig(({mode}) => {
       react(),
       tailwindcss(),
       {
+        // Dev-server equivalent of the Vercel function api/route.ts
+        name: 'api-route-plugin',
+        configureServer(server) {
+          server.middlewares.use('/api/route', async (req, res) => {
+            res.setHeader('Content-Type', 'application/json');
+            if (req.method !== 'GET') {
+              res.statusCode = 405;
+              res.end(JSON.stringify({ error: 'Use GET.' }));
+              return;
+            }
+            const { PlannerError } = await server.ssrLoadModule('/server/planner.ts');
+            const { guardRouteRequest, getRequestMeta } = await server.ssrLoadModule('/server/requestGuard.ts');
+            const { getRoute, parseRouteQuery } = await server.ssrLoadModule('/server/routing.ts');
+            try {
+              guardRouteRequest(getRequestMeta(req.headers, req.socket.remoteAddress));
+              const query = Object.fromEntries(new URL(req.url ?? '', 'http://localhost').searchParams);
+              const route = await getRoute(parseRouteQuery(query), {
+                ONEMAP_TOKEN: env.ONEMAP_TOKEN,
+                ONEMAP_EMAIL: env.ONEMAP_EMAIL,
+                ONEMAP_PASSWORD: env.ONEMAP_PASSWORD,
+              });
+              res.end(JSON.stringify(route));
+            } catch (err: any) {
+              const known = err instanceof PlannerError;
+              if (!known) console.error('Route error:', err);
+              res.statusCode = known ? err.status : 500;
+              res.end(JSON.stringify({ error: known ? err.message : 'Unexpected route error.' }));
+            }
+          });
+        },
+      },
+      {
         // Dev-server equivalent of the Vercel function api/plan.ts
         name: 'api-plan-plugin',
         configureServer(server) {
@@ -76,6 +108,8 @@ export default defineConfig(({mode}) => {
 
                 const { checkDeepSeek } = await server.ssrLoadModule('/server/deepseek.ts');
                 const deepSeek = await checkDeepSeek(env.DEEPSEEK_API_KEY, env.DEEPSEEK_MODEL);
+                const { describeOneMapRouting } = await server.ssrLoadModule('/server/oneMapAuth.ts');
+                const oneMapRouting = describeOneMapRouting(env);
 
                 res.setHeader('Content-Type', 'application/json');
                 res.end(
@@ -97,6 +131,7 @@ export default defineConfig(({mode}) => {
                         requiresKey: '3-day token for routing; public search for geocoding',
                       },
                       deepSeek,
+                      oneMapRouting,
                     },
                   })
                 );

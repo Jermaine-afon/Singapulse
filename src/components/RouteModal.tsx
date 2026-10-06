@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Landmark, RouteDetail, StartPoint } from '../types';
-import { calculateMockRoute } from '../data/mockRouteEngine';
+import { Landmark, StartPoint } from '../types';
+import type { RouteResult, RouteStepKind, TravelMode } from '../types/route';
+import { fetchRoute } from '../services/routeService';
 import { StartPointPicker } from './StartPointPicker';
-import { X, Footprints, Train, Bike, Car, Umbrella, Info } from 'lucide-react';
+import { X, Footprints, Train, Bike, Car, Bus, Info, Loader2, MapPin } from 'lucide-react';
 
 interface RouteModalProps {
   landmark: Landmark | null;
@@ -11,22 +12,34 @@ interface RouteModalProps {
   onStartPointChange: (point: StartPoint) => void;
 }
 
-type Mode = 'walk' | 'pt' | 'cycle' | 'drive';
-
-const MODES: { id: Mode; label: string; Icon: React.ComponentType<{ className?: string }> }[] = [
-  { id: 'walk', label: 'Walk', Icon: Footprints },
+const MODES: { id: TravelMode; label: string; Icon: React.ComponentType<{ className?: string }> }[] = [
   { id: 'pt', label: 'MRT & bus', Icon: Train },
+  { id: 'walk', label: 'Walk', Icon: Footprints },
   { id: 'cycle', label: 'Cycle', Icon: Bike },
-  { id: 'drive', label: 'Taxi / Grab', Icon: Car },
+  { id: 'drive', label: 'Taxi / car', Icon: Car },
 ];
 
-export const RouteModal: React.FC<RouteModalProps> = ({
-  landmark,
-  onClose,
-  userStartPoint,
-  onStartPointChange,
-}) => {
-  const [mode, setMode] = useState<Mode>('walk');
+const STEP_ICONS: Record<RouteStepKind, React.ComponentType<{ className?: string }>> = {
+  walk: Footprints,
+  bus: Bus,
+  rail: Train,
+  cycle: Bike,
+  drive: Car,
+};
+
+const formatDuration = (minutes: number) => {
+  if (minutes < 60) return `${minutes} min`;
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return m ? `${h} h ${m} min` : `${h} h`;
+};
+
+const formatDistance = (meters: number) => (meters < 1000 ? `${meters} m` : `${(meters / 1000).toFixed(1)} km`);
+
+export const RouteModal: React.FC<RouteModalProps> = ({ landmark, onClose, userStartPoint, onStartPointChange }) => {
+  const [mode, setMode] = useState<TravelMode>('pt');
+  const [route, setRoute] = useState<RouteResult | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const isOpen = landmark !== null;
 
   // Escape to close + body scroll lock while open
@@ -44,10 +57,29 @@ export const RouteModal: React.FC<RouteModalProps> = ({
     };
   }, [isOpen, onClose]);
 
+  // Fetch the route whenever the trip or mode changes; ignore stale responses
+  useEffect(() => {
+    if (!landmark) return;
+    let cancelled = false;
+    setIsLoading(true);
+    fetchRoute(
+      { lat: userStartPoint.lat, lng: userStartPoint.lng },
+      { lat: landmark.latitude, lng: landmark.longitude },
+      mode,
+      landmark.name
+    ).then((result) => {
+      if (cancelled) return;
+      setRoute(result);
+      setIsLoading(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [landmark, userStartPoint.lat, userStartPoint.lng, mode]);
+
   if (!landmark) return null;
 
-  // Base route calculation
-  const route: RouteDetail = calculateMockRoute(userStartPoint.name, landmark, mode);
+  const isEstimate = route?.source === 'estimate';
 
   return (
     <div
@@ -68,15 +100,11 @@ export const RouteModal: React.FC<RouteModalProps> = ({
               Getting there
             </h2>
             <p className="text-base text-body mt-2">To {landmark.name}</p>
-            <p className="badge badge-sm badge-warning mt-3 whitespace-normal">
-              <Info className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-              Estimated route — times, fares and sheltered % are approximate
-            </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close route estimate"
+            aria-label="Close directions"
             className="btn btn-icon btn-ghost shrink-0 -mr-2 -mt-1"
           >
             <X className="w-5 h-5" aria-hidden="true" />
@@ -90,13 +118,7 @@ export const RouteModal: React.FC<RouteModalProps> = ({
 
             <div className="flex flex-wrap gap-2" role="group" aria-label="Travel mode">
               {MODES.map(({ id, label, Icon }) => (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => setMode(id)}
-                  aria-pressed={mode === id}
-                  className="chip"
-                >
+                <button key={id} type="button" onClick={() => setMode(id)} aria-pressed={mode === id} className="chip">
                   <Icon className="w-4 h-4" />
                   <span>{label}</span>
                 </button>
@@ -104,61 +126,110 @@ export const RouteModal: React.FC<RouteModalProps> = ({
             </div>
           </div>
 
-          {/* Summary */}
-          <dl className="mx-6 card-soft !p-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div>
-              <dt className="text-sm text-mute">Time</dt>
-              <dd className="text-xl font-semibold text-ink nums">~{route.durationMinutes} min</dd>
-            </div>
-            <div>
-              <dt className="text-sm text-mute">Distance</dt>
-              <dd className="text-xl font-semibold text-ink nums">{route.distanceKm} km</dd>
-            </div>
-            <div>
-              <dt className="text-sm text-mute">Sheltered</dt>
-              <dd className="text-xl font-semibold text-ink nums flex items-center gap-1.5">
-                <Umbrella className="w-4 h-4 text-positive-deep" aria-hidden="true" />
-                <span>{route.coveredWalkwayPct}%</span>
-              </dd>
-            </div>
-            <div className="min-w-0">
-              <dt className="text-sm text-mute">Cost</dt>
-              <dd className="text-base font-semibold text-ink nums mt-0.5 break-words">{route.fareOrCost}</dd>
-            </div>
-          </dl>
-
-          {/* Steps */}
-          <div className="px-6 py-5">
-            <h3 className="text-lg font-semibold text-ink mb-2">Steps</h3>
-            <ol className="divide-y divide-canvas-line">
-              {route.steps.map((step, idx) => (
-                <li key={idx} className="flex items-start gap-3 py-3">
-                  <span className="w-7 h-7 rounded-full bg-canvas-soft text-ink text-sm font-semibold nums flex items-center justify-center shrink-0">
-                    {idx + 1}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-base text-ink leading-snug">{step.instruction}</p>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-mute mt-1">
-                      <span className="nums">{step.distanceMeters} m</span>
-                      <span aria-hidden="true">·</span>
-                      <span className="nums">~{step.durationMinutes} min</span>
-                      {step.isCoveredWalkway && (
-                        <span className="badge badge-sm badge-positive">
-                          <Umbrella className="w-3 h-3" aria-hidden="true" />
-                          Sheltered
-                        </span>
+          <div aria-live="polite" aria-busy={isLoading}>
+            {isLoading && !route ? (
+              <div className="mx-6 mb-6 card-soft !p-5 flex items-center gap-3 text-body">
+                <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
+                Finding a route…
+              </div>
+            ) : route ? (
+              <div className={`transition-opacity ${isLoading ? 'opacity-50' : ''}`}>
+                {/* Summary */}
+                <dl className="mx-6 card-soft !p-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <div>
+                    <dt className="text-sm text-body">Time</dt>
+                    <dd className="text-2xl font-black text-ink nums">
+                      {isEstimate && '~'}
+                      {formatDuration(route.durationMinutes)}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm text-body">Distance</dt>
+                    <dd className="text-2xl font-black text-ink nums">
+                      {isEstimate && '~'}
+                      {route.distanceKm} km
+                    </dd>
+                  </div>
+                  {route.mode === 'pt' && (route.fareSgd || route.transfers !== undefined) && (
+                    <div className="col-span-2 sm:col-span-1">
+                      <dt className="text-sm text-body">{route.fareSgd ? 'Fare' : 'Transfers'}</dt>
+                      <dd className="text-2xl font-black text-ink nums">
+                        {route.fareSgd ? `S$${route.fareSgd}` : route.transfers}
+                      </dd>
+                      {route.fareSgd && route.transfers !== undefined && (
+                        <dd className="text-sm text-body">
+                          {route.transfers === 0 ? 'No transfers' : `${route.transfers} transfer${route.transfers > 1 ? 's' : ''}`}
+                        </dd>
                       )}
                     </div>
+                  )}
+                </dl>
+
+                {/* Source */}
+                {isEstimate ? (
+                  <p className="mx-6 mt-3 flex items-start gap-2 rounded-2xl bg-warning-pale px-4 py-3 text-sm text-warning-content">
+                    <Info className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>
+                      Rough estimate from straight-line distance, not a real route.
+                      {route.note && <> {route.note}</>}
+                    </span>
+                  </p>
+                ) : (
+                  <p className="mx-6 mt-3 text-sm text-body">
+                    Route by OneMap{route.mode === 'pt' ? ' for departing now' : ''}.
+                  </p>
+                )}
+
+                {/* Steps */}
+                {route.steps.length > 0 && (
+                  <div className="px-6 py-5">
+                    <h3 className="text-lg font-semibold text-ink mb-2">Steps</h3>
+                    <ol className="divide-y divide-canvas-line">
+                      {route.steps.map((step, idx) => {
+                        const Icon = STEP_ICONS[step.kind];
+                        const transit = step.kind === 'bus' || step.kind === 'rail';
+                        return (
+                          <li key={idx} className="flex items-start gap-3 py-3">
+                            <span
+                              className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
+                                transit ? 'bg-ink text-primary' : 'bg-canvas-soft text-ink'
+                              }`}
+                            >
+                              <Icon className="w-4 h-4" aria-hidden="true" />
+                            </span>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-base text-ink leading-snug">{step.instruction}</p>
+                              {(step.distanceMeters || step.durationMinutes) && (
+                                <p className="text-sm text-body mt-1 nums">
+                                  {[
+                                    step.durationMinutes ? formatDuration(step.durationMinutes) : null,
+                                    step.distanceMeters ? formatDistance(step.distanceMeters) : null,
+                                  ]
+                                    .filter(Boolean)
+                                    .join(' · ')}
+                                </p>
+                              )}
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ol>
                   </div>
-                </li>
-              ))}
-            </ol>
+                )}
+                {route.steps.length === 0 && (
+                  <p className="px-6 py-5 flex items-center gap-2 text-sm text-body">
+                    <MapPin className="w-4 h-4" aria-hidden="true" />
+                    Step-by-step directions appear when live routing is available.
+                  </p>
+                )}
+              </div>
+            ) : null}
           </div>
         </div>
 
         {/* Footer */}
         <div className="px-6 py-4 border-t border-canvas-line flex items-center justify-between gap-3">
-          <span className="text-sm text-mute">Check live transport apps before you set off.</span>
+          <span className="text-sm text-body">Check live transport apps before you set off.</span>
           <button type="button" onClick={onClose} className="btn btn-sm btn-dark shrink-0">
             Done
           </button>

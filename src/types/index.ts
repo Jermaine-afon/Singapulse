@@ -73,22 +73,6 @@ export interface DayForecast {
   icon: string;
 }
 
-export interface RouteStep {
-  instruction: string;
-  distanceMeters: number;
-  durationMinutes: number;
-  isCoveredWalkway: boolean;
-}
-
-export interface RouteDetail {
-  mode: 'walk' | 'pt' | 'cycle' | 'drive';
-  durationMinutes: number;
-  distanceKm: number;
-  coveredWalkwayPct: number;
-  fareOrCost: string;
-  steps: RouteStep[];
-}
-
 export interface SavedItineraryItem {
   landmarkId: string;
   visitDate: string;

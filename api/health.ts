@@ -3,6 +3,7 @@
  * Checks live connectivity to Data.gov.sg, OneMap and DeepSeek APIs
  */
 import { checkDeepSeek } from '../server/deepseek.js';
+import { describeOneMapRouting } from '../server/oneMapAuth.js';
 
 export default async function handler(req: any, res: any) {
   // Allow cross-origin requests
@@ -50,7 +51,10 @@ const oneMapPromise = fetch(
 
     const [weatherRes, oneMapRes, deepSeekRes] = await Promise.all([weatherPromise, oneMapPromise, deepSeekPromise]);
 
-    const isAllHealthy = weatherRes.ok && oneMapRes.ok && deepSeekRes.status === 'connected';
+    // Token status only (and its expiry date) — never the token itself
+    const oneMapRouting = describeOneMapRouting(process.env);
+    const isAllHealthy =
+      weatherRes.ok && oneMapRes.ok && deepSeekRes.status === 'connected' && oneMapRouting.status === 'configured';
 
     return res.status(200).json({
       status: isAllHealthy ? 'ok' : 'degraded',
@@ -72,7 +76,8 @@ const oneMapPromise = fetch(
           requiresKey: 'OneMap access token',
           endpoint: 'https://www.onemap.gov.sg/api/common/elastic/search'
         },
-        deepSeek: deepSeekRes
+        deepSeek: deepSeekRes,
+        oneMapRouting
       }
     });
   } catch (error: any) {

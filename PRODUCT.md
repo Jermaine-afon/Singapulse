@@ -29,7 +29,7 @@ Plans are built only from a vetted catalogue of Singapore places (curated hidden
 - AI planner: generate a day plan from preferences, refine via chat, warnings when the server corrects the plan, save stops to My Trail, open details or show on map.
 - Catalogue: 27 curated hidden gems plus ~107 STB attractions; STB entries have placeholder fields (admission, MRT, crowd level) that are not yet trustworthy.
 - Weather: live readings for the current time; forecast-range estimates for later hours and dates; four-day NEA outlook.
-- Routes: currently estimated, not real OneMap routing; must not be presented as exact.
+- Routes: real OneMap routes (walk, cycle, drive, public transport with fares) via the server when a OneMap token is configured; otherwise a labelled straight-line estimate. OneMap does not report shelter coverage, so routes make no sheltered-walkway claims.
 - Landmark photos: only six generic images exist, reused across many places.
 
 ## Brand Commitments
