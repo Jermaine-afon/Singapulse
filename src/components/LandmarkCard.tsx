@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Landmark } from '../types';
-import { Clock, Bookmark, BookmarkCheck, Umbrella, ImageOff, Sun, Navigation, ArrowRight } from 'lucide-react';
+import { Clock, Bookmark, BookmarkCheck, Umbrella, Sun, Navigation, ArrowRight } from 'lucide-react';
+import { LandmarkPhoto, PhotoCredit } from './LandmarkPhoto';
 
 interface LandmarkCardProps {
   landmark: Landmark;
@@ -30,7 +31,6 @@ export const LandmarkCard: React.FC<LandmarkCardProps> = ({
   onCheckWeather,
   onGetDirections,
 }) => {
-  const [imageError, setImageError] = useState(false);
 
   // Category label formatter
   const getCategoryLabel = (cat: Landmark['category']) => {
@@ -64,21 +64,12 @@ export const LandmarkCard: React.FC<LandmarkCardProps> = ({
         className="relative aspect-4/3 overflow-hidden rounded-2xl bg-canvas-soft cursor-pointer"
         onClick={() => onSelectForDetails(landmark)}
       >
-        {!imageError ? (
-          <img
-            src={landmark.imageUrl}
-            alt=""
-            referrerPolicy="no-referrer"
-            loading="lazy"
-            onError={() => setImageError(true)}
-            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-          />
-        ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-mute">
-            <ImageOff className="w-7 h-7" strokeWidth={1.75} aria-hidden="true" />
-            <span className="text-sm">Photo unavailable</span>
-          </div>
-        )}
+        <LandmarkPhoto
+          landmark={landmark}
+          lazy
+          size="card"
+          className="w-full h-full transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+        />
 
         <button
           type="button"
@@ -97,6 +88,7 @@ export const LandmarkCard: React.FC<LandmarkCardProps> = ({
           )}
         </button>
       </div>
+      <PhotoCredit landmark={landmark} className="px-2 pt-1.5" />
 
       {/* Content */}
       <div className="px-4 pt-4 pb-3 flex-1 flex flex-col gap-3">

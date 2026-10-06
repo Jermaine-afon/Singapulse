@@ -20,7 +20,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Take in the region's newest and largest museum of modern Singapore and Southeast Asian art housed within two of Singapore's awe-inspiring national monuments"
     ],
@@ -48,7 +48,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Also known as Masjid Sultan, the impressive Sultan Mosque in historic Kampong Glam is the focal point for Singapore's Muslim community"
     ],
@@ -76,7 +76,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Located in Chinatown, the Sri Mariamman Temple dates back to 1827 and is the oldest Hindu temple in Singapore"
     ],
@@ -104,7 +104,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The oldest Christian church in Singapore is an architectural masterpiece from the early 19th century"
     ],
@@ -132,7 +132,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Whether functioning as a school or a lifestyle and entertainment complex, it appears the beauty of CHIJMES is only equalled by its versatility"
     ],
@@ -160,7 +160,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Singapore's largest cathedral is a stellar example of colonial-era architecture and heritage"
     ],
@@ -188,7 +188,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Official Singapore Tourism Board registered destination"
     ],
@@ -214,7 +214,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Official Singapore Tourism Board registered destination"
     ],
@@ -240,7 +240,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tiong_bahru_cafe_1791208125334.jpg",
+    "imageUrl": "",
     "highlights": [
       "Official Singapore Tourism Board registered destination"
     ],
@@ -266,7 +266,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Experience how Singapore's early Chinese migrants once lived and learn more about local Chinese culture at the Chinatown Heritage Centre"
     ],
@@ -294,7 +294,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Beautifully restored, Thian Hock Keng Temple is the oldest Chinese temple in Singapore and dedicated to Mazu, the Goddess of the Sea"
     ],
@@ -322,7 +322,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "This engaging heritage attraction takes you through the history and culture of the Eurasian community in Singapore"
     ],
@@ -350,7 +350,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "With many beautifully preserved examples on hand today, the shophouses in Singapore are prime examples of timeless architectural appeal"
     ],
@@ -376,7 +376,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "The queen of Singapore cinemas will soon reclaim her crown as the premier entertainment hub when Capitol Building reopens next year"
     ],
@@ -403,7 +403,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "This boldly designed performing arts centre has become a memorable part of Singapore's skyline"
     ],
@@ -430,7 +430,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "The lush and beautiful Gardens by the Bay is dominated by the sleekly sculptured biodomes – marvels of architecture, design and engineering"
     ],
@@ -458,7 +458,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "There's more than meets the eye in The Interlace's artful arrangement of residential blocks"
     ],
@@ -485,7 +485,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "PARKROYAL on Pickering is a luxurious garden oasis in downtown Singapore"
     ],
@@ -512,7 +512,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "How can something that fits so perfectly into a cityscape evoke nature as well? It all lies in the design of Lasalle College of the Arts"
     ],
@@ -540,7 +540,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Kranji War Memorial in Singapore honours the men and women from the Commonwealth who died in the line of duty during World War II"
     ],
@@ -568,7 +568,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "This marker at Esplanade Park was one of the eleven World War II markers erected in 1995 to commemorate the 50th anniversary of the end of World War II"
     ],
@@ -596,7 +596,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "This heritage centre relives the Battle of Pasir Panjang, one of the fiercest battles fought against the Japanese in Singapore during World War II"
     ],
@@ -624,7 +624,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "This war memorial in Esplanade Park honours the heroes who fought and died during World War I and World War II"
     ],
@@ -652,7 +652,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "Situated at the War Memorial Park in Beach Road, this memorial commemorates civilian victims of the Japanese Occupation in Singapore"
     ],
@@ -680,7 +680,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Sri Veeramakaliamman Temple is one of Singapore's oldest Hindu temples, in the heart of Little India"
     ],
@@ -708,7 +708,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Maghain Aboth Synagogue is a gem in more ways than one, providing both a snapshot of history and a glimpse into a rich culture"
     ],
@@ -736,7 +736,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "From dispensing justice to displaying art, the Old Supreme Court undergoes an overhaul for its new role as the National Gallery Singapore"
     ],
@@ -764,7 +764,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Take a walk back in time through the Art Deco architecture in the heritage neighbourhood of Tiong Bahru"
     ],
@@ -790,7 +790,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tiong_bahru_cafe_1791208125334.jpg",
+    "imageUrl": "",
     "highlights": [
       "The grande dame of markets in Singapore, Lau Pa Sat blends history, striking architecture and scrumptious local food into one heady experience"
     ],
@@ -818,7 +818,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Malay Heritage Centre is a must-visit if you're keen on learning about the rich heritage and culture of Singapore's Malay community"
     ],
@@ -846,7 +846,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Get to know Singapore's vibrant Peranakan community and history at this top-notch museum, filled with fine artefacts and fun exhibits"
     ],
@@ -874,7 +874,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Hark back to a golden age of elegant refinement and gracious living at Raffles Singapore, where the past reawakens to glorious life"
     ],
@@ -902,7 +902,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "A former British military camp is now Asia's new Destination for Contemporary Art"
     ],
@@ -930,7 +930,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Catch world-class touring exhibitions at this premier exhibition space"
     ],
@@ -958,7 +958,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "An extension of the Singapore Art Museum, SAM at 8Q features contemporary art exhibitions and is home to a Moving Image Gallery, where film screenings are held"
     ],
@@ -985,7 +985,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Also known as Masjid Chulia, Jamae Mosque is one of Singapore's oldest mosques and a prominent landmark in Chinatown since the 1820s"
     ],
@@ -1013,7 +1013,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "This experimental art space housed in a tertiary arts college will help you deepen your understanding of contemporary art"
     ],
@@ -1041,7 +1041,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "This giant observation wheel offers 360-degree city views, a panorama that stretches to parts of Malaysia and Indonesia on a clear day"
     ],
@@ -1069,7 +1069,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "A feat of engineering, an architectural statement and a sheer aesthetic triumph, Marina Bay Sands<sup>®</sup> has upped the ante for buildings in Singapore"
     ],
@@ -1097,7 +1097,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "This innovative facility not only supplies water to Singaporeans and helps alleviate floods but also doubles up as a place for family fun"
     ],
@@ -1125,7 +1125,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Lush jungle is broken up with a seriously creative twist in the fantastic form of the Henderson Waves bridge"
     ],
@@ -1153,7 +1153,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "The soaring lines and stunning views of majestic residential estate Pinnacle at Duxton will make you forget your fear of heights"
     ],
@@ -1181,7 +1181,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Hajjah Fatimah Mosque will captivate you with its intriguing blend of cross-cultural architectural influences"
     ],
@@ -1208,7 +1208,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Embark on an unforgettable journey into Chinese folklore and mythology at the Haw Par Villa theme park"
     ],
@@ -1235,7 +1235,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "This heritage house lends rich insight into Singapore's Peranakan community, thanks to beautifully preserved architecture and artefacts"
     ],
@@ -1263,7 +1263,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Restored by expert craftsmen from China, the Hong San See temple has been brought back to its full glory"
     ],
@@ -1290,7 +1290,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Chinese Heritage Centre in Singapore is where you can find out more about overseas Chinese communities and their culture"
     ],
@@ -1318,7 +1318,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "Discover Kampong Glam's rich history, living traditions, excellent eateries and trendy shops in this vibrant neighbourhood"
     ],
@@ -1345,7 +1345,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "This university arts research centre explores contemporary art through exhibitions, public programmes, residencies and research programmes"
     ],
@@ -1373,7 +1373,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "This experimental arts centre gives a space for contemporary artists to try out new concepts"
     ],
@@ -1401,7 +1401,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "This museum holds more than 1,000 award-winning products, communications and concepts that will delight design fans"
     ],
@@ -1429,7 +1429,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Singapore Art Museum is Singapore's contemporary art museum, focused on Southeast Asian contemporary art"
     ],
@@ -1457,7 +1457,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Catch a non-stop line-up of world-class performances at Singapore's premier arts centre"
     ],
@@ -1485,7 +1485,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "The National Design Centre is the nexus for all things design",
       "It hosts design exhibitions, events and programmes that will quicken the pulse of design lovers"
@@ -1514,7 +1514,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "After a four-year refurbishment, the Victoria Theatre and Concert Hall has since reopened, with its first official concert held there in August 2014"
     ],
@@ -1542,7 +1542,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Get a deeper insight into Asian art and artefacts at this museum on the campus of the National University of Singapore"
     ],
@@ -1570,7 +1570,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "This revamped museum is a fitting tribute to the intriguing life and times of Chinese revolutionary leader Dr Sun Yat Sen"
     ],
@@ -1598,7 +1598,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Housed in a historical building by the Singapore River, this museum tells the stories of Asian civilisations through its permanent collections"
     ],
@@ -1626,7 +1626,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Singapore's oldest museum is a progressive showcase of the country's history and culture"
     ],
@@ -1654,7 +1654,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Located in Hougang, this is the largest Japanese cemetery in Southeast Asia and the burial ground of Singapore's early Japanese community"
     ],
@@ -1681,7 +1681,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Dalhousie Obelisk at Empress Place is a famous architectural landmark in Singapore"
     ],
@@ -1708,7 +1708,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "The sculpture depicts Sir Stamford Raffles, founder of modern Singapore",
       "Two statues exist, at the Raffles Landing Site and Empress Place"
@@ -1736,7 +1736,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Singapore Philatelic Museum offers windows into Singapore and the world through stamps"
     ],
@@ -1764,7 +1764,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Old Ford Factory holds an archive of memories about Singapore's wartime occupation by the Japanese"
     ],
@@ -1792,7 +1792,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The rare collection of currencies on display here tells Singapore's story through the money it has used over the years"
     ],
@@ -1820,7 +1820,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Singapore City Gallery tells the story of the city's physical transformation"
     ],
@@ -1848,7 +1848,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Changi Museum provides an emotional exploration of Singapore's wartime history during the Japanese Occupation"
     ],
@@ -1876,7 +1876,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "This toy museum will delight both adults and kids with the vast collection of vintage toys and memorabilia from around the world"
     ],
@@ -1904,7 +1904,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "This gazetted national monument at Esplanade Park commemorates one of Singapore's heroes from World War II"
     ],
@@ -1932,7 +1932,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Step into the glamorous world of movies at this world-class theme park located within Resorts World Sentosaâ„¢"
     ],
@@ -1960,7 +1960,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "This enlightening attraction holds the largest collection of educational materials devoted to science in Singapore"
     ],
@@ -1988,7 +1988,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Fuk Tak Chi Museum was once the oldest Chinese temple in Singapore and is an elegant example of restored architecture in Chinatown"
     ],
@@ -2016,7 +2016,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "Step into this fully restored bona fide Peranakan family home, and admire the many antiques and heirlooms worthy of any museum collection"
     ],
@@ -2043,7 +2043,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "A tranquil patch of imperial China in the west of Singapore is pleasant respite from the bustle of the city"
     ],
@@ -2071,7 +2071,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "With so many attractions packed into this 15-km stretch of beaches, you'll never run out of things to do"
     ],
@@ -2098,7 +2098,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Whether you're a history buff, music fan or nature lover, this historic landmark on a hill is full of surprises"
     ],
@@ -2125,7 +2125,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "If you're looking for local heritage off the beaten track with a good dash of nature, Kusu Island hits the spot"
     ],
@@ -2152,7 +2152,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Jurong Bird Park has almost every species to impress avian lovers, along with fun exhibits, interactive shows, and of course, its charming residents"
     ],
@@ -2180,7 +2180,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Lose yourself in this dreamscape of stunning gardens that will make you forget the bustle of city"
     ],
@@ -2208,7 +2208,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "Make a big splash at this aquatic adventure park at Resorts Worldâ„¢ Sentosa"
     ],
@@ -2236,7 +2236,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Get to know historic Singapore River and its famous quays: Boat Quay, Clarke Quay and Robertson Quay",
       "After all, this is where it all began"
@@ -2264,7 +2264,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "Discover Peranakan culture as you stroll past heritage shophouses, quaint stores and eateries in this charming corner of eastern Singapore"
     ],
@@ -2290,7 +2290,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "Sentosa Island is Singapore's favourite leisure destination with exciting attractions, golden beaches, luxe retreats and the country's first integrated resort"
     ],
@@ -2317,7 +2317,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tiong_bahru_cafe_1791208125334.jpg",
+    "imageUrl": "",
     "highlights": [
       "Singapore's historic Chinatown is a bustling mix of old and new, filled with traditional shops and markets as well as cool stores and cafes"
     ],
@@ -2344,7 +2344,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "This Tang-styled Chinese Buddhist temple in Chinatown gets its name from what the Buddhists regard as the Sacred Buddha Tooth Relic"
     ],
@@ -2372,7 +2372,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "With its rich biodiversity and war relics, nature lovers and history enthusiasts will find plenty to do at Labrador Nature Reserve"
     ],
@@ -2399,7 +2399,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "Marina Bay represents all things modern and super-stylish, from trendy dining destinations to exciting leisure spots"
     ],
@@ -2426,7 +2426,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "This iconic integrated resort boasts luxury accommodations, upscale shopping and an infinity pool with unparalleled views of the city"
     ],
@@ -2454,7 +2454,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "A world away from shopping malls and glitzy hotels, this natural wonder is one of Singapore's richest eco-systems"
     ],
@@ -2481,7 +2481,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Half-fish and half-lion, the iconic Merlion resides at the waterfront Merlion Park"
     ],
@@ -2507,7 +2507,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Marina Bay Sands<sup>®</sup> SkyPark is a roof like no other, perched 200 metres in the air with an infinity pool and observation deck in the clouds"
     ],
@@ -2535,7 +2535,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Experience endless excitement at Resorts World Sentosa with a variety of attractions and entertainment hot spots"
     ],
@@ -2563,7 +2563,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "This 10-km stretch of connecting trails lets you walk among the trees to observe a wide variety of flora and fauna in their natural habitat"
     ],
@@ -2589,7 +2589,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "This ecological wonder will transport you into a world rich in animal and plant life"
     ],
@@ -2616,7 +2616,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "Immerse yourself underwater at the S.E.A",
       "Aquariumâ„¢ and discover more than 100,000 marine animals"
@@ -2645,7 +2645,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Singapore's oldest garden is a treasure trove for plant lovers, or those who simply want to have a good time outdoors"
     ],
@@ -2673,7 +2673,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Singapore's zoo is a beautiful, award-winning wildlife park, where animals can roam freely in their natural habitats"
     ],
@@ -2701,7 +2701,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "At the River Safari Singapore, meet manatees and monkeys, piranhas and pandas, as they congregate in and around the park's waters"
     ],
@@ -2729,7 +2729,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tiong_bahru_cafe_1791208125334.jpg",
+    "imageUrl": "",
     "highlights": [
       "Getting to this hilltop dining and entertainment spot at Mount Faber by cable car  is half the fun"
     ],
@@ -2756,7 +2756,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Instead of going to a club, pop into another popular nightspot, the Night Safari, and mingle with a different crowd of animals at this special zoo"
     ],
@@ -2784,7 +2784,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "Gravel roads, lush forests and abundant wildlife – Pulau Ubin is a living showcase of what Singapore was like in the 1960s"
     ],
@@ -2811,7 +2811,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/hero_singapore_hidden_garden_1791208088141.jpg",
+    "imageUrl": "",
     "highlights": [
       "Little India is a buzzing historic area that shows off the best of Singapore's Indian community from vibrant culture to incredible shopping"
     ],
@@ -2838,7 +2838,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "Orchard Road, Asia's most famous shopping street, is home to fashion favourites, specialist stores and loads of other lifestyle choices"
     ],
@@ -2865,7 +2865,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_rail_corridor_bridge_1791209246049.jpg",
+    "imageUrl": "",
     "highlights": [
       "The attractions around MacRitchie Reservoir is a playground of nature for those who love the outdoors"
     ],
@@ -2892,7 +2892,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Civic District is where Singapore's historical, architectural and cultural heritage started"
     ],
@@ -2918,7 +2918,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_southern_ridges_walk_1791208114869.jpg",
+    "imageUrl": "",
     "highlights": [
       "HarbourFront is the place to go if you're hopping on a cruise from Singapore, taking a regional ferry or simply want to eat, shop or relax"
     ],
@@ -2945,7 +2945,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "recommendedDuration": "1 to 2 hours",
     "crowdLevel": "Moderate",
     "admission": "Free",
-    "imageUrl": "/images/landmark_tan_teng_niah_villa_1791209261138.jpg",
+    "imageUrl": "",
     "highlights": [
       "The Bras Basah.Bugis Precinct is the arts and heritage district in Singapore's civic centre, and home to museums and monuments"
     ],

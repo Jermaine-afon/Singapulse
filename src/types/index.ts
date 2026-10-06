@@ -27,7 +27,15 @@ export interface Landmark {
   recommendedDuration: string;
   crowdLevel: 'Quiet' | 'Moderate' | 'Lively';
   admission: 'Free' | 'Paid';
+  /** Empty when no verified photo exists (the UI shows a placeholder) */
   imageUrl: string;
+  /** Attribution for a freely licensed photo (required by its licence) */
+  imageCredit?: {
+    author: string;
+    license: string;
+    licenseUrl?: string;
+    sourceUrl: string;
+  };
   highlights: string[];
   photoSpotTip: string;
   openingHours?: string;

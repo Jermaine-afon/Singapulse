@@ -236,7 +236,7 @@ export default function App() {
         recommendedDuration: '1 hour',
         crowdLevel: 'Moderate',
         admission: 'Free',
-        imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+        imageUrl: '',
         highlights: ['Geocoded destination', 'Live weather sensor point'],
         photoSpotTip: 'Street level panorama'
       });

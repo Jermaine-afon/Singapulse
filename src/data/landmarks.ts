@@ -1,5 +1,6 @@
 import type { Landmark } from '../types';
 import { STB_TOURIST_ATTRACTIONS } from './stbAttractions.js';
+import { LANDMARK_IMAGES } from './landmarkImages.js';
 
 export const CURATED_HIDDEN_GEMS: Landmark[] = [
   // --- 1. ARCHITECTURE ---
@@ -22,7 +23,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '45 mins',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['Natural light skylight', 'Historic brick spiral stairs', 'Connects directly to hilltop spice garden'],
     photoSpotTip: 'Sit on the edge of the stone balustrade and set wide 0.5x camera angle looking straight up.'
   },
@@ -45,7 +46,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1 hour',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/landmark_tiong_bahru_cafe_1791208125334.jpg',
+    imageUrl: '',
     highlights: ['Hidden serenity off Orchard Rd', 'Chinese Baroque plasterwork', 'Evening craft beer shophouses'],
     photoSpotTip: 'Looking uphill from the base with flowering bougainvillea cascading over antique gates.'
   },
@@ -68,7 +69,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '45 mins',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/landmark_tan_teng_niah_villa_1791209261138.jpg',
+    imageUrl: '',
     highlights: ['Rainbow painted shutters', 'Last surviving Chinese villa in Little India', 'Traditional Straits woodcraft'],
     photoSpotTip: 'Stand diagonally across Kerbau Road to frame the yellow, green, and turquoise window arches.'
   },
@@ -91,7 +92,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1.5 hours',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['Natural ventilation passively cooled atrium', 'Exposed relief concrete art', 'Eco-friendly campus landmark'],
     photoSpotTip: 'Shoot looking up from the ground level atrium floor with ultra-wide angle to capture the 12 curving towers.'
   },
@@ -114,7 +115,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2 hours',
     crowdLevel: 'Lively',
     admission: 'Free',
-    imageUrl: '/images/landmark_southern_ridges_walk_1791208114869.jpg',
+    imageUrl: '',
     highlights: ['Panoramic view of Marina Bay Sands & sea', 'Iconic local kite-flying lawn', 'Water sustainability gallery'],
     photoSpotTip: 'Sit on the highest edge of the grassy knoll during sunset to silhouette kites against the purple sky.'
   },
@@ -139,7 +140,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1 hour',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/landmark_peranakan_shophouses_1791208101805.jpg',
+    imageUrl: '',
     highlights: ['Peranakan tile craftsmanship', 'Pastel color palettes', 'Historic Joo Chiat foodie trail'],
     photoSpotTip: 'Shoot from across the quiet street using 2x zoom to compress the geometric line of facades.'
   },
@@ -162,7 +163,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2 hours',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/landmark_peranakan_shophouses_1791208101805.jpg',
+    imageUrl: '',
     highlights: ['1,000+ hand-painted folk statues', 'Hell’s Museum air-con sanctuary', 'Direct MRT connection'],
     photoSpotTip: 'The surreal laughing Buddha and Madame White Snake pavilions.'
   },
@@ -185,7 +186,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '45 mins',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['Authentic wooden kampong spirit', 'Pre-modern Singapore landscape', 'Fruit tree orchard path'],
     photoSpotTip: 'The historic green wooden post box standing next to the village entrance canopy.'
   },
@@ -208,7 +209,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1.5 hours',
     crowdLevel: 'Lively',
     admission: 'Free',
-    imageUrl: '/images/landmark_tan_teng_niah_villa_1791209261138.jpg',
+    imageUrl: '',
     highlights: ['Glass bottle dome base history', 'Muscat Street pedestrian palm trees', 'Zam Zam murtabak across street'],
     photoSpotTip: 'Stand at the beginning of Bussorah Street looking straight through the arch framed by palm trees.'
   },
@@ -231,7 +232,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1 hour',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/landmark_peranakan_shophouses_1791208101805.jpg',
+    imageUrl: '',
     highlights: ['Zero-nail wooden joinery', 'Authentic porcelain dragon roof ridges', 'Ann Siang Hill secret garden stairs'],
     photoSpotTip: 'The painted stone door gods and carved granite pillars reflected on the courtyard floor.'
   },
@@ -254,7 +255,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1 hour',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['Pink bougainvillea arch tunnel', 'Zen gravel pathways', 'Historic Jizo statues'],
     photoSpotTip: 'Walking down the center of the pink floral canopy with depth of field focused on the stone lantern.'
   },
@@ -279,7 +280,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1.5 hours',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/landmark_southern_ridges_walk_1791208114869.jpg',
+    imageUrl: '',
     highlights: ['Panoramic ocean & port vistas', 'Illuminated wave ribs at night', 'Canopy birdwatching'],
     photoSpotTip: 'Stand inside one of the curved wooden shell alcoves when the warm LED strip lighting glows.'
   },
@@ -302,7 +303,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2 hours',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/landmark_rail_corridor_bridge_1791209246049.jpg',
+    imageUrl: '',
     highlights: ['1932 restored railway station & tracks', 'Black iron truss architectural framing', 'Connects directly to Bukit Timah Nature Reserve'],
     photoSpotTip: 'Stand centered along the rusty wooden sleepers inside the steel bridge frame looking toward the greenery.'
   },
@@ -325,7 +326,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2 hours',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['Ancient overgrown brick hearths', 'Raffles’ Banded Langur primate sanctuary', 'Gentle shaded boardwalk trails'],
     photoSpotTip: 'The moss-covered kitchen doorway framed by the massive aerial roots of an ancient banyan tree.'
   },
@@ -348,7 +349,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1.5 hours',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['Heritage black-and-white architecture', 'Colbar Hainanese comfort food', 'Lush tropical birding'],
     photoSpotTip: 'Capture the black timber diagonal beams against whitewashed walls surrounded by giant monstera leaves.'
   },
@@ -371,7 +372,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2.5 hours',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/landmark_southern_ridges_walk_1791208114869.jpg',
+    imageUrl: '',
     highlights: ['Wild saltwater crocodile viewing platforms', 'Canopy tree walk pod towers', 'Mudskipper and mangrove root ecosystems'],
     photoSpotTip: 'The giant onion-shaped bird viewing pod suspended above the mangrove tidal waters.'
   },
@@ -394,7 +395,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '3 hours',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['25m high suspension walk', 'Wild long-tailed macaques & flying lemurs', 'Cool forest canopy breeze'],
     photoSpotTip: 'Mid-point on the suspension bridge looking across the endless ocean of green treetops toward the water.'
   },
@@ -419,7 +420,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2 hours',
     crowdLevel: 'Lively',
     admission: 'Free',
-    imageUrl: '/images/landmark_tiong_bahru_cafe_1791208125334.jpg',
+    imageUrl: '',
     highlights: ['Sheltered five-foot way walkways', 'Vintage spiral backstair murals', 'Independent bookshops & bakeries'],
     photoSpotTip: 'Look for the horse-shoe block courtyard at Moh Guan Terrace for spiral staircase geometry.'
   },
@@ -442,7 +443,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1.5 hours',
     crowdLevel: 'Lively',
     admission: 'Free',
-    imageUrl: '/images/landmark_tan_teng_niah_villa_1791209261138.jpg',
+    imageUrl: '',
     highlights: ['Massive multi-storey Aztec street murals', 'Independent local designer clothing', 'Boutique coffee bars'],
     photoSpotTip: 'The multi-storey Piedra Negra mural at the corner of Haji Lane and Beach Road.'
   },
@@ -465,7 +466,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1.5 hours',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/landmark_tiong_bahru_cafe_1791208125334.jpg',
+    imageUrl: '',
     highlights: ['Handmade traditional Ang Ku Kueh', 'Covered five-foot ways', 'Heritage barber and dry cleaners beside hipster cafes'],
     photoSpotTip: 'The nostalgic vintage blue tiled corridors and traditional glass showcase counters.'
   },
@@ -488,7 +489,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2 hours',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['Air-conditioned indoor art exhibitions', 'Rain-sheltered connecting paths', 'Jungle craft beer gardens'],
     photoSpotTip: 'Minimalist gallery walls contrasting with wild tropical ferns outside tall French windows.'
   },
@@ -511,7 +512,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2 hours',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/landmark_tiong_bahru_cafe_1791208125334.jpg',
+    imageUrl: '',
     highlights: ['Sim Kwong Ho relief animal plasterwork', 'Sun Yat Sen Nanyang Memorial Hall', 'Historic pastry bakeries'],
     photoSpotTip: 'The 1928 Art Deco shophouse facade featuring European plaster angels alongside Chinese mythological bats.'
   },
@@ -536,7 +537,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '3 hours',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/landmark_southern_ridges_walk_1791208114869.jpg',
+    imageUrl: '',
     highlights: ['20m Jejawi observation tower', 'Wild fiddler crabs & mudskippers', 'Bumboat sea crossing adventure'],
     photoSpotTip: 'The 20-meter high Jejawi viewing tower looking over the canopy towards the Johor Strait.'
   },
@@ -559,7 +560,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '4 hours',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/landmark_southern_ridges_walk_1791208114869.jpg',
+    imageUrl: '',
     highlights: ['Untouched white sand crescent bay', 'Swimming in gentle calm lagoon', 'Scenic boat ride across Singapore harbor'],
     photoSpotTip: 'The causeway bridge connecting St John’s and Lazarus with turquoise water on both sides.'
   },
@@ -582,7 +583,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '1.5 hours',
     crowdLevel: 'Quiet',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['Authentic WWII 6-pounder artillery gun', 'Batu Berlayar red sea beacon', 'Direct coastal breeze walk'],
     photoSpotTip: 'Looking through the observation slit of the concrete pillbox out towards the open sea.'
   },
@@ -605,7 +606,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2 hours',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/landmark_southern_ridges_walk_1791208114869.jpg',
+    imageUrl: '',
     highlights: ['Cantilevered boardwalk over ocean boulders', 'Stilt kelong walk over water', 'World-famous Changi Village Nasi Lemak'],
     photoSpotTip: 'The stilt section of Kelong Walk facing west during golden hour sunset.'
   },
@@ -628,7 +629,7 @@ export const CURATED_HIDDEN_GEMS: Landmark[] = [
     recommendedDuration: '2.5 hours',
     crowdLevel: 'Moderate',
     admission: 'Free',
-    imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
+    imageUrl: '',
     highlights: ['Raw Casuarina forest paths', 'Wild smooth-coated otters', 'Bicycle rental trail from Punggol Settlement'],
     photoSpotTip: 'The long straight gravel path with tall symmetrical Casuarina trees forming a natural leafy cathedral.'
   }
@@ -650,10 +651,16 @@ const uniqueStbAttractions = STB_TOURIST_ATTRACTIONS.filter((stb) => {
   });
 });
 
-export const SINGAPORE_LANDMARKS: Landmark[] = [
-  ...CURATED_HIDDEN_GEMS,
-  ...uniqueStbAttractions
-];
+// Real, freely licensed photos (Wikimedia Commons) where one was verified for the place;
+// otherwise no photo, so a place never shows a picture of somewhere else.
+const withPhoto = (lm: Landmark): Landmark => {
+  const image = LANDMARK_IMAGES[lm.id];
+  if (!image) return { ...lm, imageUrl: '' };
+  const { url, author, license, licenseUrl, sourceUrl } = image;
+  return { ...lm, imageUrl: url, imageCredit: { author, license, licenseUrl, sourceUrl } };
+};
+
+export const SINGAPORE_LANDMARKS: Landmark[] = [...CURATED_HIDDEN_GEMS, ...uniqueStbAttractions].map(withPhoto);
 
 export const POPULAR_START_POINTS = [
   { name: 'Changi Airport Terminal 3', lat: 1.3572, lng: 103.9872, zone: 'Airport' },

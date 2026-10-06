@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Landmark } from '../types';
+import { LandmarkPhoto, PhotoCredit } from './LandmarkPhoto';
 import {
   X,
   MapPin,
@@ -12,7 +13,6 @@ import {
   Sun,
   Sparkles,
   ExternalLink,
-  ImageOff,
   TrainFront,
 } from 'lucide-react';
 
@@ -42,13 +42,7 @@ export const LandmarkDetailModal: React.FC<LandmarkDetailModalProps> = ({
   onCheckWeather,
   onGetDirections,
 }) => {
-  const [imageError, setImageError] = useState(false);
   const isOpen = landmark !== null;
-
-  // The modal stays mounted; reset the photo fallback for each new landmark.
-  useEffect(() => {
-    setImageError(false);
-  }, [landmark?.id]);
 
   // Escape to close + body scroll lock while open
   useEffect(() => {
@@ -91,21 +85,9 @@ export const LandmarkDetailModal: React.FC<LandmarkDetailModalProps> = ({
         {/* Photo */}
         <div className="relative p-2 shrink-0">
           <div className="aspect-16/9 sm:aspect-21/9 rounded-2xl overflow-hidden bg-canvas-soft">
-            {!imageError ? (
-              <img
-                src={landmark.imageUrl}
-                alt={stripSup(landmark.name)}
-                referrerPolicy="no-referrer"
-                onError={() => setImageError(true)}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-mute">
-                <ImageOff className="w-8 h-8" strokeWidth={1.75} aria-hidden="true" />
-                <span className="text-sm">Photo unavailable</span>
-              </div>
-            )}
+            <LandmarkPhoto landmark={landmark} alt={stripSup(landmark.name)} className="w-full h-full" />
           </div>
+          <PhotoCredit landmark={landmark} className="px-2 pt-1.5" />
 
           <button
             type="button"
