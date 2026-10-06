@@ -353,6 +353,30 @@
   background: var(--color-primary);
   border: 1.5px solid var(--color-ink-deep);
 }
+/* NEA 2-hour forecast icons (beneath place pins); wet areas stand out */
+.sg-wx {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-canvas);
+  color: var(--color-body);
+  box-shadow: 0 1px 4px rgb(14 15 12 / 0.2);
+}
+.sg-wx--fair-day {
+  color: var(--color-warning-deep);
+}
+.sg-wx--rain {
+  background: #0b7fae;
+  color: var(--color-canvas);
+}
+.sg-wx--thunder {
+  background: var(--color-ink);
+  color: var(--color-primary);
+}
+
 /* Cluster bubble: how many places sit here; tap to zoom in */
 .sg-cluster {
   position: absolute;

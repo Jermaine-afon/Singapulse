@@ -4,7 +4,8 @@ import L from 'leaflet';
 import Supercluster from 'supercluster';
 import 'leaflet/dist/leaflet.css';
 import { Landmark, StartPoint } from '../types';
-import { Navigation, Sun, Umbrella, X, Info, TrainFront } from 'lucide-react';
+import { Navigation, Sun, Umbrella, X, Info, TrainFront, CloudRain, Loader2 } from 'lucide-react';
+import { fetchRainForecast, isWet, type ForecastKind, type RainForecast } from '../services/rainForecastService';
 
 interface InteractiveMapProps {
   landmarks: Landmark[];
@@ -90,6 +91,53 @@ const startIcon = L.divIcon({
   iconAnchor: [7, 7],
   tooltipAnchor: [0, -8],
 });
+
+// Weather glyphs for the NEA forecast layer (lucide outlines, inlined for Leaflet's HTML icons)
+const WX_GLYPHS: Record<ForecastKind, string> = {
+  'fair-day':
+    '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
+  'fair-night': '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+  cloudy: '<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>',
+  rain: '<path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 14v6M8 14v6M12 16v6"/>',
+  thunder: '<path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"/><path d="m13 12-3 5h4l-3 5"/>',
+  haze: '<path d="M16 13a4 4 0 0 0-8 0M12 5V2.5M5.2 6.2l1.4 1.4M17.4 7.6l1.4-1.4M2 13h2M20 13h2M22 17H2M22 21H2"/>',
+};
+
+const wxIcon = (kind: ForecastKind) => {
+  const key = `wx|${kind}`;
+  let icon = iconCache.get(key);
+  if (!icon) {
+    // Rain and thunder are the point of the layer, so they're full size; cloud and haze stay small
+    const size = isWet(kind) ? 30 : 22;
+    const glyph = isWet(kind) ? 16 : 12;
+    icon = L.divIcon({
+      className: 'sg-pin',
+      html: `<span class="sg-wx sg-wx--${kind}"><svg viewBox="0 0 24 24" width="${glyph}" height="${glyph}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${WX_GLYPHS[kind]}</svg></span>`,
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
+    });
+    iconCache.set(key, icon);
+  }
+  return icon;
+};
+
+/**
+ * NEA's 2-hour forecast drawn beneath the place pins. Clear areas get no icon (the summary
+ * already says how many are dry), so the areas that matter — rain and thunder — stand out.
+ */
+const RainForecastLayer: React.FC<{ forecast: RainForecast }> = ({ forecast }) => (
+  <>
+    {forecast.areas
+      .filter((a) => a.kind !== 'fair-day' && a.kind !== 'fair-night')
+      .map((a) => (
+      <Marker key={a.area} position={[a.lat, a.lng]} icon={wxIcon(a.kind)} zIndexOffset={-1000} keyboard={false}>
+        <Tooltip direction="top" offset={[0, -14]} className="sg-pin-label">
+          {a.area}: {a.forecast}
+        </Tooltip>
+      </Marker>
+      ))}
+  </>
+);
 
 // ---------- Map behaviour ----------
 
@@ -231,6 +279,28 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
 }) => {
   const [categories, setCategories] = useState<Category[]>([]); // empty = all
   const [region, setRegion] = useState<string>('All');
+  const [showRain, setShowRain] = useState(false);
+  const [rain, setRain] = useState<RainForecast | null>(null);
+  const [rainStatus, setRainStatus] = useState<'idle' | 'loading' | 'error'>('idle');
+
+  // Load NEA's forecast the first time the layer is switched on (the service caches it for 10 min)
+  useEffect(() => {
+    if (!showRain) return;
+    let cancelled = false;
+    setRainStatus('loading');
+    fetchRainForecast()
+      .then((value) => {
+        if (cancelled) return;
+        setRain(value);
+        setRainStatus('idle');
+      })
+      .catch(() => !cancelled && setRainStatus('error'));
+    return () => {
+      cancelled = true;
+    };
+  }, [showRain]);
+
+  const wetAreas = rain ? rain.areas.filter((a) => isWet(a.kind)).length : 0;
   // The card opens only after the visitor picks a place here (not for the app's default selection)
   const [cardOpen, setCardOpen] = useState(false);
   const initialSelectedId = useRef(selectedLandmark?.id);
@@ -279,7 +349,11 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <button type="button" onClick={() => setShowRain((v) => !v)} aria-pressed={showRain} className="chip">
+            <CloudRain className="w-4 h-4" aria-hidden="true" />
+            Rain forecast
+          </button>
           <label className="sr-only" htmlFor="map-region">
             Area
           </label>
@@ -319,12 +393,37 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
             </Tooltip>
           </Marker>
 
+          {showRain && rain && <RainForecastLayer forecast={rain} />}
+
           <ClusteredPins
             landmarks={visible}
             selectedId={selectedLandmark && visible.some((lm) => lm.id === selectedLandmark.id) ? selectedLandmark.id : null}
             onSelect={onSelectLandmark}
           />
         </MapContainer>
+
+        {/* Forecast summary: what the icons mean and when they're valid */}
+        {showRain && (
+          <div className="absolute left-16 right-4 top-4 sm:right-auto sm:max-w-md z-[1000] rounded-2xl bg-canvas px-4 py-2.5 text-sm text-body shadow-[0_2px_8px_rgb(14_15_12/0.12)]">
+            {rainStatus === 'loading' && !rain ? (
+              <span className="flex items-center gap-2">
+                <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+                Loading NEA forecast…
+              </span>
+            ) : rainStatus === 'error' && !rain ? (
+              <span>NEA's forecast isn't available right now. Try again in a few minutes.</span>
+            ) : rain ? (
+              <span>
+                <span className="font-semibold text-ink">
+                  {wetAreas === 0
+                    ? 'No rain expected anywhere'
+                    : `Rain expected in ${wetAreas} of ${rain.areas.length} areas`}
+                </span>
+                {' · '}NEA 2-hour forecast{rain.validText ? `, ${rain.validText}` : ''}
+              </span>
+            ) : null}
+          </div>
+        )}
 
         {visible.length === 0 && (
           <div className="absolute inset-x-4 top-4 z-[1000] mx-auto max-w-sm rounded-2xl bg-canvas px-4 py-3 text-sm text-body flex items-center gap-2">
