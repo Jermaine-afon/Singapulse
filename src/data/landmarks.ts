@@ -1,5 +1,5 @@
-import { Landmark } from '../types';
-import { STB_TOURIST_ATTRACTIONS } from './stbAttractions';
+import type { Landmark } from '../types';
+import { STB_TOURIST_ATTRACTIONS } from './stbAttractions.js';
 
 export const CURATED_HIDDEN_GEMS: Landmark[] = [
   // --- 1. ARCHITECTURE ---

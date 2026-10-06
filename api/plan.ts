@@ -2,7 +2,7 @@
  * Vercel Serverless Function: POST /api/plan
  * Generates or revises an AI itinerary with DeepSeek.
  */
-import { generatePlan, PlannerError } from '../server/planner';
+import { generatePlan, PlannerError } from '../server/planner.js';
 
 export default async function handler(req: any, res: any) {
   res.setHeader('Content-Type', 'application/json');

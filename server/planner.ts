@@ -4,7 +4,7 @@
  *
  * DeepSeek API is OpenAI-compatible: https://api-docs.deepseek.com/
  */
-import { SINGAPORE_LANDMARKS } from '../src/data/landmarks';
+import { SINGAPORE_LANDMARKS } from '../src/data/landmarks.js';
 import type {
   ItineraryPlan,
   PlanRequest,
