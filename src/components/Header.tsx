@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bookmark, Compass, CloudSun, MapPin, KeyRound } from 'lucide-react';
+import { Bookmark, Compass, CloudSun, MapPin } from 'lucide-react';
 
 interface HeaderProps {
   activeTab: 'explore' | 'weather' | 'map';
@@ -7,7 +7,6 @@ interface HeaderProps {
   savedCount: number;
   onOpenItinerary: () => void;
   onOpenQuickPlanner: () => void;
-  onOpenOneMapSettings?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -16,7 +15,6 @@ export const Header: React.FC<HeaderProps> = ({
   savedCount,
   onOpenItinerary,
   onOpenQuickPlanner,
-  onOpenOneMapSettings,
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
@@ -87,19 +85,8 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </nav>
 
-        {/* Zone 3: 1-2 primary actions + OneMap credentials trigger */}
+        {/* Zone 3: 1-2 primary actions */}
         <div className="flex items-center gap-2.5">
-          {onOpenOneMapSettings && (
-            <button
-              onClick={onOpenOneMapSettings}
-              className="cursor-pointer px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap"
-              title="OneMap Token and Account Settings"
-            >
-              <KeyRound className="w-3.5 h-3.5 text-emerald-600" />
-              <span className="hidden sm:inline">OneMap Token</span>
-            </button>
-          )}
-
           <button
             onClick={onOpenItinerary}
             className="md:hidden p-2 text-slate-600 hover:text-slate-900 relative"

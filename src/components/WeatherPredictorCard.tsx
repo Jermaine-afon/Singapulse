@@ -498,8 +498,8 @@ export const WeatherPredictorCard: React.FC<WeatherPredictorCardProps> = ({
                   • <code className="text-sky-300 font-mono">routingsvc/route</code> & <code className="text-sky-300 font-mono">revgeocode</code>: Require an Authorization Bearer token.<br />
                   • You obtain the token by posting email & password to <code className="text-slate-300 font-mono">getToken</code> (lasts 72 hours).
                 </p>
-                <div className="text-[11px] text-amber-200 font-medium">
-                  Status: 🟡 Live Search active! Token can be added in the OneMap Token dialog.
+                <div className="text-[11px] text-emerald-300 font-medium">
+                  Status: 🟢 Live Search & Singapore Geocoding active.
                 </div>
               </div>
 

@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Landmark, RouteDetail } from '../types';
 import { calculateMockRoute } from '../data/mockRouteEngine';
 import { POPULAR_START_POINTS } from '../data/landmarks';
-import {
-  getStoredOneMapToken,
-  setStoredOneMapToken,
-  removeStoredOneMapToken,
-  mintOneMapToken,
-  fetchOneMapRoute
-} from '../services/oneMapService';
 import {
   X,
   Navigation,
@@ -20,12 +13,7 @@ import {
   ShieldCheck,
   CheckCircle2,
   Clock,
-  MapPin,
-  KeyRound,
-  Lock,
-  Unlock,
-  AlertCircle,
-  Loader2
+  MapPin
 } from 'lucide-react';
 
 interface RouteModalProps {
@@ -42,62 +30,11 @@ export const RouteModal: React.FC<RouteModalProps> = ({
   onStartPointChange,
 }) => {
   const [mode, setMode] = useState<'walk' | 'pt' | 'cycle' | 'drive'>('walk');
-  const [showTokenPanel, setShowTokenPanel] = useState(false);
-  const [tokenInput, setTokenInput] = useState('');
-  const [emailInput, setEmailInput] = useState('');
-  const [passwordInput, setPasswordInput] = useState('');
-  const [hasToken, setHasToken] = useState(false);
-  const [isMinting, setIsMinting] = useState(false);
-  const [tokenMessage, setTokenMessage] = useState<string | null>(null);
-
-  useEffect(() => {
-    const existing = getStoredOneMapToken();
-    if (existing) {
-      setHasToken(true);
-      setTokenInput(existing);
-    }
-  }, []);
 
   if (!landmark) return null;
 
   // Base route calculation
   const route: RouteDetail = calculateMockRoute(userStartPoint, landmark, mode);
-
-  const handleSaveToken = () => {
-    if (tokenInput.trim()) {
-      setStoredOneMapToken(tokenInput.trim());
-      setHasToken(true);
-      setTokenMessage('OneMap token saved successfully (valid for 3 days)!');
-      setTimeout(() => setTokenMessage(null), 3000);
-    }
-  };
-
-  const handleClearToken = () => {
-    removeStoredOneMapToken();
-    setHasToken(false);
-    setTokenInput('');
-    setTokenMessage('Token cleared. Using built-in high-accuracy Singapore routing model.');
-    setTimeout(() => setTokenMessage(null), 3000);
-  };
-
-  const handleMintToken = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!emailInput || !passwordInput) return;
-    setIsMinting(true);
-    setTokenMessage(null);
-    try {
-      const token = await mintOneMapToken(emailInput, passwordInput);
-      setHasToken(true);
-      setTokenInput(token);
-      setTokenMessage('New OneMap token minted successfully! Valid for 72 hours.');
-      setEmailInput('');
-      setPasswordInput('');
-    } catch (err: any) {
-      setTokenMessage(err.message || 'Failed to mint token. Please verify email/password.');
-    } finally {
-      setIsMinting(false);
-    }
-  };
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
@@ -130,22 +67,10 @@ export const RouteModal: React.FC<RouteModalProps> = ({
           
           {/* Start Point Input */}
           <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-slate-500" />
-                <span>Starting Location / Accommodation</span>
-              </label>
-              
-              {/* Token Configuration Status toggle */}
-              <button
-                type="button"
-                onClick={() => setShowTokenPanel(!showTokenPanel)}
-                className="cursor-pointer text-[11px] font-medium text-emerald-700 hover:underline flex items-center gap-1"
-              >
-                <KeyRound className="w-3 h-3" />
-                <span>{hasToken ? 'OneMap Token Active (3-Day)' : 'Configure OneMap 3-Day Token'}</span>
-              </button>
-            </div>
+            <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-slate-500" />
+              <span>Starting Location / Accommodation</span>
+            </label>
 
             <div className="flex gap-2">
               <select
@@ -161,90 +86,6 @@ export const RouteModal: React.FC<RouteModalProps> = ({
               </select>
             </div>
           </div>
-
-          {/* Optional OneMap Token Drawer/Panel */}
-          {showTokenPanel && (
-            <div className="p-4 bg-white rounded-xl border border-slate-200 space-y-3 text-xs">
-              <div className="flex items-start justify-between">
-                <div>
-                  <h4 className="font-bold text-slate-800 flex items-center gap-1.5">
-                    <KeyRound className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>OneMap Routing Token Manager</span>
-                  </h4>
-                  <p className="text-[11px] text-slate-500 mt-0.5">
-                    Unlike the Data.gov.sg weather APIs (which need 0 keys), OneMap routing officially requires an Authorization token generated via <code className="text-emerald-700">/api/auth/post/getToken</code> (valid for 3 days).
-                  </p>
-                </div>
-              </div>
-
-              {tokenMessage && (
-                <div className="p-2.5 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-lg text-xs">
-                  {tokenMessage}
-                </div>
-              )}
-
-              {/* Paste Existing Token Option */}
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold text-slate-700">
-                  Paste 3-Day OneMap Token Directly:
-                </label>
-                <div className="flex gap-2">
-                  <input
-                    type="password"
-                    value={tokenInput}
-                    onChange={(e) => setTokenInput(e.target.value)}
-                    placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6..."
-                    className="flex-1 text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 font-mono"
-                  />
-                  <button
-                    onClick={handleSaveToken}
-                    className="cursor-pointer px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium text-xs whitespace-nowrap"
-                  >
-                    Save Token
-                  </button>
-                  {hasToken && (
-                    <button
-                      onClick={handleClearToken}
-                      className="cursor-pointer px-2 py-1.5 text-rose-600 hover:bg-rose-50 rounded-lg text-xs"
-                    >
-                      Clear
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {/* Or Mint New Token Form */}
-              <form onSubmit={handleMintToken} className="pt-2 border-t border-slate-100 space-y-2">
-                <div className="text-[11px] font-semibold text-slate-700">
-                  Or Mint Token with OneMap Account:
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  <input
-                    type="email"
-                    placeholder="OneMap registered email"
-                    value={emailInput}
-                    onChange={(e) => setEmailInput(e.target.value)}
-                    className="text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5"
-                  />
-                  <input
-                    type="password"
-                    placeholder="OneMap password"
-                    value={passwordInput}
-                    onChange={(e) => setPasswordInput(e.target.value)}
-                    className="text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isMinting || !emailInput || !passwordInput}
-                  className="cursor-pointer px-3 py-1.5 bg-slate-900 hover:bg-slate-800 disabled:opacity-50 text-white rounded-lg text-xs font-medium flex items-center gap-1.5"
-                >
-                  {isMinting ? <Loader2 className="w-3 h-3 animate-spin" /> : <Lock className="w-3 h-3 text-emerald-400" />}
-                  <span>Mint 3-Day Token via API</span>
-                </button>
-              </form>
-            </div>
-          )}
 
           {/* Mode Switcher Tabs */}
           <div className="grid grid-cols-4 gap-2">

@@ -10,7 +10,6 @@ import { InteractiveMap } from './components/InteractiveMap';
 import { LandmarkExplorer } from './components/LandmarkExplorer';
 import { LandmarkDetailModal } from './components/LandmarkDetailModal';
 import { RouteModal } from './components/RouteModal';
-import { OneMapSettingsModal } from './components/OneMapSettingsModal';
 import { ItineraryDrawer } from './components/ItineraryDrawer';
 import { Footer } from './components/Footer';
 import { Compass, Sparkles, CloudSun, MapPin, Search } from 'lucide-react';
@@ -41,7 +40,6 @@ export default function App() {
   const [routeModalLandmark, setRouteModalLandmark] = useState<Landmark | null>(null);
   const [userStartPoint, setUserStartPoint] = useState<string>(POPULAR_START_POINTS[1].name);
   const [isItineraryOpen, setIsItineraryOpen] = useState(false);
-  const [isOneMapModalOpen, setIsOneMapModalOpen] = useState(false);
 
   // Selected Landmark for Map focus
   const [mapSelectedLandmark, setMapSelectedLandmark] = useState<Landmark | null>(
@@ -218,7 +216,6 @@ export default function App() {
         savedCount={savedIds.length}
         onOpenItinerary={() => setIsItineraryOpen(true)}
         onOpenQuickPlanner={handleOpenQuickPlanner}
-        onOpenOneMapSettings={() => setIsOneMapModalOpen(true)}
       />
 
       {/* 2. Hero Banner (Always visible at top with Destination / Time input & Live OneMap Search) */}
@@ -395,18 +392,12 @@ export default function App() {
         onGetDirections={handleGetDirections}
       />
 
-      {/* 4. OneMap Route Directions Modal with Token Manager */}
+      {/* 4. OneMap Route Directions Modal */}
       <RouteModal
         landmark={routeModalLandmark}
         onClose={() => setRouteModalLandmark(null)}
         userStartPoint={userStartPoint}
         onStartPointChange={setUserStartPoint}
-      />
-
-      {/* 4b. Dedicated OneMap Credentials & Token Manager Modal */}
-      <OneMapSettingsModal
-        isOpen={isOneMapModalOpen}
-        onClose={() => setIsOneMapModalOpen(false)}
       />
 
       {/* 5. Itinerary Drawer */}
