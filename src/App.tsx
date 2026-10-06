@@ -2,7 +2,7 @@ import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react'
 import { SINGAPORE_LANDMARKS, POPULAR_START_POINTS } from './data/landmarks';
 import { predictSingaporeWeather, getFourDayForecast } from './data/mockWeatherEngine';
 import { fetchLiveSingaporeWeather, LiveWeatherResponse, getSingaporeCurrentTime } from './services/liveWeatherService';
-import { Landmark, WeatherCondition, DayForecast } from './types';
+import { Landmark, WeatherCondition, DayForecast, StartPoint } from './types';
 import { Header, type AppTab } from './components/Header';
 import { AiPlanner } from './components/AiPlanner';
 import { HeroBanner } from './components/HeroBanner';
@@ -13,6 +13,31 @@ import { LandmarkDetailModal } from './components/LandmarkDetailModal';
 import { RouteModal } from './components/RouteModal';
 import { ItineraryDrawer } from './components/ItineraryDrawer';
 import { Footer } from './components/Footer';
+
+const START_POINT_KEY = 'singapulse_start_point_v1';
+const DEFAULT_START_POINT: StartPoint = (() => {
+  const { name, lat, lng } = POPULAR_START_POINTS[1];
+  return { name, lat, lng };
+})();
+
+// Accept only a stored point that is a real place inside Singapore
+function loadStartPoint(): StartPoint {
+  try {
+    const raw = localStorage.getItem(START_POINT_KEY);
+    if (raw) {
+      const p = JSON.parse(raw);
+      const inSingapore =
+        typeof p?.lat === 'number' && typeof p?.lng === 'number' &&
+        p.lat > 1.1 && p.lat < 1.5 && p.lng > 103.5 && p.lng < 104.1;
+      if (typeof p?.name === 'string' && p.name.trim() && inSingapore) {
+        return { name: p.name.slice(0, 120), lat: p.lat, lng: p.lng };
+      }
+    }
+  } catch {
+    // Corrupt or inaccessible storage — fall back to the default
+  }
+  return DEFAULT_START_POINT;
+}
 
 const SAVED_TRAIL_KEY = 'singapulse_saved_trail_v1';
 // First-time visitors start with two sample gems; after that the stored list wins (even if empty)
@@ -63,7 +88,15 @@ export default function App() {
   // Modals & Navigation state
   const [detailModalLandmark, setDetailModalLandmark] = useState<Landmark | null>(null);
   const [routeModalLandmark, setRouteModalLandmark] = useState<Landmark | null>(null);
-  const [userStartPoint, setUserStartPoint] = useState<string>(POPULAR_START_POINTS[1].name);
+  const [userStartPoint, setUserStartPoint] = useState<StartPoint>(loadStartPoint);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(START_POINT_KEY, JSON.stringify(userStartPoint));
+    } catch {
+      // Storage unavailable — the start point just won't persist
+    }
+  }, [userStartPoint]);
   const [isItineraryOpen, setIsItineraryOpen] = useState(false);
 
   // Selected Landmark for Map focus
@@ -367,7 +400,7 @@ export default function App() {
                 }}
                 onGetDirections={handleGetDirections}
                 onCheckWeather={handleCheckWeatherForLandmark}
-                userStartPointName={userStartPoint}
+                startPoint={userStartPoint}
               />
             </div>
           </section>

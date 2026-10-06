@@ -2,8 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Circle, Polyline, Tooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Landmark } from '../types';
-import { POPULAR_START_POINTS } from '../data/landmarks';
+import { Landmark, StartPoint } from '../types';
 import { Navigation, CloudRain, Sun, Umbrella } from 'lucide-react';
 
 interface InteractiveMapProps {
@@ -12,7 +11,7 @@ interface InteractiveMapProps {
   onSelectLandmark: (landmark: Landmark) => void;
   onGetDirections: (landmark: Landmark) => void;
   onCheckWeather: (landmark: Landmark) => void;
-  userStartPointName: string;
+  startPoint: StartPoint;
 }
 
 // OneMap (Singapore Land Authority) basemap — public tiles, no token required.
@@ -26,8 +25,6 @@ const ONEMAP_ATTRIBUTION =
 const SG_CENTER: [number, number] = [1.3521, 103.8198];
 const SG_MAX_BOUNDS = L.latLngBounds([1.144, 103.535], [1.494, 104.1]);
 
-// Fallback start point (Marina Bay / Downtown baseline)
-const DEFAULT_START: [number, number] = [1.2834, 103.8598];
 
 const getPinColor = (category: Landmark['category']) => {
   switch (category) {
@@ -118,7 +115,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
   onSelectLandmark,
   onGetDirections,
   onCheckWeather,
-  userStartPointName,
+  startPoint,
 }) => {
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
   const [showRadar, setShowRadar] = useState(true);
@@ -129,8 +126,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
     [landmarks, selectedRegion]
   );
 
-  const startPoint = POPULAR_START_POINTS.find((sp) => sp.name === userStartPointName);
-  const startCoords: [number, number] = startPoint ? [startPoint.lat, startPoint.lng] : DEFAULT_START;
+  const startCoords: [number, number] = [startPoint.lat, startPoint.lng];
 
   return (
     <section aria-labelledby="map-heading" className="space-y-6">
@@ -228,7 +224,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
               />
               <Marker position={startCoords} icon={startIcon} interactive={false}>
                 <Tooltip permanent direction="top" offset={[0, -6]} className="sg-start-label">
-                  Start: {userStartPointName}
+                  Start: {startPoint.name}
                 </Tooltip>
               </Marker>
             </>

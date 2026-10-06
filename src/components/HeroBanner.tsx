@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, Loader2, CloudSun } from 'lucide-react';
 import { Landmark } from '../types';
-import { searchOneMap, OneMapSearchResult } from '../services/oneMapService';
+import { searchOneMap, OneMapSearchResult, getOneMapResultName } from '../services/oneMapService';
 
 interface HeroBannerProps {
   landmarks: Landmark[];
@@ -15,10 +15,6 @@ interface HeroBannerProps {
   onQuickSelectLandmark: (landmark: Landmark) => void;
   isLiveWeatherActive: boolean;
 }
-
-// OneMap uses the string "NIL" for missing fields
-const getOneMapResultName = (res: OneMapSearchResult) =>
-  res.BUILDING && res.BUILDING !== 'NIL' ? res.BUILDING : res.SEARCHVAL;
 
 const QUICK_SLOTS: { time: string; label: string }[] = [
   { time: '08:30', label: 'Morning' },

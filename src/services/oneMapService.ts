@@ -43,6 +43,24 @@ export function removeStoredOneMapToken() {
   } catch {}
 }
 
+// Short tokens that read better in capitals (OneMap returns names in ALL CAPS)
+const KEEP_UPPERCASE = new Set(['MRT', 'LRT', 'HDB', 'NTU', 'NUS', 'SMU', 'SUTD', 'CBD', 'YMCA', 'YWCA', 'SAFRA', 'NEA', 'UOB', 'OCBC', 'DBS']);
+
+/** "TANJONG PAGAR MRT STATION (EW15)" -> "Tanjong Pagar MRT Station (EW15)" */
+export function toDisplayCase(text: string): string {
+  return text.toLowerCase().replace(/[a-z0-9][a-z0-9']*/g, (word) => {
+    const upper = word.toUpperCase();
+    // Keep acronyms and station/unit codes like EW15, #01-23 parts, 2A
+    if (KEEP_UPPERCASE.has(upper) || (/\d/.test(word) && /[a-z]/.test(word))) return upper;
+    return word[0].toUpperCase() + word.slice(1);
+  });
+}
+
+// OneMap uses the string "NIL" for missing fields
+export function getOneMapResultName(res: OneMapSearchResult): string {
+  return res.BUILDING && res.BUILDING !== 'NIL' ? res.BUILDING : res.SEARCHVAL;
+}
+
 /**
  * Searches OneMap Elastic Search API.
  * Even without token, it returns real search results from Singapore's official master map!

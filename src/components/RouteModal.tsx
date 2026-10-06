@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Landmark, RouteDetail } from '../types';
+import { Landmark, RouteDetail, StartPoint } from '../types';
 import { calculateMockRoute } from '../data/mockRouteEngine';
-import { POPULAR_START_POINTS } from '../data/landmarks';
+import { StartPointPicker } from './StartPointPicker';
 import { X, Footprints, Train, Bike, Car, Umbrella, Info } from 'lucide-react';
 
 interface RouteModalProps {
   landmark: Landmark | null;
   onClose: () => void;
-  userStartPoint: string;
-  onStartPointChange: (name: string) => void;
+  userStartPoint: StartPoint;
+  onStartPointChange: (point: StartPoint) => void;
 }
 
 type Mode = 'walk' | 'pt' | 'cycle' | 'drive';
@@ -47,7 +47,7 @@ export const RouteModal: React.FC<RouteModalProps> = ({
   if (!landmark) return null;
 
   // Base route calculation
-  const route: RouteDetail = calculateMockRoute(userStartPoint, landmark, mode);
+  const route: RouteDetail = calculateMockRoute(userStartPoint.name, landmark, mode);
 
   return (
     <div
@@ -86,23 +86,7 @@ export const RouteModal: React.FC<RouteModalProps> = ({
         <div className="overflow-y-auto">
           {/* Start point & mode */}
           <div className="px-6 pb-5 space-y-4">
-            <div>
-              <label htmlFor="route-start-point" className="field-label">
-                Starting from
-              </label>
-              <select
-                id="route-start-point"
-                value={userStartPoint}
-                onChange={(e) => onStartPointChange(e.target.value)}
-                className="input"
-              >
-                {POPULAR_START_POINTS.map((sp) => (
-                  <option key={sp.name} value={sp.name}>
-                    {sp.name} ({sp.zone})
-                  </option>
-                ))}
-              </select>
-            </div>
+            <StartPointPicker value={userStartPoint} onChange={onStartPointChange} />
 
             <div className="flex flex-wrap gap-2" role="group" aria-label="Travel mode">
               {MODES.map(({ id, label, Icon }) => (

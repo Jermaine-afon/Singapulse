@@ -1,3 +1,10 @@
+/** Where the visitor starts their day: a preset or any OneMap search result */
+export interface StartPoint {
+  name: string;
+  lat: number;
+  lng: number;
+}
+
 export type ShelterLevel = 'full_shelter' | 'partial_shelter' | 'open_air';
 export type LandmarkCategory = 'architecture' | 'greenery' | 'heritage' | 'eats_culture' | 'coastal';
 

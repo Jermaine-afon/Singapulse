@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Landmark } from '../types';
+import { Landmark, StartPoint } from '../types';
 import { ItineraryPlan, PlannerChatMessage, PlannerPace, PlanStop } from '../types/planner';
-import { POPULAR_START_POINTS } from '../data/landmarks';
 import { requestPlan } from '../services/plannerService';
+import { StartPointPicker } from './StartPointPicker';
 import {
   ArrowRight,
   Loader2,
@@ -24,8 +24,8 @@ interface AiPlannerProps {
   savedIds: string[];
   selectedDate: string;
   onDateChange: (date: string) => void;
-  startPoint: string;
-  onStartPointChange: (name: string) => void;
+  startPoint: StartPoint;
+  onStartPointChange: (point: StartPoint) => void;
   weatherSummary: string;
   onSelectForDetails: (landmark: Landmark) => void;
   onShowOnMap: (landmark: Landmark) => void;
@@ -110,7 +110,7 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
     endTime,
     interests,
     pace,
-    startPoint,
+    startPoint: startPoint.name,
     mustVisitIds: includeTrail ? savedLandmarks.map((lm) => lm.id) : [],
     weatherSummary,
   };
@@ -228,16 +228,7 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
                 <p className="-mt-2 text-sm font-semibold text-negative-darkest">End time must be after start time.</p>
               )}
 
-              <label className="block">
-                <span className="field-label">Starting from</span>
-                <select value={startPoint} onChange={(e) => onStartPointChange(e.target.value)} className="input">
-                  {POPULAR_START_POINTS.map((sp) => (
-                    <option key={sp.name} value={sp.name}>
-                      {sp.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              <StartPointPicker value={startPoint} onChange={onStartPointChange} />
 
               <fieldset>
                 <legend className="field-label">Interests</legend>
