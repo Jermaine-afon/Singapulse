@@ -59,6 +59,9 @@ export default defineConfig(({mode}) => {
                   .then((r) => ({ ok: r.ok, status: r.status }))
                   .catch(() => ({ ok: false, status: 500 }));
 
+                const { checkDeepSeek } = await server.ssrLoadModule('/server/deepseek.ts');
+                const deepSeek = await checkDeepSeek(env.DEEPSEEK_API_KEY, env.DEEPSEEK_MODEL);
+
                 res.setHeader('Content-Type', 'application/json');
                 res.end(
                   JSON.stringify({
@@ -78,6 +81,7 @@ export default defineConfig(({mode}) => {
                         httpStatus: testOneMap.status,
                         requiresKey: '3-day token for routing; public search for geocoding',
                       },
+                      deepSeek,
                     },
                   })
                 );

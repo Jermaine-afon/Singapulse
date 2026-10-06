@@ -5,6 +5,7 @@
  * DeepSeek API is OpenAI-compatible: https://api-docs.deepseek.com/
  */
 import { SINGAPORE_LANDMARKS } from '../src/data/landmarks.js';
+import { DEEPSEEK_BASE_URL, DEEPSEEK_DEFAULT_MODEL } from './deepseek.js';
 import type {
   ItineraryPlan,
   PlanRequest,
@@ -14,8 +15,8 @@ import type {
   PlannerPreferences,
 } from '../src/types/planner';
 
-const DEEPSEEK_URL = 'https://api.deepseek.com/chat/completions';
-const DEFAULT_MODEL = 'deepseek-flash';
+const DEEPSEEK_URL = `${DEEPSEEK_BASE_URL}/chat/completions`;
+const DEFAULT_MODEL = DEEPSEEK_DEFAULT_MODEL;
 const REQUEST_TIMEOUT_MS = 60_000;
 
 const MAX_MESSAGES = 20;

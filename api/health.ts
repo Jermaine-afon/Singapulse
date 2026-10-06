@@ -1,7 +1,9 @@
 /**
  * Vercel Serverless Function: /api/health
- * Checks live connectivity to Data.gov.sg and OneMap APIs
+ * Checks live connectivity to Data.gov.sg, OneMap and DeepSeek APIs
  */
+import { checkDeepSeek } from '../server/deepseek.js';
+
 export default async function handler(req: any, res: any) {
   // Allow cross-origin requests
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -43,9 +45,12 @@ const oneMapPromise = fetch(
     status: 500,
     error: e.message
   }));
-    const [weatherRes, oneMapRes] = await Promise.all([weatherPromise, oneMapPromise]);
+    // 3. Check DeepSeek key, balance and model (no tokens spent)
+    const deepSeekPromise = checkDeepSeek(process.env.DEEPSEEK_API_KEY, process.env.DEEPSEEK_MODEL);
 
-    const isAllHealthy = weatherRes.ok && oneMapRes.ok;
+    const [weatherRes, oneMapRes, deepSeekRes] = await Promise.all([weatherPromise, oneMapPromise, deepSeekPromise]);
+
+    const isAllHealthy = weatherRes.ok && oneMapRes.ok && deepSeekRes.status === 'connected';
 
     return res.status(200).json({
       status: isAllHealthy ? 'ok' : 'degraded',
@@ -66,7 +71,8 @@ const oneMapPromise = fetch(
           httpStatus: oneMapRes.status || 500,
           requiresKey: 'OneMap access token',
           endpoint: 'https://www.onemap.gov.sg/api/common/elastic/search'
-        }
+        },
+        deepSeek: deepSeekRes
       }
     });
   } catch (error: any) {
