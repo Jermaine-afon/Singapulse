@@ -400,6 +400,7 @@ export default function App() {
                 }}
                 onGetDirections={handleGetDirections}
                 onCheckWeather={handleCheckWeatherForLandmark}
+                onSelectForDetails={(lm) => setDetailModalLandmark(lm)}
                 startPoint={userStartPoint}
               />
             </div>
