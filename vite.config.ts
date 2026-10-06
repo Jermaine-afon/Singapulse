@@ -23,11 +23,26 @@ export default defineConfig(({mode}) => {
               return;
             }
 
-            const { generatePlan, PlannerError } = await server.ssrLoadModule('/server/planner.ts');
+            const { generatePlan, PlannerError, MAX_BODY_BYTES } = await server.ssrLoadModule('/server/planner.ts');
+            const { guardPlanRequest, getRequestMeta } = await server.ssrLoadModule('/server/requestGuard.ts');
             try {
+              // Read headers/IP before the body: stopping the body read early destroys req.socket
+              const meta = getRequestMeta(req.headers, req.socket.remoteAddress);
               const chunks: Buffer[] = [];
-              for await (const chunk of req) chunks.push(chunk as Buffer);
-              const body = JSON.parse(Buffer.concat(chunks).toString('utf8') || '{}');
+              let bodyBytes = 0;
+              for await (const chunk of req) {
+                bodyBytes += (chunk as Buffer).length;
+                if (bodyBytes > MAX_BODY_BYTES) break; // stop reading oversized bodies early
+                chunks.push(chunk as Buffer);
+              }
+              guardPlanRequest({ ...meta, bodyBytes });
+
+              let body: unknown;
+              try {
+                body = JSON.parse(Buffer.concat(chunks).toString('utf8') || '{}');
+              } catch {
+                throw new PlannerError('Request body must be JSON.', 400);
+              }
 
               const result = await generatePlan(body, {
                 apiKey: env.DEEPSEEK_API_KEY,
@@ -99,7 +114,7 @@ export default defineConfig(({mode}) => {
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(import.meta.dirname, '.'),
       },
     },
     server: {

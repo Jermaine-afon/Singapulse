@@ -42,5 +42,5 @@ export interface PlanRequest {
 export interface PlanResponse {
   reply: string;
   plan: ItineraryPlan;
-  droppedStops: number; // stops removed because the AI referenced an unknown landmark
+  warnings: string[]; // what the server had to fix in the AI's plan (unknown landmarks, overlaps, …)
 }

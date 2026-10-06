@@ -3,6 +3,7 @@
  * Generates or revises an AI itinerary with DeepSeek.
  */
 import { generatePlan, PlannerError } from '../server/planner.js';
+import { getRequestMeta, guardPlanRequest } from '../server/requestGuard.js';
 
 export default async function handler(req: any, res: any) {
   res.setHeader('Content-Type', 'application/json');
@@ -12,7 +13,20 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    const meta = getRequestMeta(req.headers, req.socket?.remoteAddress);
+    const contentLength = Number(req.headers['content-length']);
+    const bodyBytes = Number.isFinite(contentLength)
+      ? contentLength
+      : Buffer.byteLength(typeof req.body === 'string' ? req.body : JSON.stringify(req.body ?? ''));
+    guardPlanRequest({ ...meta, bodyBytes });
+
+    let body: unknown;
+    try {
+      body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    } catch {
+      throw new PlannerError('Request body must be JSON.', 400);
+    }
+
     const result = await generatePlan(body, {
       apiKey: process.env.DEEPSEEK_API_KEY,
       model: process.env.DEEPSEEK_MODEL,

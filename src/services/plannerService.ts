@@ -1,5 +1,8 @@
 import type { PlanRequest, PlanResponse } from '../types/planner';
 
+// Slightly longer than the server's 50s DeepSeek budget, so server errors arrive first
+const CLIENT_TIMEOUT_MS = 58_000;
+
 /**
  * Calls the server-side AI planner (/api/plan). The DeepSeek key never reaches the browser.
  */
@@ -10,8 +13,10 @@ export async function requestPlan(request: PlanRequest): Promise<PlanResponse> {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(request),
+      signal: AbortSignal.timeout(CLIENT_TIMEOUT_MS),
     });
-  } catch {
+  } catch (err: any) {
+    if (err?.name === 'TimeoutError') throw new Error('The planner took too long to respond. Please try again.');
     throw new Error('Could not reach the planner. Check your connection and try again.');
   }
 

@@ -80,7 +80,7 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
 
   const [plan, setPlan] = useState<ItineraryPlan | null>(null);
   const [messages, setMessages] = useState<PlannerChatMessage[]>([]);
-  const [droppedStops, setDroppedStops] = useState(0);
+  const [warnings, setWarnings] = useState<string[]>([]);
   const [chatInput, setChatInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -111,7 +111,7 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
     try {
       const res = await requestPlan({ preferences, messages: nextMessages, currentPlan });
       setPlan(res.plan);
-      setDroppedStops(res.droppedStops);
+      setWarnings(res.warnings ?? []);
       setMessages([...nextMessages, { role: 'assistant', content: res.reply }]);
       return true;
     } catch (err: any) {
@@ -124,8 +124,8 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
 
   const handleGenerate = () => {
     if (isLoading || timeWindowInvalid) return;
-    // A fresh plan starts a fresh conversation
-    setMessages([]);
+    // A fresh plan starts a fresh conversation; runPlanner replaces `messages` only on success,
+    // so a failed attempt keeps the existing plan and chat intact
     runPlanner([{ role: 'user', content: 'Plan my day based on my trip preferences.' }], null);
   };
 
@@ -359,12 +359,14 @@ export const AiPlanner: React.FC<AiPlannerProps> = ({
               </button>
             </div>
 
-            {droppedStops > 0 && (
+            {warnings.length > 0 && (
               <div className="mx-5 mt-4 flex items-start gap-2 text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-2.5">
                 <Info className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-                <span>
-                  Removed {droppedStops} suggested stop{droppedStops > 1 ? 's' : ''} that didn't match a Singapulse landmark.
-                </span>
+                <ul className="space-y-0.5">
+                  {warnings.map((warning) => (
+                    <li key={warning}>{warning}</li>
+                  ))}
+                </ul>
               </div>
             )}
 
