@@ -1,6 +1,6 @@
 import React from 'react';
 import { Landmark } from '../types';
-import { X, Trash2, Calendar, Clock, Navigation, Sun, Umbrella, Share2, Check, AlertCircle } from 'lucide-react';
+import { X, Trash2, Calendar, Clock, Navigation, Sun, Umbrella, Share2, Check, AlertCircle, Download, Loader2 } from 'lucide-react';
 
 interface ItineraryDrawerProps {
   isOpen: boolean;
@@ -30,6 +30,7 @@ export const ItineraryDrawer: React.FC<ItineraryDrawerProps> = ({
   selectedTime,
 }) => {
   const [copyState, setCopyState] = React.useState<CopyState>('idle');
+  const [pdfState, setPdfState] = React.useState<'idle' | 'working' | 'failed'>('idle');
   const resetTimer = React.useRef<number | undefined>(undefined);
 
   // Escape to close + body scroll lock while open
@@ -64,6 +65,19 @@ export const ItineraryDrawer: React.FC<ItineraryDrawerProps> = ({
     }
     window.clearTimeout(resetTimer.current);
     resetTimer.current = window.setTimeout(() => setCopyState('idle'), 2000);
+  };
+
+  const handleDownloadPdf = async () => {
+    setPdfState('working');
+    try {
+      // Loaded on demand so the PDF library never slows down the app
+      const { downloadTrailPdf } = await import('../services/trailPdf');
+      await downloadTrailPdf(savedLandmarks);
+      setPdfState('idle');
+    } catch (err) {
+      console.error('Trail PDF failed:', err);
+      setPdfState('failed');
+    }
   };
 
   return (
@@ -204,7 +218,25 @@ export const ItineraryDrawer: React.FC<ItineraryDrawerProps> = ({
 
         {/* Bottom action */}
         {savedLandmarks.length > 0 && (
-          <div className="px-6 py-4 border-t border-canvas-line">
+          <div className="px-6 py-4 border-t border-canvas-line space-y-2">
+            {pdfState === 'failed' && (
+              <p role="alert" className="text-sm text-negative-darkest">
+                Couldn't create the PDF. Check your connection and try again.
+              </p>
+            )}
+            <button
+              type="button"
+              onClick={handleDownloadPdf}
+              disabled={pdfState === 'working'}
+              className="btn btn-primary w-full"
+            >
+              {pdfState === 'working' ? (
+                <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+              ) : (
+                <Download className="w-4 h-4" aria-hidden="true" />
+              )}
+              <span aria-live="polite">{pdfState === 'working' ? 'Preparing PDF…' : 'Download PDF'}</span>
+            </button>
             <button type="button" onClick={handleShare} className="btn btn-secondary w-full">
               {copyState === 'copied' ? (
                 <Check className="w-4 h-4" aria-hidden="true" />
