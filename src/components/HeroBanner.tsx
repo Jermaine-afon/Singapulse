@@ -16,6 +16,10 @@ interface HeroBannerProps {
   isLiveWeatherActive: boolean;
 }
 
+// OneMap uses the string "NIL" for missing fields
+const getOneMapResultName = (res: OneMapSearchResult) =>
+  res.BUILDING && res.BUILDING !== 'NIL' ? res.BUILDING : res.SEARCHVAL;
+
 export const HeroBanner: React.FC<HeroBannerProps> = ({
   landmarks,
   selectedLocation,
@@ -135,7 +139,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                           key={i}
                           type="button"
                           onClick={() => {
-                            onLocationChange(res.BUILDING || res.SEARCHVAL, {
+                            onLocationChange(getOneMapResultName(res), {
                               lat: parseFloat(res.LATITUDE),
                               lng: parseFloat(res.LONGITUDE)
                             });
@@ -146,7 +150,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                           <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                           <div className="truncate">
                             <span className="font-semibold text-slate-800 block truncate">
-                              {res.BUILDING || res.SEARCHVAL}
+                              {getOneMapResultName(res)}
                             </span>
                             <span className="text-[11px] text-slate-500 block truncate">
                               {res.ROAD_NAME} {res.POSTAL !== 'NIL' ? `(${res.POSTAL})` : ''}

@@ -15,6 +15,26 @@ import { ItineraryDrawer } from './components/ItineraryDrawer';
 import { Footer } from './components/Footer';
 import { Compass, Sparkles, CloudSun, MapPin, Search } from 'lucide-react';
 
+const SAVED_TRAIL_KEY = 'singapulse_saved_trail_v1';
+// First-time visitors start with two sample gems; after that the stored list wins (even if empty)
+const DEFAULT_SAVED_IDS = ['fort-canning-tunnel', 'tiong-bahru-art-deco'];
+
+function loadSavedTrail(): string[] {
+  try {
+    const raw = localStorage.getItem(SAVED_TRAIL_KEY);
+    if (raw !== null) {
+      const ids = JSON.parse(raw);
+      if (Array.isArray(ids)) {
+        const knownIds = new Set(SINGAPORE_LANDMARKS.map((lm) => lm.id));
+        return ids.filter((id): id is string => typeof id === 'string' && knownIds.has(id));
+      }
+    }
+  } catch {
+    // Corrupt or inaccessible storage — fall back to defaults
+  }
+  return DEFAULT_SAVED_IDS;
+}
+
 export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>('explore');
   
@@ -30,11 +50,16 @@ export default function App() {
     `${sgTimeInfo.sgHour.toString().padStart(2, '0')}:00`
   );
 
-  // Saved / Bookmarked Landmark IDs
-  const [savedIds, setSavedIds] = useState<string[]>([
-    'fort-canning-tunnel',
-    'tiong-bahru-art-deco'
-  ]);
+  // Saved / Bookmarked Landmark IDs (persisted so My Trail survives reloads)
+  const [savedIds, setSavedIds] = useState<string[]>(loadSavedTrail);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(SAVED_TRAIL_KEY, JSON.stringify(savedIds));
+    } catch {
+      // Storage unavailable (private mode / blocked) — trail just won't persist
+    }
+  }, [savedIds]);
 
   // Modals & Navigation state
   const [detailModalLandmark, setDetailModalLandmark] = useState<Landmark | null>(null);
@@ -143,13 +168,11 @@ export default function App() {
 
   const handleLocationChange = (loc: string, coords?: { lat: number; lng: number }) => {
     setSelectedLocation(loc);
-    const query = loc.toLowerCase();
-    const matched = SINGAPORE_LANDMARKS.find(
-      (lm) =>
-        lm.name.toLowerCase() === query ||
-        query.includes(lm.name.toLowerCase()) ||
-        lm.name.toLowerCase().includes(query)
-    );
+    const query = loc.trim().toLowerCase();
+    if (!query) return; // cleared input — keep the current selection
+
+    // Only an exact name match selects a catalog landmark; partial typing never jumps the map
+    const matched = SINGAPORE_LANDMARKS.find((lm) => lm.name.toLowerCase() === query);
     if (matched) {
       setMapSelectedLandmark(matched);
     } else if (coords) {
@@ -173,7 +196,7 @@ export default function App() {
         recommendedDuration: '1 hour',
         crowdLevel: 'Moderate',
         admission: 'Free',
-        imageUrl: '/src/assets/images/hero_singapore_hidden_garden_1791208088141.jpg',
+        imageUrl: '/images/hero_singapore_hidden_garden_1791208088141.jpg',
         highlights: ['Geocoded destination', 'Live weather sensor point'],
         photoSpotTip: 'Street level panorama'
       });
@@ -362,19 +385,15 @@ export default function App() {
 
                 <div className="flex items-center gap-2 shrink-0">
                   <button
-                    onClick={() => {
-                      const matched = SINGAPORE_LANDMARKS.find((lm) => lm.name === selectedLocation) || SINGAPORE_LANDMARKS[0];
-                      setDetailModalLandmark(matched);
-                    }}
+                    onClick={() => mapSelectedLandmark && setDetailModalLandmark(mapSelectedLandmark)}
+                    disabled={!mapSelectedLandmark}
                     className="cursor-pointer px-4 py-2 bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg transition"
                   >
                     View History & Lore
                   </button>
                   <button
-                    onClick={() => {
-                      const matched = SINGAPORE_LANDMARKS.find((lm) => lm.name === selectedLocation) || SINGAPORE_LANDMARKS[0];
-                      handleGetDirections(matched);
-                    }}
+                    onClick={() => mapSelectedLandmark && handleGetDirections(mapSelectedLandmark)}
+                    disabled={!mapSelectedLandmark}
                     className="cursor-pointer px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg transition"
                   >
                     Get Route Directions

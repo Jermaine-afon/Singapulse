@@ -175,7 +175,8 @@ export function estimateDiurnalTemperature(
   timeStr: string
 ): number {
   const [hStr, mStr] = timeStr.split(':');
-  const hour = (parseInt(hStr, 10) || 12) + (parseInt(mStr, 10) || 0) / 60;
+  const parsedHour = parseInt(hStr, 10);
+  const hour = (Number.isNaN(parsedHour) ? 12 : parsedHour) + (parseInt(mStr, 10) || 0) / 60;
   const range = Math.max(1, tempMax - tempMin);
 
   let factor = 0.2;
@@ -636,7 +637,8 @@ export async function fetchLiveSingaporeWeather(
       uvIndex = indices[0]?.value ?? 3;
     }
 
-    const targetHour = parseInt(targetTime.split(':')[0], 10) || 12;
+    const parsedTargetHour = parseInt(targetTime.split(':')[0], 10);
+    const targetHour = Number.isNaN(parsedTargetHour) ? 12 : parsedTargetHour;
     if (targetHour >= 19 || targetHour < 7) {
       uvIndex = 0;
     } else if (targetHour >= 11 && targetHour <= 14) {
@@ -648,10 +650,10 @@ export async function fetchLiveSingaporeWeather(
     // ---------------------------------------------------------
     let psi = 45;
     let pm25 = 12;
-    if (psiRes.status === 'fulfilled' && psiRes.value?.data?.readings?.[0]?.readings) {
-      const r = psiRes.value.data.readings[0].readings;
-      psi = r.psi_twenty_four_hourly?.[targetRegion] || r.psi_twenty_four_hourly?.central || 45;
-      pm25 = r.pm25_twenty_four_hourly?.[targetRegion] || r.pm25_twenty_four_hourly?.central || 12;
+    if (psiRes.status === 'fulfilled' && psiRes.value?.data?.items?.[0]?.readings) {
+      const r = psiRes.value.data.items[0].readings;
+      psi = r.psi_twenty_four_hourly?.[targetRegion] ?? r.psi_twenty_four_hourly?.central ?? psi;
+      pm25 = r.pm25_twenty_four_hourly?.[targetRegion] ?? r.pm25_twenty_four_hourly?.central ?? pm25;
     }
 
     // ---------------------------------------------------------
@@ -680,7 +682,8 @@ export async function fetchLiveSingaporeWeather(
     if (isLive && windRes.status === 'fulfilled' && windRes.value?.data?.readings?.[0]?.data?.length) {
       const wReadings = windRes.value.data.readings[0].data;
       const sum = wReadings.reduce((acc: number, cur: any) => acc + (cur.value || 0), 0);
-      windSpeed = Math.round(sum / wReadings.length);
+      const KMH_PER_KNOT = 1.852;
+      windSpeed = Math.round((sum / wReadings.length) * KMH_PER_KNOT);
     }
 
     // ---------------------------------------------------------

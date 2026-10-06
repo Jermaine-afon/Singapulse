@@ -35,6 +35,15 @@ interface WeatherPredictorCardProps {
   isLoadingLive?: boolean;
 }
 
+// NEA PSI health bands: https://www.haze.gov.sg/
+const getPsiBand = (psi: number) => {
+  if (psi <= 50) return 'Good';
+  if (psi <= 100) return 'Moderate';
+  if (psi <= 200) return 'Unhealthy';
+  if (psi <= 300) return 'Very Unhealthy';
+  return 'Hazardous';
+};
+
 export const WeatherPredictorCard: React.FC<WeatherPredictorCardProps> = ({
   locationName,
   selectedDate,
@@ -327,7 +336,7 @@ export const WeatherPredictorCard: React.FC<WeatherPredictorCardProps> = ({
                 )}
               </div>
               <div className="text-[11px] text-slate-500 truncate">
-                {isLiveObservation ? `PM2.5: ${weather.pm25} µg/m³ (Good)` : 'Official Min / Max'}
+                {isLiveObservation ? `PM2.5: ${weather.pm25} µg/m³ · ${getPsiBand(weather.psi)}` : 'Official Min / Max'}
               </div>
             </div>
 

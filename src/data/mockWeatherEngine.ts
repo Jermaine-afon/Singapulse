@@ -13,7 +13,8 @@ export function predictSingaporeWeather(
   timeStr: string // HH:mm
 ): WeatherCondition {
   // Parse hour (0 - 23)
-  const hour = parseInt(timeStr.split(':')[0], 10) || 12;
+  const parsedHour = parseInt(timeStr.split(':')[0], 10);
+  const hour = Number.isNaN(parsedHour) ? 12 : parsedHour;
   
   // Calculate a seed from the date and location string for stable determinism
   let seed = 0;
