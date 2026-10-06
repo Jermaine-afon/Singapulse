@@ -34,8 +34,8 @@ const PT_RESPONSE = {
         transfers: 0,
         legs: [
           { mode: 'WALK', distance: 210, duration: 180, from: { name: 'Origin' }, to: { name: 'BAYFRONT MRT STATION' }, legGeometry: { points: '_p~iF~ps|U' } },
-          { mode: 'SUBWAY', route: 'DT', distance: 2900, duration: 420, from: { name: 'BAYFRONT MRT STATION' }, to: { name: 'FORT CANNING MRT STATION' }, numIntermediateStops: 2 },
-          { mode: 'BUS', route: '7', routeShortName: '7', distance: 900, duration: 300, from: { name: 'OPP FORT CANNING' }, to: { name: 'BT TIMAH RD' }, numIntermediateStops: 0 },
+          { mode: 'SUBWAY', route: 'DT', distance: 2900, duration: 420, from: { name: 'BAYFRONT MRT STATION', stopCode: 'CE1/DT16' }, to: { name: 'FORT CANNING MRT STATION' }, numIntermediateStops: 2 },
+          { mode: 'BUS', route: '7', routeShortName: '7', distance: 900, duration: 300, from: { name: 'OPP FORT CANNING', stopId: 'FERRY:04167' }, to: { name: 'BT TIMAH RD' }, numIntermediateStops: 0 },
           { mode: 'WALK', distance: 150, duration: 120, from: { name: 'BT TIMAH RD' }, to: { name: 'Destination' } },
         ],
       },
@@ -77,6 +77,9 @@ describe('normalising OneMap responses', () => {
       ['walk', 'Walk to Fort Canning Park'],
     ]);
     expect(route.steps[1].line).toBe('Downtown Line');
+    // Codes needed for live LTA data: the station on this line, its LTA line code, the 5-digit bus stop
+    expect(route.steps[1]).toMatchObject({ stationCode: 'DT16', lineCode: 'DTL' });
+    expect(route.steps[2]).toMatchObject({ stopCode: '04167', line: '7' });
   });
 
   it('returns null for responses without a route', () => {

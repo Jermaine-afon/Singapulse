@@ -12,6 +12,28 @@ export default defineConfig(({mode}) => {
       react(),
       tailwindcss(),
       {
+        // Dev-server equivalent of the Vercel function api/live.ts
+        name: 'api-live-plugin',
+        configureServer(server) {
+          server.middlewares.use('/api/live', async (req, res) => {
+            res.setHeader('Content-Type', 'application/json');
+            const { PlannerError } = await server.ssrLoadModule('/server/planner.ts');
+            const { guardLiveRequest, getRequestMeta } = await server.ssrLoadModule('/server/requestGuard.ts');
+            const { getLiveTransit, parseLiveQuery } = await server.ssrLoadModule('/server/lta.ts');
+            try {
+              guardLiveRequest(getRequestMeta(req.headers, req.socket.remoteAddress));
+              const query = Object.fromEntries(new URL(req.url ?? '', 'http://localhost').searchParams);
+              res.end(JSON.stringify(await getLiveTransit(parseLiveQuery(query), env.LTA_ACCOUNT_KEY)));
+            } catch (err: any) {
+              const known = err instanceof PlannerError;
+              if (!known) console.error('Live transit error:', err);
+              res.statusCode = known ? err.status : 500;
+              res.end(JSON.stringify({ error: known ? err.message : 'Unexpected live transit error.' }));
+            }
+          });
+        },
+      },
+      {
         // Dev-server equivalent of the Vercel function api/route.ts
         name: 'api-route-plugin',
         configureServer(server) {
@@ -110,6 +132,8 @@ export default defineConfig(({mode}) => {
                 const deepSeek = await checkDeepSeek(env.DEEPSEEK_API_KEY, env.DEEPSEEK_MODEL);
                 const { describeOneMapRouting } = await server.ssrLoadModule('/server/oneMapAuth.ts');
                 const oneMapRouting = describeOneMapRouting(env);
+                const { checkLta } = await server.ssrLoadModule('/server/lta.ts');
+                const ltaDataMall = await checkLta(env.LTA_ACCOUNT_KEY);
 
                 res.setHeader('Content-Type', 'application/json');
                 res.end(
@@ -132,6 +156,7 @@ export default defineConfig(({mode}) => {
                       },
                       deepSeek,
                       oneMapRouting,
+                      ltaDataMall,
                     },
                   })
                 );

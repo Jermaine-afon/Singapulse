@@ -95,6 +95,35 @@ const RAIL_LINES: Record<string, string> = {
   PW: 'Punggol LRT',
 };
 
+// OneMap route codes -> LTA DataMall line codes (alerts and crowd data use these)
+const LTA_LINE_CODES: Record<string, string> = {
+  EW: 'EWL',
+  CG: 'CGL',
+  NS: 'NSL',
+  NE: 'NEL',
+  CC: 'CCL',
+  CE: 'CEL',
+  DT: 'DTL',
+  TE: 'TEL',
+  BP: 'BPL',
+  SE: 'SLRT',
+  SW: 'SLRT',
+  PE: 'PLRT',
+  PW: 'PLRT',
+};
+
+/** A transit stop's code from OneMap/OTP: `stopCode`, or the id after "agency:" in `stopId`. */
+const stopCodeOf = (stop: any): string | undefined => {
+  const raw = stop?.stopCode ?? (typeof stop?.stopId === 'string' ? stop.stopId.split(':').pop() : undefined);
+  return typeof raw === 'string' && raw.trim() ? raw.trim().toUpperCase() : undefined;
+};
+
+/** Picks the station code on this line from codes like "CE1/DT16" or "EW13". */
+const stationCodeFor = (stop: any, routeCode: string): string | undefined => {
+  const codes = (stopCodeOf(stop) ?? '').split(/[\/\s,]+/).filter((c) => /^[A-Z]{1,3}\d{1,3}$/.test(c));
+  return codes.find((c) => c.startsWith(routeCode)) ?? codes[0];
+};
+
 const placeName = (name: unknown, fallback: string) => {
   if (typeof name !== 'string' || !name.trim()) return fallback;
   const lower = name.toLowerCase();
@@ -191,9 +220,11 @@ export function normaliseTransitRoute(data: any, endName: string): RouteResult |
 
     if (mode === 'BUS') {
       const service = String(leg.routeShortName || leg.route || '').trim();
+      const boardingStop = stopCodeOf(leg.from);
       return {
         kind: 'bus',
         line: service || undefined,
+        stopCode: boardingStop && /^\d{5}$/.test(boardingStop) ? boardingStop : undefined,
         instruction: `Take bus ${service || ''} from ${from} to ${to}${stopText}`.replace(/\s+/g, ' '),
         distanceMeters: distance,
         durationMinutes,
@@ -205,6 +236,8 @@ export function normaliseTransitRoute(data: any, endName: string): RouteResult |
       return {
         kind: 'rail',
         line: lineName,
+        lineCode: LTA_LINE_CODES[code],
+        stationCode: stationCodeFor(leg.from, code),
         instruction: `Take the ${lineName} from ${from} to ${to}${stopText}`,
         distanceMeters: distance,
         durationMinutes,

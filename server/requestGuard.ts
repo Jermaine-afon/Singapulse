@@ -2,6 +2,7 @@
  * Cheap abuse protection for the public API endpoints:
  * - /api/plan spends the owner's DeepSeek balance
  * - /api/route spends the owner's OneMap routing quota
+ * - /api/live spends the owner's LTA DataMall quota
  * Used by the Vercel functions and the Vite dev middleware.
  *
  * The rate limits are in-memory, so on Vercel they are per function instance — they
@@ -39,6 +40,8 @@ function createRateLimiter(maxPerWindow: number, windowMs = RATE_WINDOW_MS) {
 
 const planLimiter = createRateLimiter(20);
 const routeLimiter = createRateLimiter(60);
+// The route dialog refreshes live arrivals every 30s while open
+const liveLimiter = createRateLimiter(150);
 
 // Browsers always send Origin on cross-site requests; block other websites from using our endpoints
 function assertSameOrigin(origin?: string, host?: string) {
@@ -79,9 +82,20 @@ export function guardRouteRequest(
   }
 }
 
+export function guardLiveRequest(
+  { ip, origin, host }: { ip: string; origin?: string; host?: string },
+  now = Date.now()
+): void {
+  assertSameOrigin(origin, host);
+  if (!liveLimiter.hit(ip, now)) {
+    throw new PlannerError('Too many live transit requests. Please wait a few minutes and try again.', 429);
+  }
+}
+
 export function resetRateLimit() {
   planLimiter.reset();
   routeLimiter.reset();
+  liveLimiter.reset();
 }
 
 const firstHeader = (value: string | string[] | undefined) => (Array.isArray(value) ? value[0] : value);

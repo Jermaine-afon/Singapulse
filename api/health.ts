@@ -4,6 +4,7 @@
  */
 import { checkDeepSeek } from '../server/deepseek.js';
 import { describeOneMapRouting } from '../server/oneMapAuth.js';
+import { checkLta } from '../server/lta.js';
 
 export default async function handler(req: any, res: any) {
   // Allow cross-origin requests
@@ -49,7 +50,10 @@ const oneMapPromise = fetch(
     // 3. Check DeepSeek key, balance and model (no tokens spent)
     const deepSeekPromise = checkDeepSeek(process.env.DEEPSEEK_API_KEY, process.env.DEEPSEEK_MODEL);
 
-    const [weatherRes, oneMapRes, deepSeekRes] = await Promise.all([weatherPromise, oneMapPromise, deepSeekPromise]);
+    // 4. Check LTA DataMall key (one cheap train-alerts call)
+    const ltaPromise = checkLta(process.env.LTA_ACCOUNT_KEY);
+
+    const [weatherRes, oneMapRes, deepSeekRes, ltaRes] = await Promise.all([weatherPromise, oneMapPromise, deepSeekPromise, ltaPromise]);
 
     // Token status only (and its expiry date) — never the token itself
     const oneMapRouting = describeOneMapRouting(process.env);
@@ -77,7 +81,8 @@ const oneMapPromise = fetch(
           endpoint: 'https://www.onemap.gov.sg/api/common/elastic/search'
         },
         deepSeek: deepSeekRes,
-        oneMapRouting
+        oneMapRouting,
+        ltaDataMall: ltaRes
       }
     });
   } catch (error: any) {

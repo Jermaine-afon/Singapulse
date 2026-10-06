@@ -30,6 +30,7 @@ Plans are built only from a vetted catalogue of Singapore places (curated hidden
 - Catalogue: 27 curated hidden gems plus ~107 STB attractions; STB entries have placeholder fields (admission, MRT, crowd level) that are not yet trustworthy.
 - Weather: live readings for the current time; forecast-range estimates for later hours and dates; four-day NEA outlook.
 - Routes: real OneMap routes (walk, cycle, drive, public transport with fares) via the server when a OneMap token is configured; otherwise a labelled straight-line estimate. OneMap does not report shelter coverage, so routes make no sheltered-walkway claims.
+- Live transit: with an LTA DataMall AccountKey, transit routes show live bus arrivals (load, wheelchair access), MRT/LRT disruption alerts for lines on the route, and platform crowd levels; hidden when unavailable.
 - Landmark photos: only six generic images exist, reused across many places.
 
 ## Brand Commitments
