@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
           {/* Brand Col */}
           <div className="space-y-3">
             <div className="text-base font-bold font-display text-slate-900 flex items-center gap-1.5">
-              <span>Kaki Trails</span>
+              <span>Singapulse</span>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
             </div>
             <p className="text-slate-500 leading-relaxed">
@@ -61,7 +61,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Copyright Strip */}
         <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400">
           <div>
-            © {new Date().getFullYear()} Kaki Trails Singapore. Academic Course Project Frontend Prototype.
+            © {new Date().getFullYear()} Singapulse. Academic Course Project Frontend Prototype.
           </div>
           <div className="flex items-center gap-4 text-slate-500">
             <span>Data: Singapore Government Open Data & OneMap</span>

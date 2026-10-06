@@ -2408,7 +2408,7 @@ export const STB_TOURIST_ATTRACTIONS: Landmark[] = [
     "isStbAttraction": true
   },
   {
-    "id": "stb-marina-bay-sands",
+    "id": "stb-marina-bay-sands-resort",
     "name": "Marina Bay Sands",
     "subtitle": "This iconic integrated resort boasts luxury accommodations, upscale shopping and an inf...",
     "neighborhood": "Downtown / Marina",

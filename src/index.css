@@ -31,3 +31,81 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* Interactive map (Leaflet + OneMap) pins & labels */
+.sg-pin {
+  background: none;
+  border: none;
+}
+.sg-pin-dot,
+.sg-pin-ring,
+.sg-start-dot {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+}
+.sg-pin-dot {
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.35);
+}
+.sg-pin-ring {
+  inset: -6px;
+  opacity: 0.25;
+  animation: sg-pin-ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.sg-pin-shelter {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #10b981;
+  border: 1px solid #ffffff;
+}
+.sg-start-dot {
+  background: #0f172a;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 4px rgb(15 23 42 / 0.2);
+}
+@keyframes sg-pin-ping {
+  75%, 100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.leaflet-container {
+  font-family: var(--font-sans);
+}
+.leaflet-tooltip.sg-pin-label,
+.leaflet-tooltip.sg-start-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0f172a;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border-color: #e2e8f0;
+}
+.leaflet-tooltip.sg-radar-label {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-size: 11px;
+  font-weight: 600;
+}
+.leaflet-tooltip.sg-radar-label::before {
+  display: none;
+}
+.sg-radar-label--rain {
+  color: #1e40af;
+}
+.sg-radar-label--fair {
+  color: #047857;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-pin-ring {
+    animation: none;
+  }
+}

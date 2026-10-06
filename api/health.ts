@@ -49,7 +49,7 @@ const oneMapPromise = fetch(
 
     return res.status(200).json({
       status: isAllHealthy ? 'ok' : 'degraded',
-      application: 'Kaki Trails - Singapore Tourist Discovery & Weather Predictor',
+      application: 'Singapulse - Singapore Tourist Discovery & Weather Predictor',
       timestamp: new Date().toISOString(),
       latencyMs: Date.now() - startTime,
       integrations: {

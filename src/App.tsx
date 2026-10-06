@@ -3,7 +3,8 @@ import { SINGAPORE_LANDMARKS, POPULAR_START_POINTS } from './data/landmarks';
 import { predictSingaporeWeather, getFourDayForecast } from './data/mockWeatherEngine';
 import { fetchLiveSingaporeWeather, LiveWeatherResponse, getSingaporeCurrentTime } from './services/liveWeatherService';
 import { Landmark, WeatherCondition, DayForecast } from './types';
-import { Header } from './components/Header';
+import { Header, type AppTab } from './components/Header';
+import { AiPlanner } from './components/AiPlanner';
 import { HeroBanner } from './components/HeroBanner';
 import { WeatherPredictorCard } from './components/WeatherPredictorCard';
 import { InteractiveMap } from './components/InteractiveMap';
@@ -15,7 +16,7 @@ import { Footer } from './components/Footer';
 import { Compass, Sparkles, CloudSun, MapPin, Search } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'explore' | 'weather' | 'map'>('explore');
+  const [activeTab, setActiveTab] = useState<AppTab>('explore');
   
   // Tourist visit parameters
   const [selectedLocation, setSelectedLocation] = useState<string>(
@@ -55,6 +56,7 @@ export default function App() {
   const weatherSectionRef = useRef<HTMLDivElement>(null);
   const exploreSectionRef = useRef<HTMLDivElement>(null);
   const mapSectionRef = useRef<HTMLDivElement>(null);
+  const plannerSectionRef = useRef<HTMLDivElement>(null);
 
   // Fallback deterministic weather condition
   const fallbackWeather = useMemo(() => {
@@ -72,6 +74,12 @@ export default function App() {
     }
     return fallbackWeather;
   }, [liveWeatherData, fallbackWeather]);
+
+  // One-line weather context for the AI planner
+  const plannerWeatherSummary = useMemo(() => {
+    const w = activeWeather;
+    return `${selectedDate}: ${w.label}, ${w.temperatureC}°C, ${w.rainProbability}% rain chance. Outlook: ${w.twentyFourHourOutlook}`;
+  }, [activeWeather, selectedDate]);
 
   const activeFourDay: DayForecast[] = useMemo(() => {
     if (liveWeatherData?.fourDayOutlook && liveWeatherData.fourDayOutlook.length > 0) {
@@ -203,7 +211,22 @@ export default function App() {
   };
 
   const handleOpenQuickPlanner = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setActiveTab('planner');
+    setTimeout(() => {
+      plannerSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
+  const handleSaveManyToTrail = (ids: string[]) => {
+    setSavedIds((prev) => [...prev, ...ids.filter((id) => !prev.includes(id))]);
+  };
+
+  const handleShowOnMap = (landmark: Landmark) => {
+    setMapSelectedLandmark(landmark);
+    setActiveTab('map');
+    setTimeout(() => {
+      mapSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   return (
@@ -275,6 +298,18 @@ export default function App() {
             >
               <MapPin className="w-3.5 h-3.5 text-emerald-600" />
               <span>Map & Radar</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('planner')}
+              className={`cursor-pointer px-4 py-2 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap flex items-center gap-1.5 ${
+                activeTab === 'planner'
+                  ? 'bg-white text-slate-900 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+              <span>AI Planner</span>
             </button>
           </div>
 
@@ -366,6 +401,23 @@ export default function App() {
             />
           </div>
         )}
+
+        {/* View 4: AI Planner (kept mounted so the plan & chat survive tab switches) */}
+        <div ref={plannerSectionRef} className={activeTab === 'planner' ? 'block animate-fadeIn' : 'hidden'}>
+          <AiPlanner
+            landmarks={SINGAPORE_LANDMARKS}
+            savedLandmarks={savedLandmarks}
+            savedIds={savedIds}
+            selectedDate={selectedDate}
+            onDateChange={setSelectedDate}
+            startPoint={userStartPoint}
+            onStartPointChange={setUserStartPoint}
+            weatherSummary={plannerWeatherSummary}
+            onSelectForDetails={(lm) => setDetailModalLandmark(lm)}
+            onShowOnMap={handleShowOnMap}
+            onSaveToTrail={handleSaveManyToTrail}
+          />
+        </div>
 
         {/* View 3: Landmark Explorer Grid (Default) */}
         <div ref={exploreSectionRef} className={activeTab === 'explore' ? 'block' : 'hidden'}>

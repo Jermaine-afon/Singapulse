@@ -1,9 +1,11 @@
 import React from 'react';
-import { Bookmark, Compass, CloudSun, MapPin } from 'lucide-react';
+import { Bookmark, Compass, CloudSun, MapPin, Sparkles } from 'lucide-react';
+
+export type AppTab = 'explore' | 'weather' | 'map' | 'planner';
 
 interface HeaderProps {
-  activeTab: 'explore' | 'weather' | 'map';
-  setActiveTab: (tab: 'explore' | 'weather' | 'map') => void;
+  activeTab: AppTab;
+  setActiveTab: (tab: AppTab) => void;
   savedCount: number;
   onOpenItinerary: () => void;
   onOpenQuickPlanner: () => void;
@@ -30,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
           }}
           className="text-xl font-bold tracking-tight text-slate-900 font-display flex items-center gap-1.5"
         >
-          <span>Kaki Trails</span>
+          <span>Singapulse</span>
           <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block mb-1" />
         </a>
 
@@ -69,6 +71,18 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <MapPin className="w-4 h-4 text-emerald-600" />
             <span>Interactive Map</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('planner')}
+            className={`cursor-pointer transition-colors py-1 flex items-center gap-1.5 ${
+              activeTab === 'planner'
+                ? 'text-emerald-700 font-semibold border-b-2 border-emerald-600'
+                : 'hover:text-slate-900'
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-emerald-600" />
+            <span>AI Planner</span>
           </button>
 
           <button

@@ -1,13 +1,48 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import {defineConfig, loadEnv} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({mode}) => {
+  // Load all .env vars (not just VITE_*) for server-side dev middleware only — never exposed to the client
+  const env = loadEnv(mode, process.cwd(), '');
+
   return {
     plugins: [
       react(),
       tailwindcss(),
+      {
+        // Dev-server equivalent of the Vercel function api/plan.ts
+        name: 'api-plan-plugin',
+        configureServer(server) {
+          server.middlewares.use('/api/plan', async (req, res) => {
+            res.setHeader('Content-Type', 'application/json');
+            if (req.method !== 'POST') {
+              res.statusCode = 405;
+              res.end(JSON.stringify({ error: 'Use POST.' }));
+              return;
+            }
+
+            const { generatePlan, PlannerError } = await server.ssrLoadModule('/server/planner.ts');
+            try {
+              const chunks: Buffer[] = [];
+              for await (const chunk of req) chunks.push(chunk as Buffer);
+              const body = JSON.parse(Buffer.concat(chunks).toString('utf8') || '{}');
+
+              const result = await generatePlan(body, {
+                apiKey: env.DEEPSEEK_API_KEY,
+                model: env.DEEPSEEK_MODEL,
+              });
+              res.end(JSON.stringify(result));
+            } catch (err: any) {
+              const known = err instanceof PlannerError;
+              if (!known) console.error('Planner error:', err);
+              res.statusCode = known ? err.status : 500;
+              res.end(JSON.stringify({ error: known ? err.message : 'Unexpected planner error.' }));
+            }
+          });
+        },
+      },
       {
         name: 'api-health-plugin',
         configureServer(server) {
@@ -28,7 +63,7 @@ export default defineConfig(() => {
                 res.end(
                   JSON.stringify({
                     status: 'ok',
-                    application: 'Kaki Trails - Singapore Tourist Discovery & Weather Predictor',
+                    application: 'Singapulse - Singapore Tourist Discovery & Weather Predictor',
                     timestamp: new Date().toISOString(),
                     integrations: {
                       dataGovSgWeather: {
