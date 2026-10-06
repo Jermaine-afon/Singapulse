@@ -1,0 +1,6 @@
+{
+  "name": "Kaki Trails - Singapore Hidden Gems & Weather Predictor",
+  "description": "Discover off-the-beaten-path Singapore landmarks and predict microclimate weather with smart visit timing and route insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
