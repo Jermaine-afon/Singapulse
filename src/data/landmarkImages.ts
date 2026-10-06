@@ -17,7 +17,15 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "SpLoT",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
-    "article": "Fort Canning Tunnel"
+    "article": "Article: Fort Canning Tunnel (Fort Canning Tunnel 2.JPG)"
+  },
+  "emerald-hill-terrace": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Shophouses_along_Emerald_Hill.jpg/960px-Shophouses_along_Emerald_Hill.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shophouses_along_Emerald_Hill.jpg",
+    "author": "Brhb25",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Article: Emerald Hill, Singapore (Shophouses along Emerald Hill.jpg)"
   },
   "tan-teng-niah-villa": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/2016_Singapur%2C_Little_India%2C_Ulica_Kerbau%2C_By%C5%82a_rezydencja_Tan_Teng_Niaha_%2802%29.jpg/960px-2016_Singapur%2C_Little_India%2C_Ulica_Kerbau%2C_By%C5%82a_rezydencja_Tan_Teng_Niaha_%2802%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -25,23 +33,23 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Marcin Konsek",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "House of Tan Teng Niah"
+    "article": "Article: House of Tan Teng Niah (2016 Singapur, Little India, Ulica Kerbau, Była rezydencja Tan Teng Niaha (02).jpg)"
+  },
+  "marina-barrage-green-roof": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Singapore_Marina-Barrage-01.jpg/960px-Singapore_Marina-Barrage-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Marina-Barrage-01.jpg",
+    "author": "CEphoto, Uwe Aranas",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "article": "Commons reviewed: Singapore Marina-Barrage-01.jpg"
   },
   "koon-seng-shophouses": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Colorful_shophouses_and_tree_in_Koon_Seng_Road_Singapore.jpg/960px-Colorful_shophouses_and_tree_in_Koon_Seng_Road_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colorful_shophouses_and_tree_in_Koon_Seng_Road_Singapore.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Colorful_shophouses_in_Koon_Seng_Road%2C_Singapore.jpg/960px-Colorful_shophouses_in_Koon_Seng_Road%2C_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colorful_shophouses_in_Koon_Seng_Road,_Singapore.jpg",
     "author": "Basile Morin",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Colorful shophouses and tree in Koon Seng Road Singapore.jpg"
-  },
-  "haw-par-villa": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/A_walk_in_Haw_Par_Villa_Singapore_%282025%29_-_img_15.jpg/960px-A_walk_in_Haw_Par_Villa_Singapore_%282025%29_-_img_15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_walk_in_Haw_Par_Villa_Singapore_(2025)_-_img_15.jpg",
-    "author": "Chainwit.",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Haw Par Villa"
+    "article": "Commons reviewed: Colorful shophouses in Koon Seng Road, Singapore.jpg"
   },
   "kampong-lorong-buangkok": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Kampong_Lorong_Buangkok%2C_2026_02.jpg/960px-Kampong_Lorong_Buangkok%2C_2026_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -49,23 +57,31 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Actuall7",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Kampong Lorong Buangkok"
+    "article": "Article: Kampong Lorong Buangkok (Kampong Lorong Buangkok, 2026 02.jpg)"
   },
   "sultan-mosque-muscat": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/%281924%29_Sultan_Mosque.jpg/960px-%281924%29_Sultan_Mosque.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:(1924)_Sultan_Mosque.jpg",
-    "author": "Thank You (23 Millions+) views",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Commons: (1924) Sultan Mosque.jpg"
-  },
-  "thian-hock-keng-ann-siang": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Singapore_Tempel_Thian_Hock_Keng_1.jpg/960px-Singapore_Tempel_Thian_Hock_Keng_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Tempel_Thian_Hock_Keng_1.jpg",
-    "author": "Zairon",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Sultan_Mosque%2C_Singapore.jpg/960px-Sultan_Mosque%2C_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sultan_Mosque,_Singapore.jpg",
+    "author": "Johan Jönsson (Julle)",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Thian Hock Keng Temple"
+    "article": "Commons: Sultan Mosque, Singapore.jpg"
+  },
+  "thian-hock-keng-ann-siang": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Singapore_%28SG%29%2C_China_Town%2C_Thian_Hock_Keng_--_2019_--_4532.jpg/960px-Singapore_%28SG%29%2C_China_Town%2C_Thian_Hock_Keng_--_2019_--_4532.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_China_Town,_Thian_Hock_Keng_--_2019_--_4532.jpg",
+    "author": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Singapore (SG), China Town, Thian Hock Keng -- 2019 -- 4532.jpg"
+  },
+  "japanese-cemetery-park": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Japanese_Cemetery_Park.jpg/960px-Japanese_Cemetery_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Japanese_Cemetery_Park.jpg",
+    "author": "ProjectManhattan",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "article": "Article: Japanese Cemetery Park (Japanese Cemetery Park.jpg)"
   },
   "southern-ridges-henderson": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/HendersonWaves-Singapore-externalview-20090220.jpg/960px-HendersonWaves-Singapore-externalview-20090220.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -73,23 +89,23 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Kok Leng Yeo from Singapore.",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Henderson Waves"
+    "article": "Article: Henderson Waves (HendersonWaves-Singapore-externalview-20090220.jpg)"
   },
   "rail-corridor-truss-bridge": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Bridging_the_past_and_present.jpg/960px-Bridging_the_past_and_present.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bridging_the_past_and_present.jpg",
-    "author": "darryl chua",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Rail_Corridor_-_Bukit_Timah_Truss_Bridge_08-08-2025%285%29.jpg/960px-Rail_Corridor_-_Bukit_Timah_Truss_Bridge_08-08-2025%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rail_Corridor_-_Bukit_Timah_Truss_Bridge_08-08-2025(5).jpg",
+    "author": "LN9267",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Bukit Timah Truss Bridge"
+    "article": "Commons: Rail Corridor - Bukit Timah Truss Bridge 08-08-2025(5).jpg"
   },
   "thomson-nature-park-ruins": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Thomson_Nature_Park_2020-08-02.jpg/960px-Thomson_Nature_Park_2020-08-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thomson_Nature_Park_2020-08-02.jpg",
-    "author": "Andreas Ehn",
-    "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "article": "Thomson Nature Park"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Thomson_Nature_Park%2C_looking_up_former_Jalan_Belang.jpg/960px-Thomson_Nature_Park%2C_looking_up_former_Jalan_Belang.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thomson_Nature_Park,_looking_up_former_Jalan_Belang.jpg",
+    "author": "Wzhkevin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: Thomson Nature Park, looking up former Jalan Belang.jpg"
   },
   "sungei-buloh-wetlands": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Sungei_Buloh_Wetland_Reserve_Banner.JPG/960px-Sungei_Buloh_Wetland_Reserve_Banner.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -97,7 +113,31 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Thaejas",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "Sungei Buloh Wetland Reserve"
+    "article": "Article: Sungei Buloh Wetland Reserve (Sungei Buloh Wetland Reserve Banner.JPG)"
+  },
+  "tiong-bahru-art-deco": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Footpath_running_alongside_canal_between_Tiong_Bahru_Road_and_Boon_Tiong_Road.jpg/960px-Footpath_running_alongside_canal_between_Tiong_Bahru_Road_and_Boon_Tiong_Road.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Footpath_running_alongside_canal_between_Tiong_Bahru_Road_and_Boon_Tiong_Road.jpg",
+    "author": "Wzhkevin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: Footpath running alongside canal between Tiong Bahru Road and Boon Tiong Road.jpg"
+  },
+  "haji-lane-murals": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/KPG_-_Haji_Lane_street_art_in_Kampong_Glam%2C_Singapore%2C_2019.jpg/960px-KPG_-_Haji_Lane_street_art_in_Kampong_Glam%2C_Singapore%2C_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:KPG_-_Haji_Lane_street_art_in_Kampong_Glam,_Singapore,_2019.jpg",
+    "author": "Josep M. Gracia",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: KPG - Haji Lane street art in Kampong Glam, Singapore, 2019.jpg"
+  },
+  "balestier-foodie-trail": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Balestier_Road.JPG/960px-Balestier_Road.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balestier_Road.JPG",
+    "author": "Terence Ong",
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+    "article": "Article: Balestier (Balestier Road.JPG)"
   },
   "chek-jawa-ubin": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Chek_Jawa%2C_Singapore_%283940295137%29.jpg/960px-Chek_Jawa%2C_Singapore_%283940295137%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -105,15 +145,23 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "William Cho",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "article": "Chek Jawa"
+    "article": "Article: Chek Jawa (Chek Jawa, Singapore (3940295137).jpg)"
   },
-  "changi-point-coastal-walk": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Changi_village_-_coastal_track_to_point.jpg/960px-Changi_village_-_coastal_track_to_point.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Changi_village_-_coastal_track_to_point.jpg",
-    "author": "Orderinchaos",
+  "lazarus-island-lagoon": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Tiny_Away_Escape_at_Lazarus_Island_SF0001.jpg/960px-Tiny_Away_Escape_at_Lazarus_Island_SF0001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tiny_Away_Escape_at_Lazarus_Island_SF0001.jpg",
+    "author": "Stefan Fussan",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Changi village - coastal track to point.jpg"
+    "article": "Commons: Tiny Away Escape at Lazarus Island SF0001.jpg"
+  },
+  "changi-point-coastal-walk": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Changi_Point.jpg/960px-Changi_Point.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Changi_Point.jpg",
+    "author": "Lajmmoore",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: Changi Point.jpg"
   },
   "stb-national-gallery": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Interior_of_the_National_Gallery_Singapore.jpg/960px-Interior_of_the_National_Gallery_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -121,95 +169,95 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Basile Morin",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "National Gallery Singapore"
+    "article": "Article: National Gallery Singapore (Interior of the National Gallery Singapore.jpg)"
   },
   "stb-sultan-mosque-masjid-sultan": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/The_facade_of_the_Sultan_Mosque_facing_Bussorah_Street_%28Cropped%29.jpg/960px-The_facade_of_the_Sultan_Mosque_facing_Bussorah_Street_%28Cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_facade_of_the_Sultan_Mosque_facing_Bussorah_Street_(Cropped).jpg",
-    "author": "M. Adrian Jurhami",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Sultan Mosque"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Masjid_Sultan%2C_Singapore_%282023_June%29_-_img_06.jpg/960px-Masjid_Sultan%2C_Singapore_%282023_June%29_-_img_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Masjid_Sultan,_Singapore_(2023_June)_-_img_06.jpg",
+    "author": "Chainwit.",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Masjid Sultan, Singapore (2023 June) - img 06.jpg"
   },
   "stb-sri-mariamman-temple": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Gopuram_-_Sri_Mariamman_Temple_Singapore_%282023%29_-_img_01.jpg/960px-Gopuram_-_Sri_Mariamman_Temple_Singapore_%282023%29_-_img_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gopuram_-_Sri_Mariamman_Temple_Singapore_(2023)_-_img_01.jpg",
-    "author": "Chainwit.",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Sri Mariamman Temple, Singapore"
-  },
-  "stb-armenian-church-in": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Armenian_Church_of_Saint_Gregory_the_Illuminator_%D5%8D%D5%B8%D6%82%D6%80%D5%A2_%D4%B3%D6%80%D5%AB%D5%A3%D5%B8%D6%80_%D4%BC%D5%B8%D6%82%D5%BD%D5%A1%D5%BE%D5%B8%D6%80%D5%AB%D5%B9_%D5%A5%D5%AF%D5%A5%D5%B2%D5%A5%D6%81%D5%AB_%28%D5%8D%D5%AB%D5%B6%D5%A3%D5%A1%D5%BA%D5%B8%D6%82%D6%80%29_01.jpg/960px-Armenian_Church_of_Saint_Gregory_the_Illuminator_%D5%8D%D5%B8%D6%82%D6%80%D5%A2_%D4%B3%D6%80%D5%AB%D5%A3%D5%B8%D6%80_%D4%BC%D5%B8%D6%82%D5%BD%D5%A1%D5%BE%D5%B8%D6%80%D5%AB%D5%B9_%D5%A5%D5%AF%D5%A5%D5%B2%D5%A5%D6%81%D5%AB_%28%D5%8D%D5%AB%D5%B6%D5%A3%D5%A1%D5%BA%D5%B8%D6%82%D6%80%29_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Armenian_Church_of_Saint_Gregory_the_Illuminator_%D5%8D%D5%B8%D6%82%D6%80%D5%A2_%D4%B3%D6%80%D5%AB%D5%A3%D5%B8%D6%80_%D4%BC%D5%B8%D6%82%D5%BD%D5%A1%D5%BE%D5%B8%D6%80%D5%AB%D5%B9_%D5%A5%D5%AF%D5%A5%D5%B2%D5%A5%D6%81%D5%AB_(%D5%8D%D5%AB%D5%B6%D5%A3%D5%A1%D5%BA%D5%B8%D6%82%D6%80)_01.jpg",
-    "author": "Chainwit.",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Armenian Church, Singapore"
-  },
-  "stb-chijmes": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/CHIJMES_3%2C_Jan_06.JPG/960px-CHIJMES_3%2C_Jan_06.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CHIJMES_3,_Jan_06.JPG",
-    "author": "Unknown author",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "article": "CHIJMES"
-  },
-  "stb-st-andrew-s-cathedral": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Saint_Andrew%27s_Cathedral%2C_Singapore_-_20090911.jpg/960px-Saint_Andrew%27s_Cathedral%2C_Singapore_-_20090911.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saint_Andrew%27s_Cathedral,_Singapore_-_20090911.jpg",
-    "author": "Someformofhuman.",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "St Andrew's Cathedral, Singapore"
-  },
-  "stb-kreta-ayer-square": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Kreta_Ayer_Heritage_Gallery%2C_Singapore_%282025%29_-_img_05.jpg/960px-Kreta_Ayer_Heritage_Gallery%2C_Singapore_%282025%29_-_img_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kreta_Ayer_Heritage_Gallery,_Singapore_(2025)_-_img_05.jpg",
-    "author": "Chainwit.",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Sri_Mariamman_Temple%2C_Singapore%2C_20240122_0843_2947.jpg/960px-Sri_Mariamman_Temple%2C_Singapore%2C_20240122_0843_2947.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sri_Mariamman_Temple,_Singapore,_20240122_0843_2947.jpg",
+    "author": "Jakub Hałun",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Commons: Kreta Ayer Heritage Gallery, Singapore (2025) - img 05.jpg"
+    "article": "Commons reviewed: Sri Mariamman Temple, Singapore, 20240122 0843 2947.jpg"
+  },
+  "stb-armenian-church-in": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Singapore_Armenian-Church-01.jpg/960px-Singapore_Armenian-Church-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Armenian-Church-01.jpg",
+    "author": "CEphoto, Uwe Aranas",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "article": "Commons reviewed: Singapore Armenian-Church-01.jpg"
+  },
+  "stb-chijmes": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/CHIJMES%2C_Singapore%2C_at_night_%282023%29-L1003732.jpg/960px-CHIJMES%2C_Singapore%2C_at_night_%282023%29-L1003732.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CHIJMES,_Singapore,_at_night_(2023)-L1003732.jpg",
+    "author": "Frank Schulenburg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: CHIJMES, Singapore, at night (2023)-L1003732.jpg"
+  },
+  "stb-st-andrew-s-cathedral": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Singapore_%28SG%29%2C_St_Andrew%27s_Cathedral_--_2019_--_4534.jpg/960px-Singapore_%28SG%29%2C_St_Andrew%27s_Cathedral_--_2019_--_4534.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_St_Andrew%27s_Cathedral_--_2019_--_4534.jpg",
+    "author": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Singapore (SG), St Andrew's Cathedral -- 2019 -- 4534.jpg"
   },
   "stb-chinatown-food-street": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/2016_Singapur%2C_Chinatown%2C_Ulica_Smitha_-_Chinatown_Food_Street_%2805%29.jpg/960px-2016_Singapur%2C_Chinatown%2C_Ulica_Smitha_-_Chinatown_Food_Street_%2805%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016_Singapur,_Chinatown,_Ulica_Smitha_-_Chinatown_Food_Street_(05).jpg",
-    "author": "Marcin Konsek",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Singapore_today-Chinatown-Smith_Street-Hawker_Chan-150629.jpg/960px-Singapore_today-Chinatown-Smith_Street-Hawker_Chan-150629.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_today-Chinatown-Smith_Street-Hawker_Chan-150629.jpg",
+    "author": "Rainer Halama",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: 2016 Singapur, Chinatown, Ulica Smitha - Chinatown Food Street (05).jpg"
+    "article": "Commons: Singapore today-Chinatown-Smith Street-Hawker Chan-150629.jpg"
+  },
+  "stb-chinatown-heritage-centre": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Chinatown_Heritage_Centre%2C_Singapore_-_www.joyofmuseums.com_-_external.jpg/960px-Chinatown_Heritage_Centre%2C_Singapore_-_www.joyofmuseums.com_-_external.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chinatown_Heritage_Centre,_Singapore_-_www.joyofmuseums.com_-_external.jpg",
+    "author": "Joyofmuseums",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: Chinatown Heritage Centre, Singapore - www.joyofmuseums.com - external.jpg"
   },
   "stb-thian-hock-keng-temple": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Singapore_Tempel_Thian_Hock_Keng_1.jpg/960px-Singapore_Tempel_Thian_Hock_Keng_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Tempel_Thian_Hock_Keng_1.jpg",
-    "author": "Zairon",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Singapore_%28SG%29%2C_China_Town%2C_Thian_Hock_Keng_--_2019_--_4532.jpg/960px-Singapore_%28SG%29%2C_China_Town%2C_Thian_Hock_Keng_--_2019_--_4532.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_China_Town,_Thian_Hock_Keng_--_2019_--_4532.jpg",
+    "author": "Dietmar Rabich",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Thian Hock Keng Temple"
+    "article": "Commons reviewed: Singapore (SG), China Town, Thian Hock Keng -- 2019 -- 4532.jpg"
+  },
+  "stb-shophouses": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Shophouses_on_Boat_Quay%2C_Singapore_%282023%29-L1003691.jpg/960px-Shophouses_on_Boat_Quay%2C_Singapore_%282023%29-L1003691.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shophouses_on_Boat_Quay,_Singapore_(2023)-L1003691.jpg",
+    "author": "Frank Schulenburg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Shophouses on Boat Quay, Singapore (2023)-L1003691.jpg"
   },
   "stb-capitol-building": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Capitol_Building%2C_Singapore_%28130948%29.jpg/960px-Capitol_Building%2C_Singapore_%28130948%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Capitol_Building,_Singapore_(130948).jpg",
-    "author": "Moheen Reeyad",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Capitol_Building%2C_Capitol_Piazza%2C_Singapore_-_20150921-01.jpg/960px-Capitol_Building%2C_Capitol_Piazza%2C_Singapore_-_20150921-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Capitol_Building,_Capitol_Piazza,_Singapore_-_20150921-01.jpg",
+    "author": "Jacklee",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Capitol Building, Singapore (130948).jpg"
-  },
-  "stb-esplanade-theatre": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Esplanade_Theatre%2C_Singapore_%282337436440%29.jpg/960px-Esplanade_Theatre%2C_Singapore_%282337436440%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Esplanade_Theatre,_Singapore_(2337436440).jpg",
-    "author": "yeowatzup",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Commons: Esplanade Theatre, Singapore (2337436440).jpg"
+    "article": "Commons: Capitol Building, Capitol Piazza, Singapore - 20150921-01.jpg"
   },
   "stb-gardens-by-the-bay": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Supertree_Grove%2C_Gardens_by_the_Bay%2C_Singapore_-_20120712-02.jpg/960px-Supertree_Grove%2C_Gardens_by_the_Bay%2C_Singapore_-_20120712-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Supertree_Grove,_Gardens_by_the_Bay,_Singapore_-_20120712-02.jpg",
-    "author": "Shiny Things.",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Gardens by the Bay"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Supertree_Grove%2C_Gardens_by_the_Bay%2C_Singapore1.jpg/960px-Supertree_Grove%2C_Gardens_by_the_Bay%2C_Singapore1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Supertree_Grove,_Gardens_by_the_Bay,_Singapore1.jpg",
+    "author": "Mustang Joe",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "article": "Commons reviewed: Supertree Grove, Gardens by the Bay, Singapore1.jpg"
   },
   "stb-the-interlace": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/The_Interlace_Singapore.jpg/960px-The_Interlace_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -217,7 +265,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "kallerna",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "The Interlace"
+    "article": "Article: The Interlace (The Interlace Singapore.jpg)"
   },
   "stb-parkroyal-on-pickering": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Parkroyal_on_Pickering_%288579805153%29.crop.jpg/960px-Parkroyal_on_Pickering_%288579805153%29.crop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -225,23 +273,23 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Erwin Soo from Singapore, Singapore",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Parkroyal Collection Pickering"
+    "article": "Article: Parkroyal Collection Pickering (Parkroyal on Pickering (8579805153).crop.jpg)"
   },
   "stb-lasalle-college-of-the-arts": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Brother_Joseph_McNally_Gallery%2C_LASALLE_College_of_the_Arts%2C_Singapore_-_20140905.jpg/960px-Brother_Joseph_McNally_Gallery%2C_LASALLE_College_of_the_Arts%2C_Singapore_-_20140905.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brother_Joseph_McNally_Gallery,_LASALLE_College_of_the_Arts,_Singapore_-_20140905.jpg",
-    "author": "Smuconlaw",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Lasalle_College_Of_The_Arts_01-12-2024.jpg/960px-Lasalle_College_Of_The_Arts_01-12-2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lasalle_College_Of_The_Arts_01-12-2024.jpg",
+    "author": "LN9267",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Brother Joseph McNally Gallery, LASALLE College of the Arts, Singapore - 20140905.jpg"
+    "article": "Commons: Lasalle College Of The Arts 01-12-2024.jpg"
   },
   "stb-kranji-war-memorial-landmark-in": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Rear_view_of_the_Cross_of_Sacrifice_at_Kranji_War_Memorial_in_September_2015.jpg/960px-Rear_view_of_the_Cross_of_Sacrifice_at_Kranji_War_Memorial_in_September_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rear_view_of_the_Cross_of_Sacrifice_at_Kranji_War_Memorial_in_September_2015.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Road_leading_to_the_Kranji_War_Cemetery_and_Memorial.jpg/960px-Road_leading_to_the_Kranji_War_Cemetery_and_Memorial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Road_leading_to_the_Kranji_War_Cemetery_and_Memorial.jpg",
     "author": "Nick-D",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Rear view of the Cross of Sacrifice at Kranji War Memorial in September 2015.jpg"
+    "article": "Commons: Road leading to the Kranji War Cemetery and Memorial.jpg"
   },
   "stb-indian-national-army-ina-monument-in": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Former_Indian_National_Army_Monument.JPG/960px-Former_Indian_National_Army_Monument.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -249,7 +297,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Terence Ong",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
-    "article": "Former Indian National Army Monument"
+    "article": "Article: Former Indian National Army Monument (Former Indian National Army Monument.JPG)"
   },
   "stb-reflections-at-bukit-chandu-singapore-war-memorial": {
     "url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/ReflectionsatBukitChandu-Singapore-20070809.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -257,47 +305,39 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Aldwin Teo at en.wikipedia.",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "Reflections at Bukit Chandu"
+    "article": "Article: Reflections at Bukit Chandu (ReflectionsatBukitChandu-Singapore-20070809.jpg)"
   },
   "stb-the-cenotaph-a-singapore-war-memorial-landmark": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Singapore_The-Cenotaph-01.jpg/960px-Singapore_The-Cenotaph-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_The-Cenotaph-01.jpg",
-    "author": "CEphoto, Uwe Aranas",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Singapore_%28SG%29%2C_Cenotaph_--_2019_--_4497.jpg/960px-Singapore_%28SG%29%2C_Cenotaph_--_2019_--_4497.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_Cenotaph_--_2019_--_4497.jpg",
+    "author": "Dietmar Rabich",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "The Cenotaph, Singapore"
-  },
-  "stb-the-civilian-war-memorial-park-in": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Civilian_War_Memorial_2019.jpg/960px-Civilian_War_Memorial_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Civilian_War_Memorial_2019.jpg",
-    "author": "Deoma12",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Civilian War Memorial"
+    "article": "Commons reviewed: Singapore (SG), Cenotaph -- 2019 -- 4497.jpg"
   },
   "stb-sri-veeramakaliamman-temple": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/2016_Singapur%2C_Little_India%2C_%C5%9Awi%C4%85tynia_Sri_Veeramakaliamman_%2801%29.jpg/960px-2016_Singapur%2C_Little_India%2C_%C5%9Awi%C4%85tynia_Sri_Veeramakaliamman_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016_Singapur,_Little_India,_%C5%9Awi%C4%85tynia_Sri_Veeramakaliamman_(01).jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Templo_Sri_Veeramakaliamman%2C_Singapur%2C_2023-08-17%2C_DD_01.jpg/960px-Templo_Sri_Veeramakaliamman%2C_Singapur%2C_2023-08-17%2C_DD_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Templo_Sri_Veeramakaliamman,_Singapur,_2023-08-17,_DD_01.jpg",
+    "author": "Diego Delso",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Templo Sri Veeramakaliamman, Singapur, 2023-08-17, DD 01.jpg"
+  },
+  "stb-maghain-aboth-synagogue": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/2016_Singapur%2C_Rochor%2C_Synagoga_Maghain_Aboth_%2801%29.jpg/960px-2016_Singapur%2C_Rochor%2C_Synagoga_Maghain_Aboth_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016_Singapur,_Rochor,_Synagoga_Maghain_Aboth_(01).jpg",
     "author": "Marcin Konsek",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: 2016 Singapur, Little India, Świątynia Sri Veeramakaliamman (01).jpg"
-  },
-  "stb-maghain-aboth-synagogue": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Maghain_Aboth_Synagogue.jpg/960px-Maghain_Aboth_Synagogue.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maghain_Aboth_Synagogue.jpg",
-    "author": "Gaurav.",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "Maghain Aboth Synagogue"
+    "article": "Commons reviewed: 2016 Singapur, Rochor, Synagoga Maghain Aboth (01).jpg"
   },
   "stb-old-supreme-court": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Former_Supreme_Court%2C_Singapore_%281559763572%29.jpg/960px-Former_Supreme_Court%2C_Singapore_%281559763572%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Former_Supreme_Court,_Singapore_(1559763572).jpg",
-    "author": "yeowatzup",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Commons: Former Supreme Court, Singapore (1559763572).jpg"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Singapore_Old-Supreme-Court-Building-01.jpg/960px-Singapore_Old-Supreme-Court-Building-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Old-Supreme-Court-Building-01.jpg",
+    "author": "CEphoto, Uwe Aranas",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "article": "Commons reviewed: Singapore Old-Supreme-Court-Building-01.jpg"
   },
   "stb-lau-pa-sat": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Lau_Pa_Sat_Singapore_2.jpg/960px-Lau_Pa_Sat_Singapore_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -305,7 +345,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "kallerna",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Lau Pa Sat"
+    "article": "Article: Lau Pa Sat (Lau Pa Sat Singapore 2.jpg)"
   },
   "stb-malay-heritage-centre": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Malay_Heritage_Centre%2C_2012.jpg/960px-Malay_Heritage_Centre%2C_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -313,7 +353,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Elisa.rolle",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Malay Heritage Centre"
+    "article": "Article: Malay Heritage Centre (Malay Heritage Centre, 2012.jpg)"
   },
   "stb-peranakan-museum-singapore-history-culture": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Peranakan_Museum_%28Old_Tao_Nan_School%29%2C_August_2024.jpg/960px-Peranakan_Museum_%28Old_Tao_Nan_School%29%2C_August_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -321,15 +361,15 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "GoAheadFan95",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Peranakan Museum"
+    "article": "Article: Peranakan Museum (Peranakan Museum (Old Tao Nan School), August 2024.jpg)"
   },
   "stb-raffles": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Wikimania_Singapore_2023_118.jpg/960px-Wikimania_Singapore_2023_118.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wikimania_Singapore_2023_118.jpg",
-    "author": "Anthere",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Hotel_Raffles%2C_Singapur%2C_2023-08-16%2C_DD_153-155_HDR.jpg/960px-Hotel_Raffles%2C_Singapur%2C_2023-08-16%2C_DD_153-155_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hotel_Raffles,_Singapur,_2023-08-16,_DD_153-155_HDR.jpg",
+    "author": "Diego Delso",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Raffles Hotel"
+    "article": "Commons reviewed: Hotel Raffles, Singapur, 2023-08-16, DD 153-155 HDR.jpg"
   },
   "stb-gillman-barracks-yoursingapore": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Gillman_Barracks_today_%282017%29.jpg/960px-Gillman_Barracks_today_%282017%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -337,7 +377,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Estherkhm",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Gillman Barracks"
+    "article": "Article: Gillman Barracks (Gillman Barracks today (2017).jpg)"
   },
   "stb-artscience-museum": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/ArtScience_Museum%2C_Marina_Bay_Sands%2C_Singapore.jpg/960px-ArtScience_Museum%2C_Marina_Bay_Sands%2C_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -345,7 +385,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Basile Morin",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "ArtScience Museum"
+    "article": "Article: ArtScience Museum (ArtScience Museum, Marina Bay Sands, Singapore.jpg)"
   },
   "stb-sam-at-8q-singapore-art-museum": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/8QSamMain.jpg/960px-8QSamMain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -353,7 +393,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "8Q SAM; originally uploaded by Marcus Lim at en.wikipedia.",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "SAM at 8Q"
+    "article": "Article: SAM at 8Q (8QSamMain.jpg)"
   },
   "stb-jamae-mosque-masjid-chulia": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Masjid_Jamae_%28Chulia%29%2C_Singapore%3B_October_2016.jpg/960px-Masjid_Jamae_%28Chulia%29%2C_Singapore%3B_October_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -364,44 +404,44 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "article": "Commons: Masjid Jamae (Chulia), Singapore; October 2016.jpg"
   },
   "stb-singapore-flyer": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Singapore_Flyer_20250903.jpg/960px-Singapore_Flyer_20250903.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Flyer_20250903.jpg",
-    "author": "DvTor8303",
-    "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "article": "Singapore Flyer"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Singapore_%28SG%29%2C_Singapore_Flyer_--_2019_--_4472.jpg/960px-Singapore_%28SG%29%2C_Singapore_Flyer_--_2019_--_4472.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_Singapore_Flyer_--_2019_--_4472.jpg",
+    "author": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Singapore (SG), Singapore Flyer -- 2019 -- 4472.jpg"
   },
   "stb-marina-bay-sands": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Marina_Bay_Sands_%28I%29.jpg/960px-Marina_Bay_Sands_%28I%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marina_Bay_Sands_(I).jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Marina_Bay_Sands_and_illuminated_polyhedral_building_Louis_Vuitton_over_the_water_at_blue_hour_with_pink_clouds_in_Singapore.jpg/960px-Marina_Bay_Sands_and_illuminated_polyhedral_building_Louis_Vuitton_over_the_water_at_blue_hour_with_pink_clouds_in_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marina_Bay_Sands_and_illuminated_polyhedral_building_Louis_Vuitton_over_the_water_at_blue_hour_with_pink_clouds_in_Singapore.jpg",
+    "author": "Basile Morin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Marina Bay Sands and illuminated polyhedral building Louis Vuitton over the water at blue hour with pink clouds in Singapore.jpg"
+  },
+  "stb-marina-barrage": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Singapore_Marina-Barrage-01.jpg/960px-Singapore_Marina-Barrage-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Marina-Barrage-01.jpg",
+    "author": "CEphoto, Uwe Aranas",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "article": "Commons reviewed: Singapore Marina-Barrage-01.jpg"
+  },
+  "stb-henderson-waves-bridge": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Henderson_Wave_Bridge_%28I%29.jpg/960px-Henderson_Wave_Bridge_%28I%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Henderson_Wave_Bridge_(I).jpg",
     "author": "This Photo was taken by Supanut Arunoprayote. Feel free to use any of my images, but please mention me as the author and may send me a message. (สามารถใช้ภาพได้อิสระ แต่กรุณาใส่เครดิตผู้ถ่ายและอาจส่งข้อความบอกกล่าวด้วย) Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Marina Bay Sands"
-  },
-  "stb-marina-barrage": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Marina_Barrage_Closeup_300522.jpg/960px-Marina_Barrage_Closeup_300522.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marina_Barrage_Closeup_300522.jpg",
-    "author": "Bob Tan",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Marina Barrage"
-  },
-  "stb-henderson-waves-bridge": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/HendersonWaves-Singapore-externalview-20090220.jpg/960px-HendersonWaves-Singapore-externalview-20090220.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:HendersonWaves-Singapore-externalview-20090220.jpg",
-    "author": "Kok Leng Yeo from Singapore.",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Henderson Waves"
+    "article": "Commons reviewed: Henderson Wave Bridge (I).jpg"
   },
   "stb-pinnacle-duxton": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Pinnacle%40Duxton%2C_Singapore_-_20100101.jpg/960px-Pinnacle%40Duxton%2C_Singapore_-_20100101.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pinnacle@Duxton,_Singapore_-_20100101.jpg",
-    "author": "Someformofhuman.",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "The Pinnacle@Duxton"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/The_Pinnacle%40Duxton_%28I%29.jpg/960px-The_Pinnacle%40Duxton_%28I%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Pinnacle@Duxton_(I).jpg",
+    "author": "This Photo was taken by Supanut Arunoprayote. Feel free to use any of my images, but please mention me as the author and may send me a message. (สามารถใช้ภาพได้อิสระ แต่กรุณาใส่เครดิตผู้ถ่ายและอาจส่งข้อความบอกกล่าวด้วย) Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "article": "Commons reviewed: The Pinnacle@Duxton (I).jpg"
   },
   "stb-hajjah-fatimah-mosque": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Masjid_Hajjah_Fatimah%2C_full_exterior_view.jpg/960px-Masjid_Hajjah_Fatimah%2C_full_exterior_view.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -409,7 +449,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "M. Adrian Jurhami",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Masjid Hajjah Fatimah"
+    "article": "Article: Masjid Hajjah Fatimah (Masjid Hajjah Fatimah, full exterior view.jpg)"
   },
   "stb-haw-par-villa-singapore-theme-park": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/A_walk_in_Haw_Par_Villa_Singapore_%282025%29_-_img_15.jpg/960px-A_walk_in_Haw_Par_Villa_Singapore_%282025%29_-_img_15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -417,7 +457,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Chainwit.",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Haw Par Villa"
+    "article": "Article: Haw Par Villa (A walk in Haw Par Villa Singapore (2025) - img 15.jpg)"
   },
   "stb-hong-san-see-temple": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Hong_San_See_3%2C_Oct_06.JPG/960px-Hong_San_See_3%2C_Oct_06.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -425,7 +465,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Unknown author",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "article": "Hong San See"
+    "article": "Article: Hong San See (Hong San See 3, Oct 06.JPG)"
   },
   "stb-chinese-heritage-centre": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/NTU_former_administrative_building.jpg/960px-NTU_former_administrative_building.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -433,47 +473,31 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Unknown author",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "article": "Chinese Heritage Centre"
+    "article": "Article: Chinese Heritage Centre (NTU former administrative building.jpg)"
   },
   "stb-kampong-glam-malay-culture-in": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Kampong_Glam_aerial_shot_-_20250628_-_RSKY.jpg/960px-Kampong_Glam_aerial_shot_-_20250628_-_RSKY.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kampong_Glam_aerial_shot_-_20250628_-_RSKY.jpg",
-    "author": "Robert Sim",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/2016_Singapur%2C_Kampong_Glam%2C_Centrum_Dziedzictwa_Malajskiego%2C_Dawny_Pa%C5%82ac_Kampong_Glam_%2804%29.jpg/960px-2016_Singapur%2C_Kampong_Glam%2C_Centrum_Dziedzictwa_Malajskiego%2C_Dawny_Pa%C5%82ac_Kampong_Glam_%2804%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016_Singapur,_Kampong_Glam,_Centrum_Dziedzictwa_Malajskiego,_Dawny_Pa%C5%82ac_Kampong_Glam_(04).jpg",
+    "author": "Marcin Konsek",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Kampong Glam"
+    "article": "Commons reviewed: 2016 Singapur, Kampong Glam, Centrum Dziedzictwa Malajskiego, Dawny Pałac Kampong Glam (04).jpg"
   },
   "stb-red-dot-design-museum": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Red_Dot_Design_Museum_Singapore.jpg/960px-Red_Dot_Design_Museum_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red_Dot_Design_Museum_Singapore.jpg",
-    "author": "jwalsh from Seattle",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Commons: Red Dot Design Museum Singapore.jpg"
-  },
-  "stb-singapore-art-museum": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Singapore_Art_Museum%2C_2014_%2802%29.JPG/960px-Singapore_Art_Museum%2C_2014_%2802%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Art_Museum,_2014_(02).JPG",
-    "author": "Bahnfrend",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/2016_Singapur%2C_Chinatown%2C_Ulica_Maxwell%2C_Red_Dot_Design_Museum_%2801%29.jpg/960px-2016_Singapur%2C_Chinatown%2C_Ulica_Maxwell%2C_Red_Dot_Design_Museum_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016_Singapur,_Chinatown,_Ulica_Maxwell,_Red_Dot_Design_Museum_(01).jpg",
+    "author": "Marcin Konsek",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Singapore Art Museum, 2014 (02).JPG"
+    "article": "Commons reviewed: 2016 Singapur, Chinatown, Ulica Maxwell, Red Dot Design Museum (01).jpg"
   },
   "stb-esplanade-theatres-on-the-bay": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/The_Esplanade_%E2%80%93_Theatres_on_the_Bay.jpg/960px-The_Esplanade_%E2%80%93_Theatres_on_the_Bay.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Esplanade_%E2%80%93_Theatres_on_the_Bay.jpg",
-    "author": "William Cho",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "article": "Esplanade – Theatres on the Bay"
-  },
-  "stb-national-design-centre": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/National_Design_Centre%2C_Singapore.jpg/960px-National_Design_Centre%2C_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:National_Design_Centre,_Singapore.jpg",
-    "author": "ScribblingGeek",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Esplanade_Theatres_on_the_Bay_Singapore_at_blue_hour.jpg/960px-Esplanade_Theatres_on_the_Bay_Singapore_at_blue_hour.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Esplanade_Theatres_on_the_Bay_Singapore_at_blue_hour.jpg",
+    "author": "Basile Morin",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "National Design Centre"
+    "article": "Commons reviewed: Esplanade Theatres on the Bay Singapore at blue hour.jpg"
   },
   "stb-victoria-theatre": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Victoria_Theatre_and_Victoria_Concert_Hall%2C_with_54m_high_Clock_Tower.jpg/960px-Victoria_Theatre_and_Victoria_Concert_Hall%2C_with_54m_high_Clock_Tower.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -481,23 +505,23 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "TTangMonuments",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Victoria Theatre and Concert Hall"
+    "article": "Article: Victoria Theatre and Concert Hall (Victoria Theatre and Victoria Concert Hall, with 54m high Clock Tower.jpg)"
   },
   "stb-nus-university-museum": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Royal_portrait_-_Pratistha%2C_NUS_Museum_%28113054%29.jpg/960px-Royal_portrait_-_Pratistha%2C_NUS_Museum_%28113054%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Royal_portrait_-_Pratistha,_NUS_Museum_(113054).jpg",
-    "author": "Moheen Reeyad",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/University_Cultural_Center%2C_NUS%2C_February_2020.jpg/960px-University_Cultural_Center%2C_NUS%2C_February_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:University_Cultural_Center,_NUS,_February_2020.jpg",
+    "author": "Joshua Rommel Hayag Vargas",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Royal portrait - Pratistha, NUS Museum (113054).jpg"
+    "article": "Commons: University Cultural Center, NUS, February 2020.jpg"
   },
   "stb-sun-yat-sen-memorial-hall": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Sun_Yat_Sen_Nanyang_Memorial_Hall_14-05-2024%2817%29.jpg/960px-Sun_Yat_Sen_Nanyang_Memorial_Hall_14-05-2024%2817%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sun_Yat_Sen_Nanyang_Memorial_Hall_14-05-2024(17).jpg",
-    "author": "LN9267",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Sun_Yat_Sen_Nanyang_Memorial_Hall%2C_July_2022.jpg/960px-Sun_Yat_Sen_Nanyang_Memorial_Hall%2C_July_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sun_Yat_Sen_Nanyang_Memorial_Hall,_July_2022.jpg",
+    "author": "GoAheadFan95",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Sun Yat Sen Nanyang Memorial Hall 14-05-2024(17).jpg"
+    "article": "Commons: Sun Yat Sen Nanyang Memorial Hall, July 2022.jpg"
   },
   "stb-asian-civilisations-museum-singapore-museum": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Empress_Place_Building_2023-03-22.jpg/960px-Empress_Place_Building_2023-03-22.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -505,15 +529,15 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Alexey Komarov",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Asian Civilisations Museum"
+    "article": "Article: Asian Civilisations Museum (Empress Place Building 2023-03-22.jpg)"
   },
   "stb-national-museum-of": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/National_Museum_of_Singapore_during_the_Singapore_Night_Festival_2024_-_01.jpg/960px-National_Museum_of_Singapore_during_the_Singapore_Night_Festival_2024_-_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:National_Museum_of_Singapore_during_the_Singapore_Night_Festival_2024_-_01.jpg",
-    "author": "Sgconlaw",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/National_Museum_of_Singapore_%28131537%29.jpg/960px-National_Museum_of_Singapore_%28131537%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:National_Museum_of_Singapore_(131537).jpg",
+    "author": "Moheen Reeyad",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: National Museum of Singapore during the Singapore Night Festival 2024 - 01.jpg"
+    "article": "Commons: National Museum of Singapore (131537).jpg"
   },
   "stb-the-japanese-cemetery-park": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Japanese_Cemetery_Park.jpg/960px-Japanese_Cemetery_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -521,39 +545,31 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "ProjectManhattan",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "Japanese Cemetery Park"
-  },
-  "stb-raffles-statue-sir-stamford-raffles-landing-site": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Sir_stamford_raffles_statue_singapore.jpg/960px-Sir_stamford_raffles_statue_singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sir_stamford_raffles_statue_singapore.jpg",
-    "author": "Irwan Shah Bin Abdullah / https://ehalal.io/",
-    "license": "CC BY 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-    "article": "Statue of Stamford Raffles"
+    "article": "Article: Japanese Cemetery Park (Japanese Cemetery Park.jpg)"
   },
   "stb-singapore-philatelic-museum": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Singapore_-_Canning_Rise_-_Singapore_Philatelic_Museum_IMG_9721.jpg/960px-Singapore_-_Canning_Rise_-_Singapore_Philatelic_Museum_IMG_9721.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_-_Canning_Rise_-_Singapore_Philatelic_Museum_IMG_9721.jpg",
-    "author": "Bjoertvedt",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Singapore_Philatelic_Museum%2C_2012.jpg/960px-Singapore_Philatelic_Museum%2C_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Philatelic_Museum,_2012.jpg",
+    "author": "Elisa.rolle",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Singapore - Canning Rise - Singapore Philatelic Museum IMG 9721.jpg"
+    "article": "Commons: Singapore Philatelic Museum, 2012.jpg"
   },
   "stb-singapore-city-gallery": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Singapore_City_Gallery_%22Central_Area_Model%22_%282025%29_-_img_01.jpg/960px-Singapore_City_Gallery_%22Central_Area_Model%22_%282025%29_-_img_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_City_Gallery_%22Central_Area_Model%22_(2025)_-_img_01.jpg",
-    "author": "Chainwit.",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Singapore City Gallery"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Singapore_City_Gallery%2C_2024_%2807%29.jpg/960px-Singapore_City_Gallery%2C_2024_%2807%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_City_Gallery,_2024_(07).jpg",
+    "author": "Bahnfrend",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: Singapore City Gallery, 2024 (07).jpg"
   },
   "stb-changi-museum": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Changi_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Changi_Museum.jpg",
-    "author": "Aldwin Teo",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "Changi Chapel and Museum"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Changi_Museum%2C_Singapore_-_www.joyofmuseums.com_-_external.jpg/960px-Changi_Museum%2C_Singapore_-_www.joyofmuseums.com_-_external.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Changi_Museum,_Singapore_-_www.joyofmuseums.com_-_external.jpg",
+    "author": "Joyofmuseums",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: Changi Museum, Singapore - www.joyofmuseums.com - external.jpg"
   },
   "stb-mint-museum-of-toys-singapore-toy-museum": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/MINT_Museum_of_Toys_in_Singapore.jpg/960px-MINT_Museum_of_Toys_in_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -561,31 +577,31 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Sundaymarket38",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "article": "Mint Museum of Toys"
+    "article": "Article: Mint Museum of Toys (MINT Museum of Toys in Singapore.jpg)"
+  },
+  "stb-lim-bo-seng-memorial": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Singapore_River_-_Lim_Bo_Seng_memorial_park_IMG_9262.jpg/960px-Singapore_River_-_Lim_Bo_Seng_memorial_park_IMG_9262.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_River_-_Lim_Bo_Seng_memorial_park_IMG_9262.jpg",
+    "author": "Bjoertvedt",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: Singapore River - Lim Bo Seng memorial park IMG 9262.jpg"
   },
   "stb-singapore-science-centre": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Entrance_to_Science_Centre_Singapore%2C_2025.jpg/960px-Entrance_to_Science_Centre_Singapore%2C_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Entrance_to_Science_Centre_Singapore,_2025.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Waterworks%2C_Science_Centre_Singapore%2C_2025.jpg/960px-Waterworks%2C_Science_Centre_Singapore%2C_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Waterworks,_Science_Centre_Singapore,_2025.jpg",
     "author": "Actuall7",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Science Centre Singapore"
-  },
-  "stb-fuk-tak-chi-museum-places-of-interest": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Fuk_Tak_Chi_temple_%2812848380003%29.jpg/960px-Fuk_Tak_Chi_temple_%2812848380003%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fuk_Tak_Chi_temple_(12848380003).jpg",
-    "author": "KimonBerlin",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "article": "Commons: Fuk Tak Chi temple (12848380003).jpg"
+    "article": "Commons: Waterworks, Science Centre Singapore, 2025.jpg"
   },
   "stb-chinese-garden": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Chinese_Garden%2C_Singapore_04-12-2024%2874%29.jpg/960px-Chinese_Garden%2C_Singapore_04-12-2024%2874%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chinese_Garden,_Singapore_04-12-2024(74).jpg",
-    "author": "LN9267",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Aerial_view_of_Chinese_Garden%2C_Singapore_-_20151026.jpg/960px-Aerial_view_of_Chinese_Garden%2C_Singapore_-_20151026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Chinese_Garden,_Singapore_-_20151026.jpg",
+    "author": "Roisingeorginabrown21.",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: Chinese Garden, Singapore 04-12-2024(74).jpg"
+    "article": "Commons: Aerial view of Chinese Garden, Singapore - 20151026.jpg"
   },
   "stb-east-coast-park": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/%28SGP-Singapore%29_East_Coast_Park_Zone_B_2026-01-25.jpg/960px-%28SGP-Singapore%29_East_Coast_Park_Zone_B_2026-01-25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -593,15 +609,15 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "S5A-0043",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "East Coast Park"
+    "article": "Article: East Coast Park ((SGP-Singapore) East Coast Park Zone B 2026-01-25.jpg)"
   },
   "stb-fort-canning-park": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Fort_Canning_Park_sign%2C_Singapore_-_20110506.jpg/960px-Fort_Canning_Park_sign%2C_Singapore_-_20110506.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fort_Canning_Park_sign,_Singapore_-_20110506.jpg",
-    "author": "Michael Coghlan.",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "article": "Fort Canning Hill"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Fort_Canning_Park%2C_Singapore_-_20120212.jpg/960px-Fort_Canning_Park%2C_Singapore_-_20120212.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fort_Canning_Park,_Singapore_-_20120212.jpg",
+    "author": "Thomas Timlen.",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "article": "Commons: Fort Canning Park, Singapore - 20120212.jpg"
   },
   "stb-kusu-island": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Aerial_perspective_of_Kusu_Island%2C_Singapore._Shot_in_2016.jpg/960px-Aerial_perspective_of_Kusu_Island%2C_Singapore._Shot_in_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -609,15 +625,15 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Bob Tan",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Kusu Island"
+    "article": "Article: Kusu Island (Aerial perspective of Kusu Island, Singapore. Shot in 2016.jpg)"
   },
   "stb-jurong-bird-park-attractions-things-to-do": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Jurong_Bird_Park_2014.jpg/960px-Jurong_Bird_Park_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jurong_Bird_Park_2014.jpg",
-    "author": "aamanatullah",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Jurong Bird Park"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/2016_Singapur%2C_Jurong_Bird_Park_%28175%29.jpg/960px-2016_Singapur%2C_Jurong_Bird_Park_%28175%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016_Singapur,_Jurong_Bird_Park_(175).jpg",
+    "author": "Marcin Konsek",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: 2016 Singapur, Jurong Bird Park (175).jpg"
   },
   "stb-hortpark": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Silver_Garden_HortPark_Singapore.jpg/960px-Silver_Garden_HortPark_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -625,7 +641,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "kallerna",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "HortPark"
+    "article": "Article: HortPark (Silver Garden HortPark Singapore.jpg)"
   },
   "stb-adventure-cove-waterpark": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Adventure_Cove_Waterpark_in_Sentosa%2C_Singapore.jpg/960px-Adventure_Cove_Waterpark_in_Sentosa%2C_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -633,15 +649,39 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Haopee G.",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "article": "Adventure Cove Waterpark"
+    "article": "Article: Adventure Cove Waterpark (Adventure Cove Waterpark in Sentosa, Singapore.jpg)"
+  },
+  "stb-singapore-river-history-culture-tours": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Downtown_Core_as_seen_across_the_Singapore_River_at_night_%282023%29-L1003792.jpg/960px-Downtown_Core_as_seen_across_the_Singapore_River_at_night_%282023%29-L1003792.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Downtown_Core_as_seen_across_the_Singapore_River_at_night_(2023)-L1003792.jpg",
+    "author": "Frank Schulenburg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Downtown Core as seen across the Singapore River at night (2023)-L1003792.jpg"
+  },
+  "stb-joo-chiat-katong-singapore-peranakan-neighbourhood": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Joo_Chiat_road_in_Singapore_captured.jpg/960px-Joo_Chiat_road_in_Singapore_captured.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Joo_Chiat_road_in_Singapore_captured.jpg",
+    "author": "Kate Branch",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: Joo Chiat road in Singapore captured.jpg"
+  },
+  "stb-sentosa-island-leisure-attractions": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Palawan_Lagoon_at_Sentosa_Island%2C_Singapore_-_panoramio.jpg/960px-Palawan_Lagoon_at_Sentosa_Island%2C_Singapore_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palawan_Lagoon_at_Sentosa_Island,_Singapore_-_panoramio.jpg",
+    "author": "AudaCity3371",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "article": "Commons: Palawan Lagoon at Sentosa Island, Singapore - panoramio.jpg"
   },
   "stb-chinatown-singapore-history-culture": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Chinatown_Complex_Food_Centre_%2812849046024%29.jpg/960px-Chinatown_Complex_Food_Centre_%2812849046024%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chinatown_Complex_Food_Centre_(12849046024).jpg",
-    "author": "KimonBerlin",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "article": "Commons: Chinatown Complex Food Centre (12849046024).jpg"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Pagoda_Street_Chinatown_Singapore.jpg/960px-Pagoda_Street_Chinatown_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pagoda_Street_Chinatown_Singapore.jpg",
+    "author": "kallerna",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Pagoda Street Chinatown Singapore.jpg"
   },
   "stb-buddha-tooth-relic-temple-museum-in": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/BTRTM_as_seen_from_Maxwell_MRT_entrance_%282025%29_-_img_05.jpg/960px-BTRTM_as_seen_from_Maxwell_MRT_entrance_%282025%29_-_img_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -649,7 +689,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Chainwit.",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Buddha Tooth Relic Temple and Museum"
+    "article": "Article: Buddha Tooth Relic Temple and Museum (BTRTM as seen from Maxwell MRT entrance (2025) - img 05.jpg)"
   },
   "stb-labrador-nature-reserve": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Labrador_Park_20060419.jpg/960px-Labrador_Park_20060419.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -657,7 +697,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Unknown author",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "article": "Labrador Nature Reserve"
+    "article": "Article: Labrador Nature Reserve (Labrador Park 20060419.jpg)"
   },
   "stb-marina-bay-singapore-attractions-things-to-do": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Marina_Bay_Singapore-3499.jpg/960px-Marina_Bay_Singapore-3499.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -665,15 +705,15 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Bijay Chaurasia",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Marina Bay, Singapore"
+    "article": "Article: Marina Bay, Singapore (Marina Bay Singapore-3499.jpg)"
   },
   "stb-marina-bay-sands-resort": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Marina_Bay_Sands_%28I%29.jpg/960px-Marina_Bay_Sands_%28I%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marina_Bay_Sands_(I).jpg",
-    "author": "This Photo was taken by Supanut Arunoprayote. Feel free to use any of my images, but please mention me as the author and may send me a message. (สามารถใช้ภาพได้อิสระ แต่กรุณาใส่เครดิตผู้ถ่ายและอาจส่งข้อความบอกกล่าวด้วย) Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Marina Bay Sands"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Marina_Bay_Sands_and_illuminated_polyhedral_building_Louis_Vuitton_over_the_water_at_blue_hour_with_pink_clouds_in_Singapore.jpg/960px-Marina_Bay_Sands_and_illuminated_polyhedral_building_Louis_Vuitton_over_the_water_at_blue_hour_with_pink_clouds_in_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marina_Bay_Sands_and_illuminated_polyhedral_building_Louis_Vuitton_over_the_water_at_blue_hour_with_pink_clouds_in_Singapore.jpg",
+    "author": "Basile Morin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Marina Bay Sands and illuminated polyhedral building Louis Vuitton over the water at blue hour with pink clouds in Singapore.jpg"
   },
   "stb-chek-jawa": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Chek_Jawa_2%2C_Aug_07.JPG/960px-Chek_Jawa_2%2C_Aug_07.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -681,7 +721,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Sengkang",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "Chek Jawa Visitor Centre"
+    "article": "Article: Chek Jawa Visitor Centre (Chek Jawa 2, Aug 07.JPG)"
   },
   "stb-merlion-park-attractions-things-to-do": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Singapore_Merlion_BCT.jpg/960px-Singapore_Merlion_BCT.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -689,7 +729,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Bjørn Christian Tørrissen",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "Merlion Park"
+    "article": "Article: Merlion Park (Singapore Merlion BCT.jpg)"
   },
   "stb-marina-bay-sands-skypark": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Marina_Bay_Sands_%28I%29.jpg/960px-Marina_Bay_Sands_%28I%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -697,7 +737,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "This Photo was taken by Supanut Arunoprayote. Feel free to use any of my images, but please mention me as the author and may send me a message. (สามารถใช้ภาพได้อิสระ แต่กรุณาใส่เครดิตผู้ถ่ายและอาจส่งข้อความบอกกล่าวด้วย) Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "article": "Marina Bay Sands"
+    "article": "Article: Marina Bay Sands (Marina Bay Sands (I).jpg)"
   },
   "stb-resorts-world-sentosa": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Resorts_World_Sentosa_viewed_from_the_Singapore_Cruise_Centre_-_20130311.jpg/960px-Resorts_World_Sentosa_viewed_from_the_Singapore_Cruise_Centre_-_20130311.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -705,7 +745,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Balou46.",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "Resorts World Sentosa"
+    "article": "Article: Resorts World Sentosa (Resorts World Sentosa viewed from the Singapore Cruise Centre - 20130311.jpg)"
   },
   "stb-sungei-buloh": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Sungei_Buloh_Wetland_Reserve_Banner.JPG/960px-Sungei_Buloh_Wetland_Reserve_Banner.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -713,30 +753,39 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Thaejas",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "article": "Sungei Buloh Wetland Reserve"
+    "article": "Article: Sungei Buloh Wetland Reserve (Sungei Buloh Wetland Reserve Banner.JPG)"
+  },
+  "stb-s-e-a-aquarium": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/S.E.A._Aquarium%2C_Singapore%2C_20240206_1354_6519.jpg/960px-S.E.A._Aquarium%2C_Singapore%2C_20240206_1354_6519.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:S.E.A._Aquarium,_Singapore,_20240206_1354_6519.jpg",
+    "author": "Jakub Hałun",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "article": "Commons: S.E.A. Aquarium, Singapore, 20240206 1354 6519.jpg"
   },
   "stb-singapore-botanic-gardens": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Symphony_Lake%2C_Singapore_Botanic_Gardens_-_20041025.jpg/960px-Symphony_Lake%2C_Singapore_Botanic_Gardens_-_20041025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Symphony_Lake,_Singapore_Botanic_Gardens_-_20041025.jpg",
-    "author": "Velela",
-    "license": "Public domain",
-    "article": "Singapore Botanic Gardens"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Branches_of_a_Ficus_kurzii_reflecting_in_the_water_at_Singapore_Botanic_Gardens.jpg/960px-Branches_of_a_Ficus_kurzii_reflecting_in_the_water_at_Singapore_Botanic_Gardens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Branches_of_a_Ficus_kurzii_reflecting_in_the_water_at_Singapore_Botanic_Gardens.jpg",
+    "author": "Basile Morin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons reviewed: Branches of a Ficus kurzii reflecting in the water at Singapore Botanic Gardens.jpg"
   },
   "stb-singapore-zoo-attractions-things-to-do": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Singapore_Zoo_entrance-15Feb2010.jpg/960px-Singapore_Zoo_entrance-15Feb2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Zoo_entrance-15Feb2010.jpg",
-    "author": "Drew",
-    "license": "CC BY 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-    "article": "Singapore Zoo"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Elephas_maximus_in_Singapore_Zoo%2C_20240206_0857_6202.jpg/960px-Elephas_maximus_in_Singapore_Zoo%2C_20240206_0857_6202.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Elephas_maximus_in_Singapore_Zoo,_20240206_0857_6202.jpg",
+    "author": "Jakub Hałun",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "article": "Commons reviewed: Elephas maximus in Singapore Zoo, 20240206 0857 6202.jpg"
   },
   "stb-river-safari": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Crocodile%2C_River_Safari%2C_Singapore_%2824114792687%29.jpg/960px-Crocodile%2C_River_Safari%2C_Singapore_%2824114792687%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Crocodile,_River_Safari,_Singapore_(24114792687).jpg",
-    "author": "Romain Pontida",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "article": "Commons: Crocodile, River Safari, Singapore (24114792687).jpg"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/River_Safari_Singapore_Amazon_Flooded_Forest.JPG/960px-River_Safari_Singapore_Amazon_Flooded_Forest.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:River_Safari_Singapore_Amazon_Flooded_Forest.JPG",
+    "author": "ProjectManhattan",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "article": "Commons: River Safari Singapore Amazon Flooded Forest.JPG"
   },
   "stb-cable-car-singapore-mount-faber": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Singapore_cable_car_Mount_Faber_1.jpg/960px-Singapore_cable_car_Mount_Faber_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -744,7 +793,7 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "kallerna",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Singapore Cable Car"
+    "article": "Commons reviewed: Singapore cable car Mount Faber 1.jpg"
   },
   "stb-night-safari": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Entrance_of_Night_Safari%2C_Singapore%2C_2012.jpg/960px-Entrance_of_Night_Safari%2C_Singapore%2C_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -752,31 +801,39 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "Allie Caulfield",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Night Safari, Singapore"
+    "article": "Article: Night Safari, Singapore (Entrance of Night Safari, Singapore, 2012.jpg)"
   },
-  "stb-little-india-singapore-history-culture": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Little_India_%284048444495%29.jpg/960px-Little_India_%284048444495%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Little_India_(4048444495).jpg",
-    "author": "KimonBerlin",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "article": "Little India, Singapore"
-  },
-  "stb-orchard-road-asia-s-most-famous-shopping-street": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Presenting..._the_real_ION_%288200217734%29.jpg/960px-Presenting..._the_real_ION_%288200217734%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Presenting..._the_real_ION_(8200217734).jpg",
-    "author": "Erwin Soo from Singapore, Singapore",
+  "stb-pulau-ubin-singapore-islands": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Beachside_house%2C_Pulau_Ubin%2C_Singapore_-_20070211.jpg/960px-Beachside_house%2C_Pulau_Ubin%2C_Singapore_-_20070211.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beachside_house,_Pulau_Ubin,_Singapore_-_20070211.jpg",
+    "author": "alex.ch",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "article": "Orchard Road"
+    "article": "Commons: Beachside house, Pulau Ubin, Singapore - 20070211.jpg"
   },
-  "stb-macritchie-singapore-singapore-nature-reserve": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Info_Board_MacRitchie_Reservoir_Singapore_Feb23_D72_25337.jpg/960px-Info_Board_MacRitchie_Reservoir_Singapore_Feb23_D72_25337.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Info_Board_MacRitchie_Reservoir_Singapore_Feb23_D72_25337.jpg",
-    "author": "This Photo was taken by Timothy A. Gonsalves. Feel free to use my photos, but please mention me as the author. I would much appreciate if you send me an email tagooty@yahoo.com or write on my talk page, for my information. Please contact me before commercial use. Please do not upload an edited image here without consulting me. I would like to make corrections only at my own source to ensure that the changes improve the image and are preserved.Otherwise you may upload an edited image with a new name. Please use one of the templates derivative or extract.",
+  "stb-little-india-singapore-history-culture": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Little_India%2C_Singapore_%28LRM_20230818_202704-RR%29.jpg/960px-Little_India%2C_Singapore_%28LRM_20230818_202704-RR%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Little_India,_Singapore_(LRM_20230818_202704-RR).jpg",
+    "author": "Matti Blume",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+    "article": "Commons reviewed: Little India, Singapore (LRM 20230818 202704-RR).jpg"
+  },
+  "stb-orchard-road-asia-s-most-famous-shopping-street": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Glass_facade_of_an_illuminated_shopping_mall_at_blue_hour_with_vertical_symmetry_impression%2C_Orchard_Road%2C_Singapore.jpg/960px-Glass_facade_of_an_illuminated_shopping_mall_at_blue_hour_with_vertical_symmetry_impression%2C_Orchard_Road%2C_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Glass_facade_of_an_illuminated_shopping_mall_at_blue_hour_with_vertical_symmetry_impression,_Orchard_Road,_Singapore.jpg",
+    "author": "Basile Morin",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "MacRitchie Reservoir"
+    "article": "Commons reviewed: Glass facade of an illuminated shopping mall at blue hour with vertical symmetry impression, Orchard Road, Singapore.jpg"
+  },
+  "stb-macritchie-singapore-singapore-nature-reserve": {
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/MacRitchie_Nature_Trail%2C_Singapore%3B_December_2014_%2805%29.jpg/960px-MacRitchie_Nature_Trail%2C_Singapore%3B_December_2014_%2805%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:MacRitchie_Nature_Trail,_Singapore;_December_2014_(05).jpg",
+    "author": "travel oriented",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "article": "Commons: MacRitchie Nature Trail, Singapore; December 2014 (05).jpg"
   },
   "stb-civic-district": {
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Aerial_view_of_the_Civic_District%2C_Singapore_-_20110224.jpg/960px-Aerial_view_of_the_Civic_District%2C_Singapore_-_20110224.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -784,14 +841,14 @@ export const LANDMARK_IMAGES: Record<string, LandmarkImage> = {
     "author": "William Cho.",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "article": "Civic District"
+    "article": "Article: Civic District (Aerial view of the Civic District, Singapore - 20110224.jpg)"
   },
   "stb-harbourfront": {
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/HarbourFront_Centre_shops_04-12-2024%2824%29.jpg/960px-HarbourFront_Centre_shops_04-12-2024%2824%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:HarbourFront_Centre_shops_04-12-2024(24).jpg",
-    "author": "LN9267",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "article": "Commons: HarbourFront Centre shops 04-12-2024(24).jpg"
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Singapore_Harbourfront_2010.JPG/960px-Singapore_Harbourfront_2010.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Singapore_Harbourfront_2010.JPG",
+    "author": "Hajotthu",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "article": "Commons: Singapore Harbourfront 2010.JPG"
   }
 };
